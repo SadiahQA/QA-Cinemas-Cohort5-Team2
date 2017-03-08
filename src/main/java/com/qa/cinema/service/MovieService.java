@@ -1,12 +1,15 @@
 package com.qa.cinema.service;
 
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.1
+ */
 public interface MovieService {
 
-	String listAllMovies();
+	String listCurrentMovies();
 
-	String createNewMovie(String movie);
-
-	String updateMovie(Long movieId, String movie);
-
-	String deleteMovie(Long movieId);
+	String listFutureMovies();
+	
+	String getMovieById(Long id);
 }

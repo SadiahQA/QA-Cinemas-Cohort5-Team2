@@ -1,5 +1,6 @@
 package com.qa.cinema.service;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
@@ -11,7 +12,11 @@ import javax.persistence.Query;
 
 import com.qa.cinema.persistence.MovieTest;
 import com.qa.cinema.util.JSONUtil;
-
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.1
+ */
 @Stateless
 @Default
 public class DBMovieService implements MovieService {
@@ -24,41 +29,35 @@ public class DBMovieService implements MovieService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public String listAllMovies() {
-		Query query = em.createQuery("SELECT m FROM Movie m");
-		Collection<MovieTest> movies = (Collection<MovieTest>) query.getResultList();
+
+	public String listCurrentMovies() {
+		java.util.Date javaDate = new java.util.Date();
+		Date date = new Date(javaDate.getTime());
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < " + date);
+		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
-	public String createNewMovie(String movie) {
-		MovieTest newMovie = util.getObjectForJSON(movie, MovieTest.class);
-		em.persist(newMovie);
-		return "{\"message\": \"movie sucessfully added\"}";
+	public String listFutureMovies() {
+		java.util.Date javaDate = new java.util.Date();
+		Date date = new Date(javaDate.getTime());
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate > " + date);
+		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
+		return util.getJSONForObject(movies);
+
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public String updateMovie(Long movieId, String movie) {
-		MovieTest updateMovie = util.getObjectForJSON(movie, MovieTest.class);
-		MovieTest movieInDB = findMovie(new Long(movieId));
-		if (movieInDB != null) {
-			movieInDB = updateMovie;
-			em.merge(movie);
-		}
-		return "{\"message\": \"movie sucessfully updated\"}";
+
+	public String getMovieById(Long id) {
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.idMovie = " + id);
+		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
+		return util.getJSONForObject(movies.iterator().next());
 	}
 
-	@Override
-	public String deleteMovie(Long movieId) {
-		MovieTest movieInDB = findMovie(new Long(movieId));
-		if (movieInDB != null) {
-			em.remove(movieInDB);
-		}
-		return "{\"message\": \"movie sucessfully deleted\"}";
-	}
 
-	private MovieTest findMovie(Long id) {
-		return em.find(MovieTest.class, id);
-	}
 
 }

@@ -11,37 +11,35 @@ import javax.ws.rs.Produces;
 
 import com.qa.cinema.service.MovieService;
 
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.1
+ */
 @Path("/movie")
 public class MovieEndpoint {
 
 	@Inject
 	private MovieService service;
 
-	@Path("/json")
+	@Path("/json/future")
 	@GET
 	@Produces({ "application/json" })
 	public String getAllMovies() {
-		return service.listAllMovies();
+		return service.listFutureMovies();
 	}
 
-	@Path("/json")
-	@POST
+	@Path("/json/current")
+	@GET
 	@Produces({ "application/json" })
-	public String addMovie(String movie) {
-		return service.createNewMovie(movie);
-	}
-
-	@Path("/json/{id}")
-	@PUT
-	@Produces({ "application/json" })
-	public String updateMovie(@PathParam("id") Long movieId, String movie) {
-		return service.updateMovie(movieId, movie);
+	public String getCurrentMovies() {
+		return service.listCurrentMovies();
 	}
 
 	@Path("/json/{id}")
-	@DELETE
+	@GET
 	@Produces({ "application/json" })
-	public String deleteMovie(@PathParam("id") Long moviedId) {
-		return service.deleteMovie(moviedId);
+	public String getMovieByID(@PathParam("id") Long moviedId) {
+		return service.getMovieById(moviedId);
 	}
 }

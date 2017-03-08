@@ -3,32 +3,38 @@ package com.qa.cinema.service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 
+import com.qa.cinema.persistence.Cinema;
+
+
 /**
  * 
- * @author Alex Mercer
- * @version 0.1.1
+ * @author Joseph Richardson
+ * @version 0.0.1
+ *
  */
+
 @ApplicationScoped
 @Alternative
-public class MapMovieService implements MovieService {
+public class MapScreenService implements ScreenService{
 
 	@Override
-	public String getMovieById(Long id) {
+	public String listAllScreensByCinema(Cinema cinema) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String listCurrentMovies() {
+	public String listScreensByType(Cinema cinema, String screenType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String listFutureMovies() {
+	public String listScreensByDirectorsBox(Cinema cinema, boolean isDirectorsBox) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 }
