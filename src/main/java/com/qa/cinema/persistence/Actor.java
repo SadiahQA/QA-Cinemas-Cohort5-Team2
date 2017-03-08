@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
+ * 
  * @author Tary Andrews  
  * @version 0.1.1
+ * 
  */
+
 @Entity
 public class Actor {
 	
