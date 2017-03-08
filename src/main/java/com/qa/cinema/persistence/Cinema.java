@@ -12,9 +12,8 @@ import javax.persistence.OneToMany;
 
 
 /*
- * Author: Alistair Fenn
-
- * Version: 0.0.2
+ * @author Alistair Fenn
+ * @version 0.0.2
 
  */
 
