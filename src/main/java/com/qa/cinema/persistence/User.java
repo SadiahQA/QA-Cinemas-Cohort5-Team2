@@ -1,14 +1,14 @@
-/**
- * @author Stefan Matykiewicz
- * @version 0.2.0
- */
-
 package com.qa.cinema.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+/**
+ * @author Stefan Matykiewicz
+ * @version 0.2.1
+ */
 
 @Entity
 public class User {
