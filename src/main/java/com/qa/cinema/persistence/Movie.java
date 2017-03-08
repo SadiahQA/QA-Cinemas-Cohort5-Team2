@@ -1,6 +1,8 @@
 package com.qa.cinema.persistence;
 
+
 import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,9 @@ import javax.persistence.ManyToMany;
 /**
  * 
  * @author Alex Mercer
+
  * @version 0.1.2
+
  */
 @Entity
 public class Movie {
@@ -27,7 +31,9 @@ public class Movie {
 	private String genre;
 	private String posterURL;
 	private String duration;
+
 	private Date releaseDate;
+
 	private String certification;
 	private String description;
 	
@@ -43,7 +49,9 @@ public class Movie {
 	public Movie() {
 	}
 
+
 	public Movie(String title, String genre, String posterURL, String duration, Date releaseDate,
+
 			String certification, String description, ArrayList<Actor> actors) {
 		this.title = title;
 		this.genre = genre;
@@ -93,11 +101,13 @@ public class Movie {
 		this.duration = duration;
 	}
 
+
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
 
 	public void setReleaseDate(Date releaseDate) {
+
 		this.releaseDate = releaseDate;
 	}
 
@@ -117,11 +127,11 @@ public class Movie {
 		this.description = description;
 	}
 
-	public ArrayList<Actor> getActors() {
+	public List<Actor> getActors() {
 		return actors;
 	}
 
-	public void setActors(ArrayList<Actor> actors) {
+	public void setActors(List<Actor> actors) {
 		this.actors = actors;
 	}
 	

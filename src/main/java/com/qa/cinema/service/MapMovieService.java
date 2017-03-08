@@ -6,6 +6,7 @@ import javax.enterprise.inject.Alternative;
 /**
  * 
  * @author Alex Mercer
+
  * @version 0.1.1
  */
 @ApplicationScoped
@@ -23,7 +24,7 @@ public class MapMovieService implements MovieService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+  
 	@Override
 	public String listFutureMovies() {
 		// TODO Auto-generated method stub

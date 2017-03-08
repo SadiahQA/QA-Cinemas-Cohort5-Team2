@@ -6,21 +6,18 @@
 
     function MovieDal (dal) {
 
-        this.getMovies = function () {
-            return dal.http.GET("rest/movie/json");
+        this.getCurrentMovies = function () {
+            return dal.http.GET("rest/movie/json/current");
         };
 
-        this.saveMovie = function (movieToSave) {
-            return dal.http.POST("rest/movie/json", movieToSave);
+        this.getFutureMovies = function () {
+            return dal.http.GET("rest/movie/json/future");
         };
 
-        this.updateMovie = function (movieToUpdateId, movieToUpdate) {
-            return dal.http.PUT("rest/movie/json/" + movieToUpdateId, movieToUpdate);
+        this.getMovieById = function (idOfMovieToGet) {
+            return dal.http.GET("rest/movie/json/" + idOfMovieToGet);
         };
 
-        this.deleteMovie = function (movieToDeleteId) {
-            return dal.http.DELETE("/rest/movie/json/" + movieToDeleteId);
-        };
 
     }
 }());
