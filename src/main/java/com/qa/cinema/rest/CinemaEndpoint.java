@@ -9,8 +9,8 @@ import javax.ws.rs.Produces;
 import com.qa.cinema.service.CinemaService;
 
 /*
- * Author: Alistair Fenn
- * Version: 0.0.1
+ * @author Alistair Fenn
+ * @version 0.0.1
  */
 @Path("/cinema")
 public class CinemaEndpoint {
