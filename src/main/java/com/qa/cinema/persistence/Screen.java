@@ -1,29 +1,56 @@
 
 package com.qa.cinema.persistence;
 
+
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * 
  * 
  * @author Joseph Richardson
- * @version 0.0.1
+
+ * @version 0.1.1
  */
 
 @Entity
 public class Screen {
-	
+  
+	@NotNull
+	@Min(0)
 	@Id
+	@Column(nullable=false, unique=true)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idScreen;
+	
+	@NotNull
+	@Column(name="screenNum")
 	private Long screenNum;
+	
+	@NotNull
+	@Column(name="noOfSeats")
 	private int noOfSeats;
+	
+	@NotNull	
+	@Column(name="screenType")
 	private String screenType;
+	
+	@NotNull
+	@Column(name="isDirectorsBox")
 	private boolean isDirectorsBox;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name = "idShowing")
 	private List<Showing> showings;
 	
 	public Screen(){
