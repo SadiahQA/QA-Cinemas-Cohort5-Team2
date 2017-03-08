@@ -16,7 +16,7 @@ import com.qa.cinema.util.JSONUtil;
 /**
  * 
  * @author Joseph Richardson
- * @version 0.1.2
+ * @version 0.1.3
  *
  */
 
@@ -33,23 +33,23 @@ public class DBScreenService implements ScreenService{
 	
 	
 	@Override
-	public String listAllScreensByCinema(Cinema cinema) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + cinema);
+	public String listAllScreensByCinema(Long idCinema) {
+		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema);
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();
 		return util.getJSONForObject(screens);
 	}
 
 	@Override
-	public String listScreensByType(Cinema cinema, String screenType) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + cinema + "AND"
+	public String listScreensByType(Long idCinema, String screenType) {
+		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"
 				+ "s.screenType = " + screenType );
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();		
 		return util.getJSONForObject(screens);
 	}
 
 	@Override
-	public String listScreensByDirectorsBox(Cinema cinema, boolean isDirectorsBox) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + cinema + "AND"
+	public String listScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox) {
+		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"
 				+ "s.isDirectorsBox =" + isDirectorsBox);
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();		
 		return util.getJSONForObject(screens);

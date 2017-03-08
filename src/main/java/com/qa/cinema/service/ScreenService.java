@@ -1,13 +1,19 @@
 package com.qa.cinema.service;
-import com.qa.cinema.persistence.Cinema;
+
+/**
+ * 
+ * @author Joseph Richardson
+ * @version 0.0.2
+ *
+ */
 
 public interface ScreenService {
 
-	String listAllScreensByCinema(Cinema cinema);
+	String listAllScreensByCinema(Long idCinema);
 	
-	String listScreensByType(Cinema cinema, String screenType);
+	String listScreensByType(Long idCinema, String screenType);
 	
-	String listScreensByDirectorsBox(Cinema cinema, boolean isDirectorsBox);
+	String listScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox);
 	
 	
 }
