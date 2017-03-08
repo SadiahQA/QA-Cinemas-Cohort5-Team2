@@ -11,6 +11,11 @@ import javax.ws.rs.Produces;
 
 import com.qa.cinema.service.MovieService;
 
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.0
+ */
 @Path("/movie")
 public class MovieEndpoint {
 
@@ -24,24 +29,11 @@ public class MovieEndpoint {
 		return service.listAllMovies();
 	}
 
-	@Path("/json")
-	@POST
-	@Produces({ "application/json" })
-	public String addMovie(String movie) {
-		return service.createNewMovie(movie);
-	}
 
 	@Path("/json/{id}")
-	@PUT
+	@GET
 	@Produces({ "application/json" })
-	public String updateMovie(@PathParam("id") Long movieId, String movie) {
-		return service.updateMovie(movieId, movie);
-	}
-
-	@Path("/json/{id}")
-	@DELETE
-	@Produces({ "application/json" })
-	public String deleteMovie(@PathParam("id") Long moviedId) {
-		return service.deleteMovie(moviedId);
+	public String getMovieByID(@PathParam("id") Long moviedId) {
+		return service.getMovieById(moviedId);
 	}
 }
