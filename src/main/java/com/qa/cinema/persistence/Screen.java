@@ -25,27 +25,22 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Screen {
-  
-	@NotNull
+
 	@Min(0)
 	@Id
 	@Column(nullable=false, unique=true)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idScreen;
 	
-	@NotNull
 	@Column(name="screenNum")
 	private Long screenNum;
 	
-	@NotNull
 	@Column(name="noOfSeats")
 	private int noOfSeats;
 	
-	@NotNull	
 	@Column(name="screenType")
 	private String screenType;
 	
-	@NotNull
 	@Column(name="isDirectorsBox")
 	private boolean isDirectorsBox;
 	

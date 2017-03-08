@@ -11,7 +11,7 @@ import com.qa.cinema.service.ScreenService;
 
 /*
  * Author: Joseph Richardson
- * Version: 0.0.2
+ * Version: 0.0.3
  */
 
 @Path("/screen")
@@ -38,7 +38,7 @@ public class ScreenEndPoint {
 	@Path("/json/{id}/{DirectorsBox}")
 	@GET
 	@Produces({ "application/json" })
-	public String listScreensByIsDirectorsBox(@PathParam("id")long idCinema, @PathParam("directorsBox") boolean isDirectorsBox) {
+	public String listScreensByIsDirectorsBox(@PathParam("id")Long idCinema, @PathParam("directorsBox") boolean isDirectorsBox) {
 		return service.listScreensByDirectorsBox(idCinema, isDirectorsBox);
 	}
 	
