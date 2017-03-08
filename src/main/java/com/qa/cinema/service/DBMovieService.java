@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.qa.cinema.persistence.Movie;
+import com.qa.cinema.persistence.MovieTest;
 import com.qa.cinema.util.JSONUtil;
 /**
  * 
@@ -29,6 +29,7 @@ public class DBMovieService implements MovieService {
 
 	@SuppressWarnings("unchecked")
 	@Override
+
 	public String listCurrentMovies() {
 		java.util.Date javaDate = new java.util.Date();
 		Date date = new Date(javaDate.getTime());
@@ -45,15 +46,18 @@ public class DBMovieService implements MovieService {
 		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate > " + date);
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies);
+
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+
 	public String getMovieById(Long id) {
 		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.idMovie = " + id);
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies.iterator().next());
 	}
+
 
 
 }
