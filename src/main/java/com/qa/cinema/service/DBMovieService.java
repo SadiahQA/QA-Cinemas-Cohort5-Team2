@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.qa.cinema.persistence.Movie;
+import com.qa.cinema.persistence.MovieTest;
 import com.qa.cinema.util.JSONUtil;
 
 @Stateless
@@ -22,24 +22,25 @@ public class DBMovieService implements MovieService {
 	@Inject
 	private JSONUtil util;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String listAllMovies() {
 		Query query = em.createQuery("SELECT m FROM Movie m");
-		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
+		Collection<MovieTest> movies = (Collection<MovieTest>) query.getResultList();
 		return util.getJSONForObject(movies);
 	}
 
 	@Override
 	public String createNewMovie(String movie) {
-		Movie newMovie = util.getObjectForJSON(movie, Movie.class);
+		MovieTest newMovie = util.getObjectForJSON(movie, MovieTest.class);
 		em.persist(newMovie);
 		return "{\"message\": \"movie sucessfully added\"}";
 	}
 
 	@Override
 	public String updateMovie(Long movieId, String movie) {
-		Movie updateMovie = util.getObjectForJSON(movie, Movie.class);
-		Movie movieInDB = findMovie(new Long(movieId));
+		MovieTest updateMovie = util.getObjectForJSON(movie, MovieTest.class);
+		MovieTest movieInDB = findMovie(new Long(movieId));
 		if (movieInDB != null) {
 			movieInDB = updateMovie;
 			em.merge(movie);
@@ -49,15 +50,15 @@ public class DBMovieService implements MovieService {
 
 	@Override
 	public String deleteMovie(Long movieId) {
-		Movie movieInDB = findMovie(new Long(movieId));
+		MovieTest movieInDB = findMovie(new Long(movieId));
 		if (movieInDB != null) {
 			em.remove(movieInDB);
 		}
 		return "{\"message\": \"movie sucessfully deleted\"}";
 	}
 
-	private Movie findMovie(Long id) {
-		return em.find(Movie.class, id);
+	private MovieTest findMovie(Long id) {
+		return em.find(MovieTest.class, id);
 	}
 
 }
