@@ -17,7 +17,7 @@ public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idMovie;
 	private String title;
 	private String genre;
 	private String posterURL;
@@ -53,7 +53,7 @@ public class Movie {
 
 
 	public Long getId() {
-		return id;
+		return idMovie;
 	}
 
 	public String getTitle() {
