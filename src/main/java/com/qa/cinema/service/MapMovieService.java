@@ -13,13 +13,19 @@ import javax.enterprise.inject.Alternative;
 public class MapMovieService implements MovieService {
 
 	@Override
-	public String listAllMovies() {
+	public String getMovieById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getMovieById(Long id) {
+	public String listCurrentMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String listFutureMovies() {
 		// TODO Auto-generated method stub
 		return null;
 	}

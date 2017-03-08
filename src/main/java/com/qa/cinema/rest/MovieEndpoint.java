@@ -22,13 +22,19 @@ public class MovieEndpoint {
 	@Inject
 	private MovieService service;
 
-	@Path("/json")
+	@Path("/json/future")
 	@GET
 	@Produces({ "application/json" })
 	public String getAllMovies() {
-		return service.listAllMovies();
+		return service.listFutureMovies();
 	}
 
+	@Path("/json/current")
+	@GET
+	@Produces({ "application/json" })
+	public String getCurrentMovies() {
+		return service.listFutureMovies();
+	}
 
 	@Path("/json/{id}")
 	@GET
