@@ -14,7 +14,7 @@ import com.qa.cinema.service.UserService;
 /**
  * 
  * @author Stefan Matykiewicz
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 @Path("/user")
@@ -26,8 +26,8 @@ public class UserEndpoint {
 	@Path("/json")
 	@GET
 	@Produces({"application/json"})
-	public String findIndividualUser(){
-		return service.findIndividualUser();
+	public String findIndividualUser(Long id){
+		return service.findIndividualUser(id);
 	}
 
 	@Path("/json")
@@ -40,15 +40,15 @@ public class UserEndpoint {
 	@Path("/json/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateUser(@PathParam("id") Long idUser, String user) {
-		return service.updateUser(idUser, user);
+	public String updateUser(@PathParam("id") Long id, String user) {
+		return service.updateUser(id, user);
 	}
 	
 	@Path("/json/{id}")
 	@DELETE
 	@Produces({ "application/json" })
-	public String deleteUser(@PathParam("id") Long idUser) {
-		return service.deleteMovie(idUser);
+	public String deleteUser(@PathParam("id") Long id) {
+		return service.deleteUser(id);
 
 	}
 }
