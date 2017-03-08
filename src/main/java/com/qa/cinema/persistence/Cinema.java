@@ -62,11 +62,11 @@ public class Cinema {
 		this.city = city;
 	}
 
-	public String getOpeningtimes() {
+	public String getOpeningTimes() {
 		return openingTimes;
 	}
 
-	public void setOpeningtimes(String openingTimes) {
+	public void setOpeningTimes(String openingTimes) {
 		this.openingTimes = openingTimes;
 	}
 
