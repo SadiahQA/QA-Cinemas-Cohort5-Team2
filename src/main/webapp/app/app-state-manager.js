@@ -12,6 +12,10 @@
         }).state("seefuturemovies",{
             url:"/seefuturemovies",
             templateUrl: "app/feature/movie/get/get-future/get-future-movies.html"
+        }).state("seeonemovie",{
+            url:"/seeonemovie",
+            params:['movieId'],
+            templateUrl: "app/feature/move/get/get-one/get-one-movie.html"
         }).state("homepage", {
             url: "/home",
             templateUrl: "app/feature/home/home.html"
