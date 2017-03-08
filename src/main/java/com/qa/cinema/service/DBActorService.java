@@ -10,12 +10,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Actor;
+import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.util.JSONUtil;
 
 /**
  * 
  * @author Tary Andrews
- * @version 0.2.0
+ * @version 0.2.1
  *
  */
 
@@ -24,16 +25,16 @@ import com.qa.cinema.util.JSONUtil;
 public class DBActorService implements ActorService {
 
 	@PersistenceContext(unitName = "primary")
-	private EntityManager manager;
+	private EntityManager em;
 
 	@Inject
 	private JSONUtil util;
 
 	@Override
-	public String getActorsFromMovie(String idMovie) {
-		Query query = manager.createQuery("Select * FROM Actor a LEFT JOIN Actor_has_movie b ON a.idActor=b.Actor_idActor WHERE b.Movie_idMovie =  " +idMovie);
-		Collection<Actor> actors = (Collection<Actor>) query.getResultList();
-		return util.getJSONForObject(actors);
+	public String getActor(String idActor) {
+		Query query = em.createQuery("SELECT a FROM Actor a WHERE a.idActor = " + idActor);
+		Collection<Actor> actor = (Collection<Actor>) query.getResultList();
+		return util.getJSONForObject(actor);
 	}
 
 

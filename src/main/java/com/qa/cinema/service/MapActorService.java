@@ -6,7 +6,7 @@ import javax.enterprise.inject.Alternative;
 /**
  * 
  * @author Tary Andrews
- * @version 0.1.2
+ * @version 0.1.3
  *
  */
 
@@ -15,7 +15,7 @@ import javax.enterprise.inject.Alternative;
 public class MapActorService implements ActorService {
 
 	@Override
-	public String getActorsFromMovie(String idMovie) {
+	public String getActor(String idActor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
