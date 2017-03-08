@@ -3,8 +3,6 @@ package com.qa.cinema.service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 
-import com.qa.cinema.persistence.Cinema;
-
 
 /**
  * 
