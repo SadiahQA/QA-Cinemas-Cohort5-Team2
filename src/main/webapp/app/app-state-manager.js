@@ -14,7 +14,7 @@
             templateUrl: "app/feature/movie/add/add-movie-partial.html"
         }).state("getmovie", {
             url: "/getmovie",
-            templateUrl: "app/feature/movie/get/get-movie-partial.html"
+            templateUrl: "app/feature/movie/get/get-movie.html"
         })
     });
 }());
