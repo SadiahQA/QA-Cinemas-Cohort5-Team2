@@ -15,50 +15,50 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idUser;
-	private String firstNameUser;
-	private String lastNameUser;
-	private String dobUser;
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String dob;
 	private String email;
 	private String password;
 
 	public User() {
 	}
 
-	public User(String firstNameUser, String lastNameUser, String dobUser, String email, String password) {
-		this.firstNameUser = firstNameUser;
-		this.lastNameUser = lastNameUser;
-		this.dobUser = dobUser;
+	public User(String firstName, String lastName, String dob, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
 		this.email = email;
 		this.password = password;
 	}
 
 	public Long getIdUser() {
-		return idUser;
+		return id;
 	}
 	
 	public String getFirstNameUser() {
-		return firstNameUser;
+		return firstName;
 	}
 
 	public void setFirstNameUser(String firstNameUser) {
-		this.firstNameUser = firstNameUser;
+		this.firstName = firstName;
 	}
 
 	public String getLastNameUser() {
-		return lastNameUser;
+		return lastName;
 	}
 
-	public void setLastNameUser(String lastNameUser) {
-		this.lastNameUser = lastNameUser;
+	public void setLastNameUser(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getDobUser() {
-		return dobUser;
+		return dob;
 	}
 
-	public void setDobUser(String dobUser) {
-		this.dobUser = dobUser;
+	public void setDobUser(String dob) {
+		this.dob = dob;
 	}
 
 	public String getEmail() {
