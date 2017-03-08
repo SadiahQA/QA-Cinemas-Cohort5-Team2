@@ -15,7 +15,7 @@ import com.qa.cinema.util.JSONUtil;
 /**
  * 
  * @author Alex Mercer
- * @version 0.1.0
+ * @version 0.1.1
  */
 @Stateless
 @Default

@@ -14,7 +14,7 @@ import com.qa.cinema.service.MovieService;
 /**
  * 
  * @author Alex Mercer
- * @version 0.1.0
+ * @version 0.1.1
  */
 @Path("/movie")
 public class MovieEndpoint {
@@ -33,7 +33,7 @@ public class MovieEndpoint {
 	@GET
 	@Produces({ "application/json" })
 	public String getCurrentMovies() {
-		return service.listFutureMovies();
+		return service.listCurrentMovies();
 	}
 
 	@Path("/json/{id}")

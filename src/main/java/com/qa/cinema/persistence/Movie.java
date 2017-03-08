@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 /**
  * 
  * @author Alex Mercer
- * @version 0.1.1
+ * @version 0.1.2
  */
 @Entity
 public class Movie {

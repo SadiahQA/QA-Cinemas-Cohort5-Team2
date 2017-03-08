@@ -6,7 +6,7 @@ import javax.enterprise.inject.Alternative;
 /**
  * 
  * @author Alex Mercer
- * @version 0.1.0
+ * @version 0.1.1
  */
 @ApplicationScoped
 @Alternative
