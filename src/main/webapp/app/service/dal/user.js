@@ -10,8 +10,8 @@
 
 	function UserDal(dal) {
 
-		this.findIndividualUser = function() {
-			return dal.http.GET("rest/user/json");
+		this.findIndividualUser = function(id) {
+			return dal.http.GET("rest/user/json", id);
 		};
 
 		this.createNewUser = function(user) {
