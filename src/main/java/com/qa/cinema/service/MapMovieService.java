@@ -3,6 +3,11 @@ package com.qa.cinema.service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.0
+ */
 @ApplicationScoped
 @Alternative
 public class MapMovieService implements MovieService {
@@ -14,21 +19,10 @@ public class MapMovieService implements MovieService {
 	}
 
 	@Override
-	public String createNewMovie(String movie) {
+	public String getMovieById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public String updateMovie(Long movieId, String movie) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String deleteMovie(Long movieId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
