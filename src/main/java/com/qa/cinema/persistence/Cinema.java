@@ -14,7 +14,7 @@ import javax.validation.executable.ValidateOnExecution;
 
 /*
  * Author: Alistair Fenn
- * Version: 0.0.1
+ * Version: 0.0.2
  */
 
 @Entity
@@ -29,7 +29,7 @@ public class Cinema {
 	
 	private String city;
 	
-	private String openingtimes;
+	private String openingTimes;
 	
 	@OneToMany
 	@JoinColumn(name = "idScreen")
@@ -37,11 +37,11 @@ public class Cinema {
 	
 	public Cinema(){}
 	
-	public Cinema(String name, String city, String openingtimes, List<Screen> screens) {
+	public Cinema(String name, String city, String openingTimes, List<Screen> screens) {
 		super();
 		this.name = name;
 		this.city = city;
-		this.openingtimes = openingtimes;
+		this.openingTimes = openingTimes;
 		this.screens = screens;
 	}
 
@@ -63,11 +63,11 @@ public class Cinema {
 	}
 
 	public String getOpeningtimes() {
-		return openingtimes;
+		return openingTimes;
 	}
 
-	public void setOpeningtimes(String openingtimes) {
-		this.openingtimes = openingtimes;
+	public void setOpeningtimes(String openingTimes) {
+		this.openingTimes = openingTimes;
 	}
 
 
