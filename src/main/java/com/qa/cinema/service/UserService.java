@@ -7,13 +7,13 @@ package com.qa.cinema.service;
 
 public interface UserService {
 
-	String findIndividualUser (Long idUser);
+	String findIndividualUser (Long id);
 	
 	String createNewUser (String user);
 	
-	String updateUser (Long idUser, String user);
+	String updateUser (Long id, String user);
 	
-	String deleteUser (Long idUser);
+	String deleteUser (Long id);
 	
 	
 }

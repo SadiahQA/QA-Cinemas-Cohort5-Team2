@@ -26,8 +26,8 @@ public class DBUserService implements UserService {
 	private JSONUtil util;
 	
 	@Override
-	public String findIndividualUser(Long idUser) {
-		Query query = em.createQuery("SELECT u FROM User u WHERE u.idUser=" + idUser);
+	public String findIndividualUser(Long id) {
+		Query query = em.createQuery("SELECT u FROM User u WHERE u.idUser=" + id);
 		Object userFound = query.getSingleResult();
 		return util.getJSONForObject(userFound);
 			}
@@ -40,9 +40,9 @@ public class DBUserService implements UserService {
 	}
 
 	@Override
-	public String updateUser(Long idUser, String user) {
+	public String updateUser(Long id, String user) {
 		User updatedUser = util.getObjectForJSON(user, User.class);
-		User userInDB = findUser(new Long(idUser));
+		User userInDB = findUser(new Long(id));
 		if (userInDB != null){
 			userInDB = updatedUser;
 			em.merge(user);
@@ -51,16 +51,16 @@ public class DBUserService implements UserService {
 	}
 
 	@Override
-	public String deleteUser(Long idUser) {
-		User userInDB = findUser (new Long(idUser));
+	public String deleteUser(Long id) {
+		User userInDB = findUser (new Long(id));
 		if (userInDB != null){
 			em.remove(userInDB);
 		}
 		return "{\"message\": \"User sucessfully deleted\"}";
 	}
 	
-	private User findUser(Long idUser){
-		return em.find(User.class, idUser);
+	private User findUser(Long id){
+		return em.find(User.class, id);
 	}
 
 }
