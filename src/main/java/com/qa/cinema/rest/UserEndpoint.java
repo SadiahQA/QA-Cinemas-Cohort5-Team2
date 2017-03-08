@@ -26,7 +26,7 @@ public class UserEndpoint {
 	@Path("/json")
 	@GET
 	@Produces({"application/json"})
-	public String findIndividualUser(Long id){
+	public String findIndividualUser(@PathParam("id") Long id){
 		return service.findIndividualUser(id);
 	}
 
