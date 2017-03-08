@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.executable.ValidateOnExecution;
 
+/*
+ * Author: Alistair Fenn
+ * Version: 0.0.1
+ */
+
 @Entity
 public class Cinema {
 	
