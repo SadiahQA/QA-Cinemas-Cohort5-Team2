@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.qa.cinema.persistence.MovieTest;
+import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.util.JSONUtil;
 /**
  * 

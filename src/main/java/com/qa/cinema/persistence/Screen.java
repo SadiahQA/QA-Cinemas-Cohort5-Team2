@@ -1,6 +1,7 @@
 
 package com.qa.cinema.persistence;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -18,12 +19,13 @@ import javax.validation.constraints.NotNull;
  * 
  * 
  * @author Joseph Richardson
+
  * @version 0.1.1
  */
 
 @Entity
 public class Screen {
-	
+  
 	@NotNull
 	@Min(0)
 	@Id
@@ -50,7 +52,6 @@ public class Screen {
 	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name = "idShowing")
 	private List<Showing> showings;
-	
 	
 	public Screen(){
 		

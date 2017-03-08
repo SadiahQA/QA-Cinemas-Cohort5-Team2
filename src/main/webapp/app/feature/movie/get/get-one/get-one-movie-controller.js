@@ -3,6 +3,7 @@
     var GetOneMovieController =  function(movieDal) {
         var vm = this;
 
+        vm.movie = movieDal.getMovieById($stateParams.movieId)
         function getOneMovie() {
             movieDal.getMovieById().then(function (results) {
                 vm.movie  = results;
