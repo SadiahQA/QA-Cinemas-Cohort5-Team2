@@ -1,6 +1,6 @@
 /*
- * Author: Alistair Fenn
- * version: 0.0.1
+ * @author Alistair Fenn
+ * @version 0.0.1
  */
 
 "use strict";
