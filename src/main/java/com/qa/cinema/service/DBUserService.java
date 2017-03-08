@@ -1,9 +1,10 @@
+package com.qa.cinema.service;
+
 /**
  * @author Stefan Matykiewicz
  * @version 0.1.0
  */
 
-package com.qa.cinema.service;
 
 public class DBUserService implements UserService {
 
