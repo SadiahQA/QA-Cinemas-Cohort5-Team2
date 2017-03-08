@@ -1,7 +1,7 @@
 
 /*
  * @author Joseph Richardson
- * @version 0.0.2
+ * @version 0.0.3
  */
 "use strict";
 
@@ -12,7 +12,7 @@
     function ScreenDal (dal) {
 
         this.findByCinema = function (idCinema) {
-            return dal.http.GET("rest/screen/json/" + cinema);
+            return dal.http.GET("rest/screen/json/" + idCinema);
         };
         
         this.findByScreenType = function (idCinema, screenType){
