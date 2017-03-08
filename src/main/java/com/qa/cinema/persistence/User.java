@@ -1,5 +1,6 @@
 /**
  * @author Stefan Matykiewicz
+ * @version 0.2.0
  */
 
 package com.qa.cinema.persistence;
@@ -15,19 +16,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idUser;
-	private String firstName;
-	private String lastName;
-	private String dob;
+	private String firstNameUser;
+	private String lastNameUser;
+	private String dobUser;
 	private String email;
 	private String password;
 
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String dob, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
+	public User(String firstNameUser, String lastNameUser, String dobUser, String email, String password) {
+		this.firstNameUser = firstNameUser;
+		this.lastNameUser = lastNameUser;
+		this.dobUser = dobUser;
 		this.email = email;
 		this.password = password;
 	}
@@ -35,29 +36,29 @@ public class User {
 	public Long getIdUser() {
 		return idUser;
 	}
-
-	public String getFirstName() {
-		return firstName;
+	
+	public String getFirstNameUser() {
+		return firstNameUser;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstNameUser(String firstNameUser) {
+		this.firstNameUser = firstNameUser;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastNameUser() {
+		return lastNameUser;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastNameUser(String lastNameUser) {
+		this.lastNameUser = lastNameUser;
 	}
 
-	public String getDob() {
-		return dob;
+	public String getDobUser() {
+		return dobUser;
 	}
 
-	public void setDob(String dob) {
-		this.dob = dob;
+	public void setDobUser(String dobUser) {
+		this.dobUser = dobUser;
 	}
 
 	public String getEmail() {
