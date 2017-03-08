@@ -46,8 +46,11 @@ public class DBUserService implements UserService {
 		if (userInDB != null){
 			userInDB = updatedUser;
 			em.merge(user);
+			return "{\"message\": \"User sucessfully updated\"}";
 		}
-		return "{\"message\": \"User sucessfully updated\"}";
+		else {
+			return "{\"message\": \"User update Failed\"}";
+		}
 	}
 
 	@Override
@@ -55,8 +58,11 @@ public class DBUserService implements UserService {
 		User userInDB = findUser (new Long(id));
 		if (userInDB != null){
 			em.remove(userInDB);
+			return "{\"message\": \"User sucessfully deleted\"}";
 		}
-		return "{\"message\": \"User sucessfully deleted\"}";
+		else{
+		return "{\"message\": \"User delete Failed\"}";
+		}
 	}
 	
 	private User findUser(Long id){
