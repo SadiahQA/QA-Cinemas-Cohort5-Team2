@@ -127,11 +127,11 @@ public class Movie {
 		this.description = description;
 	}
 
-	public ArrayList<Actor> getActors() {
+	public List<Actor> getActors() {
 		return actors;
 	}
 
-	public void setActors(ArrayList<Actor> actors) {
+	public void setActors(List<Actor> actors) {
 		this.actors = actors;
 	}
 	
