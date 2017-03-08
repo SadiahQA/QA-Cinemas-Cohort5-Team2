@@ -30,8 +30,7 @@ public class Screen {
 		
 	}
 
-	public Screen(Long idScreen, Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox) {
-		this.idScreen = idScreen;
+	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox) {
 		this.screenNum = screenNum;
 		this.noOfSeats = noOfSeats;
 		this.screenType = screenType;
