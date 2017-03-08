@@ -11,7 +11,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
-
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.1
+ */
 @Entity
 public class Movie {
 
