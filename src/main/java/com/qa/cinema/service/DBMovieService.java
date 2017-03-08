@@ -1,5 +1,6 @@
 package com.qa.cinema.service;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
@@ -11,7 +12,11 @@ import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.util.JSONUtil;
-
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.1
+ */
 @Stateless
 @Default
 public class DBMovieService implements MovieService {
@@ -22,42 +27,33 @@ public class DBMovieService implements MovieService {
 	@Inject
 	private JSONUtil util;
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public String listAllMovies() {
-		Query query = em.createQuery("SELECT m FROM Movie m");
+	public String listCurrentMovies() {
+		java.util.Date javaDate = new java.util.Date();
+		Date date = new Date(javaDate.getTime());
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < " + date);
+		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
+		return util.getJSONForObject(movies);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public String listFutureMovies() {
+		java.util.Date javaDate = new java.util.Date();
+		Date date = new Date(javaDate.getTime());
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate > " + date);
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public String createNewMovie(String movie) {
-		Movie newMovie = util.getObjectForJSON(movie, Movie.class);
-		em.persist(newMovie);
-		return "{\"message\": \"movie sucessfully added\"}";
+	public String getMovieById(Long id) {
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.idMovie = " + id);
+		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
+		return util.getJSONForObject(movies.iterator().next());
 	}
 
-	@Override
-	public String updateMovie(Long movieId, String movie) {
-		Movie updateMovie = util.getObjectForJSON(movie, Movie.class);
-		Movie movieInDB = findMovie(new Long(movieId));
-		if (movieInDB != null) {
-			movieInDB = updateMovie;
-			em.merge(movie);
-		}
-		return "{\"message\": \"movie sucessfully updated\"}";
-	}
-
-	@Override
-	public String deleteMovie(Long movieId) {
-		Movie movieInDB = findMovie(new Long(movieId));
-		if (movieInDB != null) {
-			em.remove(movieInDB);
-		}
-		return "{\"message\": \"movie sucessfully deleted\"}";
-	}
-
-	private Movie findMovie(Long id) {
-		return em.find(Movie.class, id);
-	}
 
 }

@@ -1,37 +1,64 @@
 package com.qa.cinema.persistence;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
+/**
+ * 
+ * @author Alex Mercer
+ * @version 0.1.2
+ */
 @Entity
 public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idMovie;
 	private String title;
 	private String genre;
-	private String year;
+	private String posterURL;
+	private String duration;
+	private Date releaseDate;
+	private String certification;
+	private String description;
+	
+	@ManyToMany
+    @JoinTable(name="Actor_has_Movie",
+        joinColumns=
+            @JoinColumn(name="Movie_idMovie"),
+        inverseJoinColumns=
+            @JoinColumn(name="Actor_idActor")
+        )
+	private List<Actor> actors;
 
 	public Movie() {
 	}
 
-	public Movie(Long id, String title, String genre, String year) {
-		super();
-		this.id = id;
+	public Movie(String title, String genre, String posterURL, String duration, Date releaseDate,
+			String certification, String description, ArrayList<Actor> actors) {
 		this.title = title;
 		this.genre = genre;
-		this.year = year;
+		this.posterURL = posterURL;
+		this.duration = duration;
+		this.releaseDate = releaseDate;
+		this.certification = certification;
+		this.description = description;
+		this.actors = actors;
 	}
+
+
 
 	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		return idMovie;
 	}
 
 	public String getTitle() {
@@ -50,12 +77,52 @@ public class Movie {
 		this.genre = genre;
 	}
 
-	public String getYear() {
-		return year;
+	public String getPosterURL() {
+		return posterURL;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
+	public void setPosterURL(String posterURL) {
+		this.posterURL = posterURL;
 	}
 
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public String getCertification() {
+		return certification;
+	}
+
+	public void setCertification(String certification) {
+		this.certification = certification;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public ArrayList<Actor> getActors() {
+		return actors;
+	}
+
+	public void setActors(ArrayList<Actor> actors) {
+		this.actors = actors;
+	}
+	
 }
