@@ -11,7 +11,7 @@ import javax.persistence.ManyToMany;
 
 /**
  * @author Tary Andrews  
- * @version 0.1.0
+ * @version 0.1.1
  */
 @Entity
 public class Actor {
@@ -19,11 +19,11 @@ public class Actor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	private String firstName;
-	private String lastName;
-	private String gender;
-	private String dob;
+	private Long idActor;
+	private String firstNameActor;
+	private String lastNameActor;
+	private String genderActor;
+	private String dobActor;
 	
 	
 	private List<Movie> movies; 
@@ -31,12 +31,12 @@ public class Actor {
 	
 	public Actor(){}
 	
-	public Actor(String firstName, String lastName, String gender, String dob) {
+	public Actor(String firstNameActor, String lastNameActor, String genderActor, String dobActor) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.dob = dob;
+		this.firstNameActor = firstNameActor;
+		this.lastNameActor = lastNameActor;
+		this.genderActor = genderActor;
+		this.dobActor = dobActor;
 	}
 
 
@@ -49,32 +49,32 @@ public class Actor {
 		return movies;
 		
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getFirstNameActor() {
+		return firstNameActor;
 	}	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstNameActor(String firstName) {
+		this.firstNameActor = firstName;
 	}
-	public String getLastName() {
-		return lastName;
+	public String getLastNameActor() {
+		return lastNameActor;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastNameActor(String lastName) {
+		this.lastNameActor = lastName;
 	}
-	public String getGender() {
-		return gender;
+	public String getGenderActor() {
+		return genderActor;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGenderActor(String gender) {
+		this.genderActor = gender;
 	}
-	public String getDob() {
-		return dob;
+	public String getDobActor() {
+		return dobActor;
 	}
-	public void setDob(String dob) {
-		this.dob = dob;
+	public void setDobActor(String dob) {
+		this.dobActor = dob;
 	}
-	public long getId() {
-		return id;
+	public long getIdActor() {
+		return idActor;
 	}
 	
 	
