@@ -1,0 +1,15 @@
+<div ng-controller="getFutureMovieController as ctrl">
+    <h1>This is the value of movies</h1>
+    {{ctrl.movies}}
+
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+        </tr>
+        <tr ng-repeat="movie in ctrl.movies">
+            <td ng-click ="ctrl.goToMoviePage(movie.movieID)">{{movie.title | uppercase}}</td>
+            <td>{{movie.genre | lowercase}}</td>
+        </tr>
+    </table>
+</div>
