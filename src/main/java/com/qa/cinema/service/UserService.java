@@ -2,12 +2,12 @@ package com.qa.cinema.service;
 
 /**
  * @author Stefan Matykiewicz
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 public interface UserService {
 
-	String getUser (Long idUser);
+	String findIndividualUser (Long idUser);
 	
 	String createNewUser (String user);
 	
