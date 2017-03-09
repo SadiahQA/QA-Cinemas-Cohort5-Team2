@@ -18,5 +18,5 @@
 		this.findByCity = function (city){
 			return dal.http.GET("rest/cinema/json/"+ city);
 		};
-	};
+	}
 }());

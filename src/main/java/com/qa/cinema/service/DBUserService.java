@@ -42,7 +42,7 @@ public class DBUserService implements UserService {
 	@Override
 	public String updateUser(Long id, String user) {
 		User updatedUser = util.getObjectForJSON(user, User.class);
-		User userInDB = findUser(new Long(id));
+		User userInDB = findUser(id);
 		if (userInDB != null){
 			userInDB.setFirstNameUser(updatedUser.getFirstNameUser());
 			userInDB.setLastNameUser(updatedUser.getLastNameUser());
@@ -58,7 +58,7 @@ public class DBUserService implements UserService {
 
 	@Override
 	public String deleteUser(Long id) {
-		User userInDB = findUser (new Long(id));
+		User userInDB = findUser (id);
 		if (userInDB != null){
 			em.remove(userInDB);
 			return "{\"message\": \"User sucessfully deleted\"}";
