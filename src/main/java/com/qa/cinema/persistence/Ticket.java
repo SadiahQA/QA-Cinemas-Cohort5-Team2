@@ -1,5 +1,6 @@
 package com.qa.cinema.persistence;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Ticket {
 	@JoinColumn(name = "Showing_idShowing", nullable = false)
 	private Showing showing;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "User_idUser", nullable = false)
 	private User user;
 
