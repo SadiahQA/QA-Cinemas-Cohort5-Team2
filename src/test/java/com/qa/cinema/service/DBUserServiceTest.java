@@ -8,7 +8,7 @@ public class DBUserServiceTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

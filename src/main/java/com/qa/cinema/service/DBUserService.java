@@ -44,8 +44,15 @@ public class DBUserService implements UserService {
 		User updatedUser = util.getObjectForJSON(user, User.class);
 		User userInDB = findUser(new Long(id));
 		if (userInDB != null){
+			userInDB.setFirstNameUser(updatedUser.getFirstNameUser());
+			userInDB.setLastNameUser(updatedUser.getLastNameUser());
+			userInDB.setDobUser(updatedUser.getDobUser());
+			userInDB.setEmail(updatedUser.getEmail());
+			userInDB.setPassword(updatedUser.getPassword());
+			
+			/*
 			userInDB = updatedUser;
-			em.merge(user);
+			em.merge(user);*/
 			return "{\"message\": \"User sucessfully updated\"}";
 		}
 		else {
