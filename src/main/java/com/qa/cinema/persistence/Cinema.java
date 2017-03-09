@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 /*
  * @author Alistair Fenn
- * @version 0.0.2
+ * @version 0.0.3
 
  */
 
@@ -33,8 +33,7 @@ public class Cinema {
 	private String openingTimes;
 
 	
-	@OneToMany
-	@JoinColumn(name = "idScreen")
+	@OneToMany(mappedBy = "cinema")
 	private List<Screen> screens;
 	
 	public Cinema(){}

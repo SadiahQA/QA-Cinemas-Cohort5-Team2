@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -20,7 +21,7 @@ import javax.validation.constraints.NotNull;
  * 
  * @author Joseph Richardson
 
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 @Entity
@@ -48,16 +49,21 @@ public class Screen {
 	@JoinColumn(name = "idShowing")
 	private List<Showing> showings;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "Cinema_idCinema")
+	private Cinema cinema;
+	
 	public Screen(){
 		
 	}
 
-	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox) {
+	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox, Cinema cinema) {
 		this.screenNum = screenNum;
 		this.noOfSeats = noOfSeats;
 		this.screenType = screenType;
 		this.isDirectorsBox = isDirectorsBox;
 		showings = new ArrayList<Showing>();
+		this.cinema =cinema;
 	}
 	
 	
@@ -97,5 +103,15 @@ public class Screen {
 	public List<Showing> getShowings() {
 		return showings;
 	}
+
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+	
+	
 
 }
