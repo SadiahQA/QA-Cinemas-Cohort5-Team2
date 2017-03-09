@@ -27,19 +27,14 @@ public class Showing {
 	@JoinColumn(name="Movie_idMovie", nullable = false) 
 	private Movie movie;
 	
-	@ManyToOne(fetch=FetchType.EAGER)  //Many showings to one screen
-	@JoinColumn(name="Screen_idScreen", nullable = false) 
-	private Screen screen;
-	
 	private String startTime;
 	private String showingType;
 	private int availableSeats;
 	
 	public Showing() {}
 	
-	public Showing(Screen screen, Movie movie, String startTime, String showingType, int availableSeats) {
-		
-		this.screen = screen;
+	public Showing(Movie movie, String startTime, String showingType, int availableSeats) {
+	
 		this.movie = movie;
 		this.startTime = startTime;
 		this.showingType = showingType;
