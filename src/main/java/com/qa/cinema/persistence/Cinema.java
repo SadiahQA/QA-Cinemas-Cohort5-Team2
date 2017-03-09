@@ -2,8 +2,11 @@ package com.qa.cinema.persistence;
 
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +16,7 @@ import javax.persistence.OneToMany;
 
 /*
  * @author Alistair Fenn
- * @version 0.0.2
+ * @version 0.0.3
 
  */
 
@@ -33,8 +36,8 @@ public class Cinema {
 	private String openingTimes;
 
 	
-	@OneToMany
-	@JoinColumn(name = "idScreen")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name = "Cinema_idCinema")
 	private List<Screen> screens;
 	
 	public Cinema(){}

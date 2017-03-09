@@ -40,7 +40,6 @@ public class Actor {
 		this.dob = dob;
 	}
 
-	
 	public List<Movie> getMovies(){
 		return this.movies;
 		}
