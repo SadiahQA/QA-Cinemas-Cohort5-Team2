@@ -27,7 +27,8 @@ public class Actor {
 	private String dob;
 	
 	@ManyToMany(mappedBy="actors")
-	private transient List<Movie> movies; 
+	private transient List<Movie> movies;  
+	
 	
 	
 	public Actor(){}
