@@ -1,6 +1,5 @@
 package com.qa.cinema.service;
 
-import com.qa.cinema.persistence.Cinema;
 import com.qa.cinema.persistence.Movie;
 
 /**		

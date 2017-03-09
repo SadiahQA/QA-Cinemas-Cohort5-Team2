@@ -23,6 +23,7 @@ public class User {
 	private String password;
 
 	public User() {
+		//empty constructor
 	}
 
 	public User(String firstName, String lastName, String dob, String email, String password) {

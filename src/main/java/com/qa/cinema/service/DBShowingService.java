@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.qa.cinema.persistence.Cinema;
 import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
@@ -31,6 +30,7 @@ public class DBShowingService implements ShowingService {
 	@Inject
 	private JSONUtil util;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getAllShowingsForMovie(Movie movie) {
 		Query query = em.createQuery("Select s FROM Showing s where s.movie =" + movie);

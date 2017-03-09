@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -36,7 +35,7 @@ public class Ticket {
 	private String ticketType;
 
 	public Ticket() {
-
+		//empty constructor
 	}
 
 	public Ticket(Showing showing, User user, String ticketType) {
