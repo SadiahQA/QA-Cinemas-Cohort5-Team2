@@ -8,7 +8,7 @@ public class MovieTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }
