@@ -10,17 +10,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.qa.cinema.persistence.Actor;
 import com.qa.cinema.persistence.Movie;
 /**
  * 
  * @author Alex Mercer
- * @version 0.1.1
+ * @version 0.2.1
  */
+import com.qa.cinema.util.JSONUtil;
 @Stateless
 @Default
 public class DBMovieService implements MovieService {
@@ -29,18 +25,7 @@ public class DBMovieService implements MovieService {
 	private EntityManager em;
 
 	@Inject
-	private Gson util= new GsonBuilder().addSerializationExclusionStrategy(new ExclusionStrategy() {
-		
-		@Override
-		public boolean shouldSkipField(FieldAttributes f) {
-			return f.getDeclaringClass() == Actor.class && f.getName().equals("movies");
-		}
-		
-		@Override
-		public boolean shouldSkipClass(Class<?> arg0) {
-			return false;
-		}
-	}).create();;
+	private JSONUtil util;
 
 	
 	
@@ -53,7 +38,7 @@ public class DBMovieService implements MovieService {
 		Date date = new Date(javaDate.getTime());
 		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < '" + date + "'");
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
-		return util.toJson(movies);
+		return util.getJSONForObject(movies);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -63,7 +48,7 @@ public class DBMovieService implements MovieService {
 		Date date = new Date(javaDate.getTime());
 		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate > '" + date + "'");
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
-		return util.toJson(movies);
+		return util.getJSONForObject(movies);
 
 	}
 
@@ -73,7 +58,7 @@ public class DBMovieService implements MovieService {
 	public String getMovieById(Long id) {
 		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.idMovie = " + id);
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
-		return util.toJson(movies.iterator().next());
+		return util.getJSONForObject(movies.iterator().next());
 	}
 
 
