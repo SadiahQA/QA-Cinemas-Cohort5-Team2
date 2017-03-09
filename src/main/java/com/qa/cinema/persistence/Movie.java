@@ -24,20 +24,25 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Movie {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idMovie;
+
 	private String title;
+
 	private String genre;
+	
 	private String posterURL;
+
 	private String duration;
 
 	private Date releaseDate;
 
 	private String certification;
+
 	private String description;
-	
-	
+
 	@ManyToMany
     @JoinTable(name="Actor_has_Movie",
         joinColumns=
@@ -127,7 +132,7 @@ public class Movie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 	public List<Actor> getActors() {
 		return actors;
 	}
