@@ -4,6 +4,8 @@ package com.qa.cinema.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,8 +47,8 @@ public class Screen {
 	@Column(name="isDirectorsBox")
 	private boolean isDirectorsBox;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name = "idShowing")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name = "Showing_idShowing")
 	private List<Showing> showings;
 	
 	
