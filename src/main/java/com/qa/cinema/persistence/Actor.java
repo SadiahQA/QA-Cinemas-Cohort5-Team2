@@ -1,13 +1,13 @@
 package com.qa.cinema.persistence;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 import com.qa.cinema.persistence.Movie;
 
 /**
@@ -27,7 +27,8 @@ public class Actor {
 	private String dob;
 	
 	@ManyToMany(mappedBy="actors")
-	private List<Movie> movies; 
+	private transient List<Movie> movies;  
+	
 	
 	
 	public Actor(){}
@@ -43,11 +44,11 @@ public class Actor {
 	public List<Movie> getMovies(){
 		return this.movies;
 		}
-	
 	public List<Movie> setMovies(){
 		return movies;
 		
 	}
+	
 	public String getFirstNameActor() {
 		return firstName;
 	}	
