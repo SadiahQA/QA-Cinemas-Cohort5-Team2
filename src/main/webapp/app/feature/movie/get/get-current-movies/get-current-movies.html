@@ -1,0 +1,12 @@
+<div ng-controller="getCurrentMovieController as ctrl">
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+        </tr>
+        <tr ng-repeat="movie in ctrl.movies">
+            <td ng-click = "ctrl.goToMoviePage(movie.movieID)">{{movie.title | uppercase}}</td>
+            <td>{{movie.genre | lowercase}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,10 +1,10 @@
-package com.qa.cinema.persistence;
+package com.qa.cinema.service;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class MovieTest {
+public class DBUserServiceTest {
 
 	@Test
 	public void test() {

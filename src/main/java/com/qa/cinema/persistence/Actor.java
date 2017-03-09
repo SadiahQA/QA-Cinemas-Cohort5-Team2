@@ -26,7 +26,7 @@ public class Actor {
 	private String gender;
 	private String dob;
 	
-	
+	@ManyToMany(mappedBy="actors")
 	private List<Movie> movies; 
 	
 	
@@ -40,8 +40,6 @@ public class Actor {
 		this.dob = dob;
 	}
 
-
-	@ManyToMany(mappedBy="actors")
 	public List<Movie> getMovies(){
 		return this.movies;
 		}
