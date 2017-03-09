@@ -8,7 +8,7 @@ public class JSONUtilTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

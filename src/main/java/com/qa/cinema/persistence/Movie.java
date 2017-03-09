@@ -37,6 +37,7 @@ public class Movie {
 	private String certification;
 	private String description;
 	
+	
 	@ManyToMany
     @JoinTable(name="Actor_has_Movie",
         joinColumns=
