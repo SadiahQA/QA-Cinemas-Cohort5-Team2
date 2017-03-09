@@ -1,6 +1,5 @@
 package com.qa.cinema.service;
 
-import javax.ejb.Stateless;
 
 /*
  * @author Alistair Fenn

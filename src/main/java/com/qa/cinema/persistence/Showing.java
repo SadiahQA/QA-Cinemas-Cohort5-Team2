@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**		
  * @author Sadiah Ahmed		
@@ -31,7 +30,9 @@ public class Showing {
 	private String showingType;
 	private int availableSeats;
 	
-	public Showing() {}
+	public Showing() {
+		//empty constructor
+	}
 	
 	public Showing(Movie movie, String startTime, String showingType, int availableSeats) {
 	

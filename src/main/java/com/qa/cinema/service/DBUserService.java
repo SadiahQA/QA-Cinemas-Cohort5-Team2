@@ -49,10 +49,6 @@ public class DBUserService implements UserService {
 			userInDB.setDobUser(updatedUser.getDobUser());
 			userInDB.setEmail(updatedUser.getEmail());
 			userInDB.setPassword(updatedUser.getPassword());
-			
-			/*
-			userInDB = updatedUser;
-			em.merge(user);*/
 			return "{\"message\": \"User sucessfully updated\"}";
 		}
 		else {

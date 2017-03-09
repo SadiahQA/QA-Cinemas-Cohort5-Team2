@@ -53,12 +53,13 @@ public class Movie {
 	private List<Actor> actors;
 
 	public Movie() {
+		//empty constructor
 	}
 
 
 	public Movie(String title, String genre, String posterURL, String duration, Date releaseDate,
 
-			String certification, String description, ArrayList<Actor> actors) {
+		String certification, String description, ArrayList<Actor> actors) {
 		this.title = title;
 		this.genre = genre;
 		this.posterURL = posterURL;

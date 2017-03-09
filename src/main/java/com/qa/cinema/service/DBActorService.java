@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.qa.cinema.persistence.Actor;
-import com.qa.cinema.persistence.Movie;
 import com.qa.cinema.util.JSONUtil;
 
 /**
@@ -30,6 +29,7 @@ public class DBActorService implements ActorService {
 	@Inject
 	private JSONUtil util;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getActor(String idActor) {
 		Query query = em.createQuery("SELECT a FROM Actor a WHERE a.idActor = " + idActor);

@@ -26,6 +26,7 @@ public class DBCinemaService implements CinemaService{
 	@Inject
 	private JSONUtil util;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getAllCinemas() {
 		Query query = em.createQuery("Select c FROM Cinema c");
@@ -33,6 +34,7 @@ public class DBCinemaService implements CinemaService{
 		return util.getJSONForObject(cinemas);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String findCinemaByCity(String city) {
 		Query query = em.createQuery("Select c FROM Cinema c where c.city = " + city);

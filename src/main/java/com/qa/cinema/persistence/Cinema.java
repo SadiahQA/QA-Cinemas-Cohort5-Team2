@@ -40,7 +40,9 @@ public class Cinema {
 	@JoinColumn(name = "Cinema_idCinema")
 	private List<Screen> screens;
 	
-	public Cinema(){}
+	public Cinema(){
+		//empty constructor
+	}
 	
 
 	public Cinema(String name, String city, String openingTimes, List<Screen> screens) {

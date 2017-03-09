@@ -53,7 +53,7 @@ public class Screen {
 	
 	
 	public Screen(){
-		
+		//empty constructor
 	}
 
 	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox) {

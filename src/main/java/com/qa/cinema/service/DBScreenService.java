@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.qa.cinema.persistence.Cinema;
 import com.qa.cinema.persistence.Screen;
 import com.qa.cinema.util.JSONUtil;
 
@@ -31,6 +30,7 @@ public class DBScreenService implements ScreenService{
 	private JSONUtil util;
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public String listAllScreensByCinema(Long idCinema) {
 		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema);
@@ -38,6 +38,7 @@ public class DBScreenService implements ScreenService{
 		return util.getJSONForObject(screens);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String listScreensByType(Long idCinema, String screenType) {
 		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"
@@ -46,6 +47,7 @@ public class DBScreenService implements ScreenService{
 		return util.getJSONForObject(screens);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String listScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox) {
 		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"

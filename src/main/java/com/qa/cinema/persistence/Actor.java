@@ -31,7 +31,9 @@ public class Actor {
 	
 	
 	
-	public Actor(){}
+	public Actor(){
+		//empty constructor
+	}
 	
 	public Actor(String firstName, String lastName, String gender, String dob) {
 		super();
