@@ -11,16 +11,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
 
 /**
  * 
  * 
  * @author Joseph Richardson
 
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 @Entity
@@ -48,6 +49,7 @@ public class Screen {
 	@JoinColumn(name = "idShowing")
 	private List<Showing> showings;
 	
+	
 	public Screen(){
 		
 	}
@@ -58,6 +60,7 @@ public class Screen {
 		this.screenType = screenType;
 		this.isDirectorsBox = isDirectorsBox;
 		showings = new ArrayList<Showing>();
+		
 	}
 	
 	
@@ -97,5 +100,7 @@ public class Screen {
 	public List<Showing> getShowings() {
 		return showings;
 	}
+
+	
 
 }
