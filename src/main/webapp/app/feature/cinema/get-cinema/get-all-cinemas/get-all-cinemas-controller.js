@@ -16,5 +16,5 @@
 		init();
 	};
 	
-	angular.module('movieApp').controller('getAllCinemaController',['cinemaDal', GetAllMovieController]);
+	angular.module('movieApp').controller('getAllCinemaController',['cinemaDal', GetAllCinemaController]);
 }());
