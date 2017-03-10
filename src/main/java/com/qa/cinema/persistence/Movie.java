@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Size;
 
 /**
  * 
@@ -40,7 +41,8 @@ public class Movie {
 	private Date releaseDate;
 
 	private String certification;
-
+	
+	@Size(max=500)
 	private String description;
 
 	@ManyToMany
