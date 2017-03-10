@@ -20,5 +20,9 @@
             //params:['movieId'],
             templateUrl: "app/feature/move/get/get-one/get-one-movie.html"
         })
+        .state("adduser",{
+            url:"/adduser",
+            templateUrl: "app/feature/user/add-user/add-user.html"
+        })
     });
 }());
