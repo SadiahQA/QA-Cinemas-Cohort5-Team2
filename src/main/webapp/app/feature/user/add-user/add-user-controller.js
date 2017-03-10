@@ -1,16 +1,16 @@
 (function() {
 
-    var AddMovieController =  function($state, movieDal) {
+    var AddUserController =  function($state, userDal) {
         var vm = this;
 
-        vm.addMovie = function(movieToAdd) {
-            console.log("This is the value of movie to add " + movieToAdd);
-            console.log(movieToAdd);
-            var movieToJson = JSON.stringify(movieToAdd);
-            console.log(movieToJson);
-            movieDal.saveMovie(movieToAdd).then(function (results) {
-                vm.movieAddMessage  = results;
-                $state.go('getmovie');
+        vm.addMovie = function(userToAdd) {
+            console.log("This is the value of user to add " + userToAdd);
+            console.log(userToAdd);
+            var movieToJson = JSON.stringify(userToAdd);
+            console.log(userToJson);
+            userDal.createNewUser(userToAdd).then(function (results) {
+                vm.userAddMessage  = results;
+                $state.go('getuser');
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
@@ -18,5 +18,5 @@
         };
     };
 
-    angular.module('cinema').controller('addMovieController', ['$state','movieDal',AddMovieController]);
+    angular.module('movieApp').controller('addUserController', ['$state','userDal',AddUserController]);
 }());
