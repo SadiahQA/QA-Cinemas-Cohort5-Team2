@@ -3,10 +3,6 @@
     var GetCurrentMovieController =  function(movieDal) {
         var vm = this;
 
-        function goToMoviePage(targetId){
-            $state.go('getonemovie', {movieId : targetId })
-        }
-
         function init() {
             movieDal.getCurrentMovies().then(function (results) {
                 vm.movies  = results;

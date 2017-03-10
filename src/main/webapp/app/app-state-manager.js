@@ -16,9 +16,12 @@
             url:"/seefuturemovies",
             templateUrl: "app/feature/movie/get/get-future-movies/get-future-movies.html"
         }).state("seeonemovie",{
-            url:"/seeonemovie",
-            //params:['movieId'],
-            templateUrl: "app/feature/move/get/get-one/get-one-movie.html"
+            url:"/seeonemovie/:idMovie",
+            templateUrl: "app/feature/movie/get/get-one/get-one-movie.html",
+            controller: function ($stateParams){
+                $stateParams.idMovie
+            }
+            //params:['movieId']
         })
     });
 }());

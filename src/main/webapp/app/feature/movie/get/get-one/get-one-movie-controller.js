@@ -1,18 +1,18 @@
 (function() {
 
-    var GetOneMovieController =  function(movieDal) {
+    var GetOneMovieController =  function(movieDal, $stateParams) {
         var vm = this;
 
-        vm.movie = movieDal.getMovieById($stateParams.movieId)
         function getOneMovie() {
-            movieDal.getMovieById().then(function (results) {
-                vm.movie  = results;
+            movieDal.getMovieById($stateParams.idMovie).then(function (results) {
+                vm.movie = results;
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
             });
         }
+        getOneMovie();
     };
 
-    angular.module('movieApp').controller('getOneMovieController', ['movieDal', GetOneMovieController]);
+    angular.module('movieApp').controller('getOneMovieController', ['movieDal', '$stateParams', GetOneMovieController]);
 }());
