@@ -10,7 +10,7 @@ import com.qa.cinema.service.ScreenService;
 
 /**
  * @author Joseph Richardson
- * @version 0.0.4
+ * @version 0.0.5
  **/
 
 @Path("/screen")
@@ -22,8 +22,8 @@ public class ScreenEndPoint {
 	@Path("/json/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllScreensByCinema(@PathParam("id")Long idCinema) {
-		return service.getAllScreensByCinema(idCinema);
+	public String getScreensByCinema(@PathParam("id")Long idCinema) {
+		return service.getScreensByCinema(idCinema);
 	}
 
 
