@@ -26,6 +26,13 @@
         .state("adduser",{
             url:"/adduser",
             templateUrl: "app/feature/user/add-user/add-user.html"
-        })
+        }).state("cinemas", {
+            url: "/cinemas",
+            templateUrl: "app/feature/cinema/get-cinema/get-all-cinemas/get-all-cinemas.html"
+        }).state("cinemas", {
+            url: "/cinema/:cityCinema",
+            templateUrl: "app/feature/cinema/get-cinema/get-cinema-by-city/get-cinema-by-city.html"
+            	controller: function ($stateParams){
+                    $stateParams.cityCinema})
     });
 }());
