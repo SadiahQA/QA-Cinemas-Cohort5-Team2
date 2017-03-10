@@ -1,12 +1,31 @@
 <div ng-controller="getOneMovieController as ctrl">
 
-    <h1>Here is the value of that movie</h1>
-
-    {{ctrl.movie.posterURL}}
-
-    <img ng-src="{{ctrl.movie.posterURL}}">
-
-        <!--
-    {{ctrl.movie}} -->
+    <div class="container">
+        <div class = "row">
+            <div class = "span10 offset2">
+                <div class="row">
+                    <div class="span12">
+                        <h1>{{ctrl.movie.title}}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="span12">
+                		<h3>{{ctrl.movie.releaseDate}}</h3>
+                		<h3>{{ctrl.movie.genre}}</h3>
+                		<h4>{{ctrl.movie.duration}}</h4>
+                		<h4>{{ctrl.movie.certification}}</h4>
+                	</div>
+                </div>
+                <div class = "row">
+                    <div class="span6">
+                    	<img class="poster" ng-src="{{ctrl.movie.posterURL}}" style="width: 25%; height: 25%">
+                    </div>
+                    <div class=span6">
+                    	<h2>{{ctrl.movie.description}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
