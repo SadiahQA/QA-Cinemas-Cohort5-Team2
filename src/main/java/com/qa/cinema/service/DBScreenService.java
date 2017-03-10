@@ -32,7 +32,7 @@ public class DBScreenService implements ScreenService{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public String getAllScreensByCinema(Long idCinema) {
+	public String getScreensByCinema(Long idCinema) {
 		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema);
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();
 		return util.getJSONForObject(screens);
