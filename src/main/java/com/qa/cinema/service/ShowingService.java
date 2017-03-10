@@ -11,5 +11,5 @@ import com.qa.cinema.persistence.Movie;
 
 public interface ShowingService {
 	
-	String getAllShowingsForMovie(Movie movie);
+	String getAllShowingsForMovie(String idMovie);
 }

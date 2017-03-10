@@ -17,7 +17,7 @@ import com.qa.cinema.persistence.Movie;
 public class MapShowingService implements ShowingService {
 	
 	@Override
-	public String getAllShowingsForMovie(Movie movie) {
+	public String getAllShowingsForMovie(String idMovie) {
 		return null;
 	}
 }

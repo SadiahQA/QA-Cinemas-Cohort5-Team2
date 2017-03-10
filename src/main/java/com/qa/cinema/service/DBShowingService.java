@@ -32,8 +32,8 @@ public class DBShowingService implements ShowingService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public String getAllShowingsForMovie(Movie movie) {
-		Query query = em.createQuery("Select s FROM Showing s where s.movie =" + movie);
+	public String getAllShowingsForMovie(String idMovie) {
+		Query query = em.createQuery("Select s FROM Showing s where s.movie =" + idMovie);
 		Collection<Showing> showing = (Collection<Showing>) query.getResultList();
 		return util.getJSONForObject(showing); 
 	}
