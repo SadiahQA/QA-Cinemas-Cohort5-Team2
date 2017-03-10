@@ -3,10 +3,10 @@
     var AddUserController =  function($state, userDal) {
         var vm = this;
 
-        vm.addMovie = function(userToAdd) {
+        vm.addUser = function(userToAdd) {
             console.log("This is the value of user to add " + userToAdd);
             console.log(userToAdd);
-            var movieToJson = JSON.stringify(userToAdd);
+            var userToJson = JSON.stringify(userToAdd);
             console.log(userToJson);
             userDal.createNewUser(userToAdd).then(function (results) {
                 vm.userAddMessage  = results;
@@ -15,7 +15,8 @@
                 vm.error = true;
                 vm.errorMessage = error;
             });
-        };
+        }
+        
     };
 
     angular.module('movieApp').controller('addUserController', ['$state','userDal',AddUserController]);
