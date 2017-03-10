@@ -7,7 +7,7 @@ import com.qa.cinema.persistence.Movie;
 
 /**		
  * @author Sadiah Ahmed		
- * @version 0.0.1		
+ * @version 0.0.2		
  * @since 08/03/2017		
  *		
  */
@@ -17,7 +17,7 @@ import com.qa.cinema.persistence.Movie;
 public class MapShowingService implements ShowingService {
 	
 	@Override
-	public String getAllShowingsForMovie(Movie movie) {
+	public String getAllShowingsForMovie(String idMovie) {
 		return null;
 	}
 }
