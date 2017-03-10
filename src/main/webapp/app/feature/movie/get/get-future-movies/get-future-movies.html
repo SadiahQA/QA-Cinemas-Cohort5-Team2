@@ -7,7 +7,7 @@
             <th>Genre</th>
         </tr>
         <tr ng-repeat="movie in ctrl.movies">
-            <td ng-click ="ctrl.goToMoviePage(movie.movieID)">{{movie.title | uppercase}}</td>
+            <td><a ui-sref='seeonemovie({idMovie:{{movie.idMovie}}})'>{{movie.title | uppercase}}</a></td>
             <td>{{movie.genre | lowercase}}</td>
         </tr>
     </table>
