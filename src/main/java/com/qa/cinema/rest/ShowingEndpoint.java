@@ -12,7 +12,7 @@ import com.qa.cinema.service.ShowingService;
 
 /**		
  * @author Sadiah Ahmed		
- * @version 0.0.1		
+ * @version 0.0.3		
  * @since 10/03/2017		
  *		
  */
@@ -26,8 +26,8 @@ public class ShowingEndpoint {
 	@Path("/json/{idMovie}")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllShowingsForMovie(@PathParam("idMovie") String showing) {
-		return service.getAllShowingsForMovie(showing);
+	public String getAllShowingsForMovie(@PathParam("idMovie") String showingMovieId) {
+		return service.getAllShowingsForMovie(showingMovieId);
 	}
 	
 }
