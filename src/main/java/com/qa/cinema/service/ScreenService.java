@@ -3,17 +3,17 @@ package com.qa.cinema.service;
 /**
  * 
  * @author Joseph Richardson
- * @version 0.0.2
+ * @version 0.0.3
  *
  */
 
 public interface ScreenService {
 
-	String listAllScreensByCinema(Long idCinema);
+	String getAllScreensByCinema(Long idCinema);
 	
-	String listScreensByType(Long idCinema, String screenType);
+	String getScreensByType(Long idCinema, String screenType);
 	
-	String listScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox);
+	String getScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox);
 	
 	
 }

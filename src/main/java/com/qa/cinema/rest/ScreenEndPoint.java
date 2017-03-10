@@ -8,10 +8,10 @@ import javax.ws.rs.Produces;
 import com.qa.cinema.service.ScreenService;
 
 
-/*
- * Author: Joseph Richardson
- * Version: 0.0.3
- */
+/**
+ * @author Joseph Richardson
+ * @version 0.0.4
+ **/
 
 @Path("/screen")
 public class ScreenEndPoint {
@@ -22,23 +22,23 @@ public class ScreenEndPoint {
 	@Path("/json/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String listAllScreensByCinema(@PathParam("id")Long idCinema) {
-		return service.listAllScreensByCinema(idCinema);
+	public String getAllScreensByCinema(@PathParam("id")Long idCinema) {
+		return service.getAllScreensByCinema(idCinema);
 	}
 
 
 	@Path("/json/{id}/{screenType}")
 	@GET
 	@Produces({ "application/json" })
-	public String listScreensByType(@PathParam("id")Long idCinema, @PathParam("screenType") String screenType) {
-		return service.listScreensByType(idCinema, screenType);
+	public String getScreensByType(@PathParam("id")Long idCinema, @PathParam("screenType") String screenType) {
+		return service.getScreensByType(idCinema, screenType);
 	}
 	
 	@Path("/json/{id}/{DirectorsBox}")
 	@GET
 	@Produces({ "application/json" })
-	public String listScreensByIsDirectorsBox(@PathParam("id")Long idCinema, @PathParam("directorsBox") boolean isDirectorsBox) {
-		return service.listScreensByDirectorsBox(idCinema, isDirectorsBox);
+	public String getScreensByIsDirectorsBox(@PathParam("id")Long idCinema, @PathParam("directorsBox") boolean isDirectorsBox) {
+		return service.getScreensByDirectorsBox(idCinema, isDirectorsBox);
 	}
 	
 }
