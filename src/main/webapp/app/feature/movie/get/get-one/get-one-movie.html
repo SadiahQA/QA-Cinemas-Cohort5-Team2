@@ -13,7 +13,29 @@
                 		<h3>{{ctrl.movie.releaseDate}}</h3>
                 		<h3>{{ctrl.movie.genre}}</h3>
                 		<h4>{{ctrl.movie.duration}}</h4>
-                		<h4>{{ctrl.movie.certification}}</h4>
+                		<div>
+                			<div ng-if='ctrl.movie.certification === "U"'>
+                				<img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+                			</div>
+                            <div ng-if='ctrl.movie.certification === "PG"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+                            </div>
+                            <div ng-if='ctrl.movie.certification === "12A"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+                            </div>
+                            <div ng-if='ctrl.movie.certification === "12"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+                            </div>
+                            <div ng-if='ctrl.movie.certification === "15"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_15_150px-height.png">
+                            </div>
+                            <div ng-if='ctrl.movie.certification === "18"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+                            </div>
+                            <div ng-if='ctrl.movie.certification === "R18"'>
+                                <img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+                            </div>
+                        </div><br/>
                 	</div>
                 </div>
                 <div class = "row">
