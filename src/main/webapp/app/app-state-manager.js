@@ -23,5 +23,9 @@
             }
             //params:['movieId']
         })
+        .state("adduser",{
+            url:"/adduser",
+            templateUrl: "app/feature/user/add-user/add-user.html"
+        })
     });
 }());

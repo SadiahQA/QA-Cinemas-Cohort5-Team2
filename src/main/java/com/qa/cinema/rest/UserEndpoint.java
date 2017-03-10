@@ -14,7 +14,7 @@ import com.qa.cinema.service.UserService;
 /**
  * 
  * @author Stefan Matykiewicz
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 @Path("/user")
@@ -43,12 +43,5 @@ public class UserEndpoint {
 	public String updateUser(@PathParam("id") Long id, String user) {
 		return service.updateUser(id, user);
 	}
-	
-	@Path("/json/{id}")
-	@DELETE
-	@Produces({ "application/json" })
-	public String deleteUser(@PathParam("id") Long id) {
-		return service.deleteUser(id);
 
-	}
 }

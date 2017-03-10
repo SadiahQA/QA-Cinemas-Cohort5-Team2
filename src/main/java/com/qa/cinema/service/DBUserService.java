@@ -49,22 +49,11 @@ public class DBUserService implements UserService {
 			userInDB.setDobUser(updatedUser.getDobUser());
 			userInDB.setEmail(updatedUser.getEmail());
 			userInDB.setPassword(updatedUser.getPassword());
+			userInDB.setActive(updatedUser.getActive());
 			return "{\"message\": \"User sucessfully updated\"}";
 		}
 		else {
 			return "{\"message\": \"User update Failed\"}";
-		}
-	}
-
-	@Override
-	public String deleteUser(Long id) {
-		User userInDB = findUser (id);
-		if (userInDB != null){
-			em.remove(userInDB);
-			return "{\"message\": \"User sucessfully deleted\"}";
-		}
-		else{
-		return "{\"message\": \"User delete Failed\"}";
 		}
 	}
 	
