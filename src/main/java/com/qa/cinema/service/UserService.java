@@ -2,7 +2,7 @@ package com.qa.cinema.service;
 
 /**
  * @author Stefan Matykiewicz
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 public interface UserService {
@@ -12,8 +12,6 @@ public interface UserService {
 	String createNewUser (String user);
 	
 	String updateUser (Long id, String user);
-	
-	String deleteUser (Long id);
 	
 	
 }

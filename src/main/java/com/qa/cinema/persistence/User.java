@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 /**
  * @author Stefan Matykiewicz
- * @version 0.2.1
+ * @version 0.3.0
  */
 
 @Entity
@@ -21,17 +21,19 @@ public class User {
 	private String dob;
 	private String email;
 	private String password;
+	private Boolean active;
 
 	public User() {
 		//empty constructor
 	}
 
-	public User(String firstName, String lastName, String dob, String email, String password) {
+	public User(String firstName, String lastName, String dob, String email, String password, Boolean active) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
 		this.email = email;
 		this.password = password;
+		this.active = active;
 	}
 
 	public Long getIdUser() {
@@ -76,6 +78,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }

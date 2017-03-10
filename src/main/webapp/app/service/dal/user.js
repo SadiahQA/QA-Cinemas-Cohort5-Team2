@@ -1,6 +1,6 @@
 /*
  * Author: Stefan Matykiewicz
- * Version: 0.1.0
+ * Version: 0.2.0
  */
 "use strict";
 
@@ -20,10 +20,6 @@
 
 		this.updateUser = function(id, user) {
 			return dal.http.PUT("rest/user/json/" + id, user);
-		};
-
-		this.deleteUser = function(id) {
-			return dal.http.DELETE("/rest/user/json/" + id);
 		};
 
 	}
