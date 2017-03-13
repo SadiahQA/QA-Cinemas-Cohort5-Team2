@@ -17,9 +17,9 @@ public interface TicketService {
 	
 	String updateTicket(Long idTicket);
 
-	String getTicket(Long idTicket);
+	String getTicket(String idTicket);
 	
 	String getListTicket(String idShowing);
 	
-	String getUserTicket(String idUser );
+	String getUserTicket(String idUser);
 }

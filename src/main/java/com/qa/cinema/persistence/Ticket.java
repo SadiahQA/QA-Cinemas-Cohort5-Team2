@@ -21,14 +21,14 @@ import javax.persistence.Table;
 public class Ticket {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTicket;
 
 	@ManyToOne
 	@JoinColumn(name = "Showing_idShowing", nullable = false)
 	private Showing showing;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "User_idUser", nullable = false)
 	private User user;
 
@@ -40,7 +40,7 @@ public class Ticket {
 
 	public Ticket(Showing showing, User user, String ticketType) {
 
-		this.showing = showing;
+		this.showing = showing;	
 		this.user = user;
 		this.ticketType = ticketType;
 	}

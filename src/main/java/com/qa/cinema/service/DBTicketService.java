@@ -2,6 +2,8 @@ package com.qa.cinema.service;
 
 import java.util.Collection;
 
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.persistence.EntityManager;
@@ -19,6 +21,9 @@ import com.qa.cinema.util.JSONUtil;
  *
  */
 
+
+@Stateless
+@Default
 public class DBTicketService implements TicketService{
 	
 	@PersistenceContext(unitName = "primary")
@@ -42,7 +47,7 @@ public class DBTicketService implements TicketService{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public String getTicket(Long id) {
+	public String getTicket(String id) {
 		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.idTicket=" + id);
 		Object ticketFound = query.getSingleResult();
 		return util.getJSONForObject(ticketFound);
@@ -50,7 +55,7 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String getListTicket(String idShowing) {
-		Query query = em.createQuery("SELECT t FROM Ticket t WHERE u.idTicket=" + idShowing);
+		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.showing.idShowing=" + idShowing);
 		Collection<Ticket> ticketFound = (Collection<Ticket>) query.getResultList();
 		return util.getJSONForObject(ticketFound);
 	}
