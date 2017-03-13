@@ -1,5 +1,7 @@
 package com.qa.cinema.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -35,8 +37,15 @@ public class DBUserService implements UserService {
 	@Override
 	public String createNewUser(String user) {
 		User newUser = util.getObjectForJSON(user, User.class);
+		Query query = em.createQuery("SELECT * FROM User");
+		List<User> users = (List<User>) query.getResultList();
+		for (User u : users) {
+			if (u.getEmail().equals(newUser.getEmail())) {
+				return "{\"message\": \"User Already Exists!\"}";
+			}
+		}
 		em.persist(newUser);
-		return "{\"message\": \"User sucessfully added\"}";
+		return "{\"message\": \"User Sucessfully Added\"}";
 	}
 
 	@Override
