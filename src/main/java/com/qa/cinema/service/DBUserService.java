@@ -59,7 +59,7 @@ public class DBUserService implements UserService {
 			userInDB.setEmail(updatedUser.getEmail());
 			userInDB.setPassword(updatedUser.getPassword());
 			userInDB.setActive(updatedUser.getActive());
-			return "{\"message\": \"User sucessfully updated\"}";
+			return "{\"message\": \"User successfully updated\"}";
 		}
 		else {
 			return "{\"message\": \"User update Failed\"}";
