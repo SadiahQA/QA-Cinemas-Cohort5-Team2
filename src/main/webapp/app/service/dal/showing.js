@@ -13,6 +13,6 @@
 	function ShowingDal(dal) {
 		this.getShowingsForMovie = function(idMovie,idCinema) {
 			return dal.http.GET("rest/showing/json/" + idMovie + "/" +idCinema);
-		}
+		};
 	}
 }());
