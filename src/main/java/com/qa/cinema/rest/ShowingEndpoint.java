@@ -21,7 +21,8 @@ import com.qa.cinema.service.ShowingService;
 public class ShowingEndpoint {
 	
 	@Inject
-	//this i s a comment
+	//this i s a comment again
+	
 	private ShowingService service;
 	
 	@Path("/json/{idMovie}/{idCinema}")
