@@ -21,7 +21,8 @@ import com.qa.cinema.service.ShowingService;
 public class ShowingEndpoint {
 	
 	@Inject
-	//this i s a comment again again
+	//this i s a comment again again again
+	
 	
 	private ShowingService service;
 	
