@@ -43,14 +43,14 @@ public class DBTicketService implements TicketService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public String getTicket(Long id) {
-		Query query = em.createQuery("SELECT u FROM Ticket u WHERE u.idTicket=" + id);
+		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.idTicket=" + id);
 		Object ticketFound = query.getSingleResult();
 		return util.getJSONForObject(ticketFound);
 	}
 
 	@Override
 	public String getListTicket(String idShowing) {
-		Query query = em.createQuery("SELECT u FROM Ticket u WHERE u.idTicket=" + idShowing);
+		Query query = em.createQuery("SELECT t FROM Ticket t WHERE u.idTicket=" + idShowing);
 		Collection<Ticket> ticketFound = (Collection<Ticket>) query.getResultList();
 		return util.getJSONForObject(ticketFound);
 	}
