@@ -31,10 +31,10 @@
         	url:"/cinemas", 
         	templateURL: "app/feature/cinema/get-cinema/get-all-cinemas/get-all-cinemas.html"
         }).state("oneCinema",{
-        	url:"/oneCinema:city",
+        	url:"/oneCinema:cinemaCity",
         	templateURL:"app/feature/cinema/get-cinema/get-all-cinemas/get-cinema-by-city.html",
         		controller: function ($stateParams){
-                    $stateParams.city
+                    $stateParams.cinemaCity
         		}
         })
        

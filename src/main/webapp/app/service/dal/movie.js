@@ -17,7 +17,7 @@
         this.getMovieById = function (idOfMovieToGet) {
             return dal.http.GET("rest/movie/json/" + idOfMovieToGet);
         };
-
-
+        
+        
     }
 }());

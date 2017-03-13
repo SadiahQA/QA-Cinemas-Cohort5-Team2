@@ -2,7 +2,7 @@
 	
 	var GetAllCinemaController = function(cinemaDal){
 		
-		var mv = this;
+		var vm = this;
 		
 		function init(){
 			cinemaDal.getAllCinemas().then(function(results){

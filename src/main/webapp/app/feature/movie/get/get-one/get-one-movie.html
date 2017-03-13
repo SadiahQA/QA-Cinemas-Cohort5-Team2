@@ -13,6 +13,21 @@
                 		<h3>{{ctrl.movie.releaseDate}}</h3>
                 		<h3>{{ctrl.movie.genre}}</h3>
                 		<h4>{{ctrl.movie.duration}}</h4>
+                		
+                		
+                	       <table  class="showingTable">
+                		<tr>
+            <th>Start Time</th>
+            <th>Seats available</th>
+            <th>Showing Type</th>
+       				 </tr>
+                			  <tr ng-repeat="showing in ctrl.showings">
+					<td><h4>{{showing.startTime}}</h4></td>
+					<td><h4>{{showing.availableSeats}}</h4></td>
+      				<td><h4>{{showing.showingType}}</h4></td>
+        	
+        		</tr>
+                		</table>	
                 		<div>
                 			<div ng-if='ctrl.movie.certification === "U"'>
                 				<img class="certimg" ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
