@@ -20,14 +20,14 @@ import com.qa.cinema.service.ShowingService;
 @Path("/showing")    
 public class ShowingEndpoint {
 	
-	@Inject
+	@Inject	
 	private ShowingService service;
 	
-	@Path("/json/{idMovie}")
+	@Path("/json/{idMovie}/{idCinema}")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllShowingsForMovie(@PathParam("idMovie") String showingMovieId) {
-		return service.getAllShowingsForMovie(showingMovieId);
+	public String getAllShowingsForMovie(@PathParam("idMovie") String showingMovieId, @PathParam("idCinema") String cinemaId) {
+		return service.getAllShowingsForMovie(showingMovieId, cinemaId);
 	}
 	
 }
