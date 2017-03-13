@@ -20,10 +20,7 @@ import com.qa.cinema.service.ShowingService;
 @Path("/showing")    
 public class ShowingEndpoint {
 	
-	@Inject
-	//this i s a comment again again again
-	
-	
+	@Inject	
 	private ShowingService service;
 	
 	@Path("/json/{idMovie}/{idCinema}")
