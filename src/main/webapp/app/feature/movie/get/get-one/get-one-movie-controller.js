@@ -15,7 +15,7 @@
     
 
    function getShowingsforMovie(){
-	   showingDal.getShowingsForMovie($stateParams.idMovie).then(function (results){
+	   showingDal.getShowingsForMovie($stateParams.idMovie,1).then(function (results){
 		   vm.showings = results;
 	   }, function(error){
                 vm.error = true;
