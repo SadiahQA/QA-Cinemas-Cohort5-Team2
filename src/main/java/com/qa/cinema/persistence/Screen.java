@@ -23,7 +23,7 @@ import javax.validation.constraints.Min;
  * 
  * @author Joseph Richardson
 
- * @version 0.1.2
+ * @version 0.1.3
  */
 
 @Entity
@@ -48,7 +48,7 @@ public class Screen {
 	private boolean isDirectorsBox;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name = "Showing_idShowing")
+	@JoinColumn(name = "Screen_idScreen")
 	private List<Showing> showings;
 	
 	
