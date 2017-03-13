@@ -45,7 +45,7 @@ public class DBUserService implements UserService {
 			}
 		}
 		em.persist(newUser);
-		return "{\"message\": \"User Sucessfully Added\"}";
+		return "{\"message\": \"User Successfully Added\"}";
 	}
 
 	@Override
@@ -59,10 +59,10 @@ public class DBUserService implements UserService {
 			userInDB.setEmail(updatedUser.getEmail());
 			userInDB.setPassword(updatedUser.getPassword());
 			userInDB.setActive(updatedUser.getActive());
-			return "{\"message\": \"User successfully updated\"}";
+			return "{\"message\": \"User Successfully Updated\"}";
 		}
 		else {
-			return "{\"message\": \"User update Failed\"}";
+			return "{\"message\": \"User Update Failed\"}";
 		}
 	}
 	
