@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<div ng-controller="addTicketController as ctrl">
+
+    <h1>Book a Ticket</h1>
+
+    <form role="form">
+
+        <input id="tickettype" placeholder="tickettype" ng-model="ticket.ticketType">
+
+        <input id="showing" placeholder="showing" ng-model="ticket.showing.idShowing">
+
+        <input id="user" placeholder="user" ng-model="ticket.user.id">
+
+        <button type="submit" ng-click="ctrl.addTicket(ticket)">Book</button>
+
+    </form>
+
+</div>

@@ -36,10 +36,36 @@
         		controller: function ($stateParams){
                     $stateParams.cinemaCity
         		}
+
         }).state("contactus",{
         	url:"/contactus", 
         	templateURL: "app/feature/contact/contactus.html"
        
+
+        }).state("bookticket",{
+            url: "/bookticket",
+            templateUrl: "app/feature/ticket/add-ticket/add-ticket.html"
+
+        }).state("getticket",{
+            url: "/getticket/:idTicket",
+            templateUrl: "app/feature/ticket/get/get-specific-ticket/get-specific-ticket.html",
+            controller: function($stateParams) {
+                $stateParams.idTicket
+            }
+        }).state("getshowingtickets",{
+            url: "/getshowingtickets/:idShowing",
+            templateUrl: "app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing.html",
+            controller: function($stateParams) {
+                $stateParams.idShowing
+            }
+        }).state("getusertickets",{
+            url: "/getusertickets/:idUser",
+            templateUrl: "app/feature/ticket/get/get-ticket-by-user/get-ticket-by-user.html",
+            controller: function($stateParams) {
+                $stateParams.idUser
+            }
+        })
+
         
     });
 }());

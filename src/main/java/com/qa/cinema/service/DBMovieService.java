@@ -35,7 +35,7 @@ public class DBMovieService implements MovieService {
 		
 		java.util.Date javaDate = new java.util.Date();
 		Date date = new Date(javaDate.getTime());
-		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < '" + date + "'");
+		Query query = em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate <= '" + date + "'");
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies);
 	}
