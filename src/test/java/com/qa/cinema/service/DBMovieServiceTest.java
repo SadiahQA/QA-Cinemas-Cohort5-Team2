@@ -46,7 +46,7 @@ public class DBMovieServiceTest {
 	private  ArrayList movies = new ArrayList<Object>();
 
 	@Test
-	public void testQueryGenerationToString() {
+	public void listCurrentMoviesTest() {
 		
 		movies.add(movie1);
 		
@@ -56,5 +56,29 @@ public class DBMovieServiceTest {
 
 		assertEquals( "Movie String info",  movieService.listCurrentMovies());
 	}
+	
+	@Test
+	public void listFutureMoviesTest() {
+		
+		movies.add(movie1);
+		
+		Mockito.when(query.getResultList()).thenReturn(movies);
+		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
+		Mockito.when(util.getJSONForObject(movies)).thenReturn("Movie String info");
 
+		assertEquals( "Movie String info",  movieService.listFutureMovies());
+	}
+	
+	
+	@Test
+	public void getMovieByIdTest() {
+		
+		movies.add(movie1);
+		
+		Mockito.when(query.getResultList()).thenReturn(movies);
+		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
+		Mockito.when(util.getJSONForObject(movies.iterator().next())).thenReturn("Movie String info");
+
+		assertEquals( "Movie String info",  movieService.getMovieById(1l));
+	}
 }
