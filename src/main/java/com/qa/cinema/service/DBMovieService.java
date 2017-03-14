@@ -22,7 +22,7 @@ import com.qa.cinema.util.JSONUtil;
 public class DBMovieService implements MovieService {
 	
 	@PersistenceContext(unitName = "primary") 
-	EntityManager em;
+	private EntityManager em;
 
 	@Inject
 	private JSONUtil util;
