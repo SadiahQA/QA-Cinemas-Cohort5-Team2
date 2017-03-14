@@ -21,14 +21,13 @@ import com.qa.cinema.util.JSONUtil;
 @Default
 public class DBMovieService implements MovieService {
 	
-	@PersistenceContext(unitName = "primary")
-	private EntityManager em;
+	@PersistenceContext(unitName = "primary") 
+	EntityManager em;
 
 	@Inject
 	private JSONUtil util;
 
-	
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 

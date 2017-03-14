@@ -2,6 +2,7 @@ package com.qa.cinema.service;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.cinema.persistence.Movie;
@@ -22,12 +24,17 @@ import com.qa.cinema.util.JSONUtil;
 @RunWith(MockitoJUnitRunner.class)
 public class DBMovieServiceTest {
 	
+	@InjectMocks private DBMovieService movieService;
+	
 	@Mock
 	private JSONUtil util;
 	
 	@Mock
 	private EntityManager em;
-	@InjectMocks private DBMovieService movieService;
+	
+	
+	@Mock
+	private Date date;
 	
 	@Mock
 	private Query query;
@@ -40,10 +47,13 @@ public class DBMovieServiceTest {
 	@Test
 	public void testQueryGenerationToString() {
 		
-		Mockito.when(query.getResultList()).thenReturn((List) movies);
 		movies.add(movie1);
+		
+		Mockito.when(em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < '" + date + "'")).thenReturn(query);
+		Mockito.when(query.getResultList()).thenReturn(movies);
 		Mockito.when(util.getJSONForObject(movies)).thenReturn("Movie String info");
-		assertEquals( "Movie String info",  util.getJSONForObject(query.getResultList()));
+
+		assertEquals( "Movie String info",  movieService.listCurrentMovies());
 	}
 
 }
