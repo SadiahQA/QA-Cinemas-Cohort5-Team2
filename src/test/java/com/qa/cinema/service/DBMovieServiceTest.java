@@ -24,7 +24,6 @@ import com.qa.cinema.util.JSONUtil;
 @RunWith(MockitoJUnitRunner.class)
 public class DBMovieServiceTest {
 	
-	@InjectMocks private DBMovieService movieService;
 	
 	@Mock
 	private JSONUtil util;
@@ -32,15 +31,17 @@ public class DBMovieServiceTest {
 	@Mock
 	private EntityManager em;
 	
-	
 	@Mock
 	private Date date;
 	
 	@Mock
-	private Query query;
+	private Query query = Mockito.mock(Query.class);
 	
 	@Mock
 	private Movie movie1;
+	
+	@InjectMocks 
+	private DBMovieService movieService;
 	
 	private  ArrayList movies = new ArrayList<Object>();
 
@@ -49,8 +50,8 @@ public class DBMovieServiceTest {
 		
 		movies.add(movie1);
 		
-		Mockito.when(em.createQuery("SELECT m FROM Movie m WHERE m.releaseDate < '" + date + "'")).thenReturn(query);
 		Mockito.when(query.getResultList()).thenReturn(movies);
+		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
 		Mockito.when(util.getJSONForObject(movies)).thenReturn("Movie String info");
 
 		assertEquals( "Movie String info",  movieService.listCurrentMovies());
