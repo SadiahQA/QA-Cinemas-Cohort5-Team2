@@ -4,18 +4,14 @@ import static org.junit.Assert.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.hibernate.mapping.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.cinema.persistence.Movie;
