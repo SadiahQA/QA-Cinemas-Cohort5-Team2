@@ -1,8 +1,3 @@
-/*
- * @author Denis Kastrati
- * @author Tary Andrews
- * @version 0.0.1
- */
 "use strict";
 
 (function () {
