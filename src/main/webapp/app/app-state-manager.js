@@ -36,6 +36,9 @@
         		controller: function ($stateParams){
                     $stateParams.cinemaCity
         		}
+        }).state("bookticket",{
+            url: "/bookticket",
+            templateUrl: "app/feature/ticket/add-ticket/add-ticket.html"
         })
        
         
