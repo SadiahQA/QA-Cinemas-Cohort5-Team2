@@ -1,5 +1,7 @@
 package com.qa.cinema.persistence;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 /**		
  * @author Sadiah Ahmed		
- * @version 0.0.1		
+ * @version 0.1.1		
  * @since 08/03/2017		
  *		
  */
@@ -29,17 +31,19 @@ public class Showing {
 	private String startTime;
 	private String showingType;
 	private int availableSeats;
+	private Date showingDate;
 	
 	public Showing() {
 		//empty constructor
 	}
 	
-	public Showing(Movie movie, String startTime, String showingType, int availableSeats) {
+	public Showing(Movie movie, String startTime, String showingType, int availableSeats, Date showingDate) {
 	
 		this.movie = movie;
 		this.startTime = startTime;
 		this.showingType = showingType;
 		this.availableSeats = availableSeats;
+		this.showingDate = showingDate;
 	}
 	
 	public Long getIdShowing() {
@@ -68,6 +72,14 @@ public class Showing {
 
 	public void setAvailableSeats(int availableSeats) {
 		this.availableSeats = availableSeats;
+	}
+
+	public Date getShowingDate() {
+		return showingDate;
+	}
+
+	public void setShowingDate(Date showingDate) {
+		this.showingDate = showingDate;
 	}
 
 }
