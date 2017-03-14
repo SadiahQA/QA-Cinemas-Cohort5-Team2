@@ -36,7 +36,9 @@
         		controller: function ($stateParams){
                     $stateParams.cinemaCity
         		}
-        })
+        }).state("contactus",{
+        	url:"/contactus", 
+        	templateURL: "app/feature/contact/contactus.html"
        
         
     });
