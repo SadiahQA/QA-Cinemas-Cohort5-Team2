@@ -110,6 +110,7 @@
     <artifactId>hibernate-core</artifactId>
     <version>5.2.6.Final</version><!--$NO-MVN-MAN-VER$-->
 </dependency>
+
 		
 
     </dependencies>
