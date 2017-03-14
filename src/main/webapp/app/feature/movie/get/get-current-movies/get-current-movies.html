@@ -3,11 +3,19 @@
         <tr>
             <th>Title</th>
             <th>Genre</th>
+            <th>Showings</th>
         </tr>
-        <tr ng-repeat="movie in ctrl.movies">
-            <td>{{movie.idMovie}}</td>
-            <td><a ui-sref='seeonemovie({idMovie:{{movie.idMovie}}})'>{{movie.title | uppercase}}</a></td>
+        <tr class="movies" ng-repeat="movie in ctrl.movies" ng-init="ctrl.getShowings(movie.idMovie)">
+            <td><a ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})">{{movie.title | uppercase}}</a></td>
             <td>{{movie.genre | lowercase}}</td>
-        </tr>
+            <td>
+            	<div class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie]">
+            		<div ng-init="newDate=ctrl.convertDate(showing.showingDate)">
+            			{{newDate}}, {{showing.startTime}}, {{showing.showingType}}
+            		</div>
+            	</div>
+            </td>
+            
+		</tr>
     </table>
 </div>
