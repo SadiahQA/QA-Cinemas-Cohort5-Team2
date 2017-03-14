@@ -7,7 +7,17 @@
 
         <input id="tickettype" placeholder="tickettype" ng-model="ticket.ticketType">
 
-        <input id="showing" placeholder="showing" ng-model="ticket.showing.idShowing">
+       <select ng-model="ticket.showing.idShowing">
+           <option value="1">Lego Batman 7pm
+           <option value="2">Kong 7pm
+           <option value="3">Logan 7pm
+       </select>
+
+
+        <select  ng-model="ticket.showing.idShowing" ng-repeat="showing in ctrl.showings" ng-init="ctrl.getShowings(1)" ng-options="showing.idShowing as showing.time for showing in ctrl.showings">
+                <option  value="">{{movie.title}}</option>
+        </select>
+
 
         <input id="user" placeholder="user" ng-model="ticket.user.id">
 
