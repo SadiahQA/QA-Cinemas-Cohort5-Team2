@@ -43,5 +43,13 @@ public class UserEndpoint {
 	public String updateUser(@PathParam("id") Long id, String user) {
 		return service.updateUser(id, user);
 	}
+	
+	@Path("/json/email/{email}")
+	@GET
+	@Produces({"application/json"})
+	public String findUserIdByEmail(@PathParam("email") String email){
+		return service.findUserIdByEmail(email);
+		
+	}
 
 }

@@ -1,6 +1,6 @@
 (function() {
 
-    var AddTicketController =  function( ticketDal, showingDal, movieDal) {
+    var AddTicketController =  function( ticketDal, showingDal, movieDal, userDal) {
         var vm = this;
 
         vm.addTicket = function(ticketToAdd) {
@@ -42,8 +42,12 @@
 
         }
 
+        vm.getUsers = function () {
+
+        }
+
 
     };
 
-    angular.module('movieApp').controller('addTicketController', [ 'ticketDal','showingDal','movieDal', AddTicketController]);
+    angular.module('movieApp').controller('addTicketController', [ 'ticketDal','showingDal','movieDal','userDal', AddTicketController]);
 }());
