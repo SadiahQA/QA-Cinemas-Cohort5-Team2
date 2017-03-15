@@ -5,7 +5,7 @@
 
         function startCarousel(){
             $('#myCarousel').carousel({interval: 3000});
-        };
+        }
 
         function init() {
             movieDal.getCurrentMovies().then(function (results) {
