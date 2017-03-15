@@ -63,6 +63,7 @@ public class DBTicketServiceTest {
 	public void getTicketTest() {
 		assertEquals( "Single Ticket String info",  ticketService.getTicket("1"));
 	}
+	@Test
 	public void getNoTicketTest() {
 		Mockito.when(query.getResultList()).thenReturn(new ArrayList<>());
 		assertEquals( "Ticket could not be found",  ticketService.getTicket("1"));
