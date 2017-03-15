@@ -20,7 +20,7 @@ import com.qa.cinema.service.ShowingService;
 
 /**		
  * @author Sadiah Ahmed		
- * @version 0.0.1		
+ * @version 0.0.2		
  * @since 15/03/2017		
  *		
  */
@@ -28,6 +28,8 @@ import com.qa.cinema.service.ShowingService;
 @RunWith(MockitoJUnitRunner.class)
 public class ShowingEndPointTest {
 	
+	@Mock
+	private ShowingService showingService;
 
 	@Mock
 	private Showing showing1;
@@ -41,12 +43,12 @@ public class ShowingEndPointTest {
 	public void testSetup(){
 		showings.clear();
 		showings.add(showing1);
+		Mockito.when(showingService.getAllShowingsForMovie("1","1")).thenReturn("Showing string");
 	}
 	
 	@Test
 	public void getAllShowingsForMovie() {
-		assertEquals( "Showing string",  showingEndPoint.getAllShowingsForMovie("1","1"));
+		assertEquals("Showing string", showingEndPoint.getAllShowingsForMovie("1","1"));
 	}	
-	
 	
 }
