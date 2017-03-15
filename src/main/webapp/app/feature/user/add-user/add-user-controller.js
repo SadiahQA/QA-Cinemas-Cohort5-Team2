@@ -12,8 +12,8 @@
             	return hash;
             for (var i = 0; i < str.length; i++) {
                 var char = str.charCodeAt(i);
-                hash = (hash * 31 + char);
-                hash = hash & hash; // Convert to 32bit integer
+                hash = (hash * 31 + char)|0;
+ 
             }
             return hash;
         
@@ -22,7 +22,7 @@
         
      
         vm.addUser = function(userToAdd) {
-            var userToJson = JSON.stringify(userToAdd);
+          
             userDal.createNewUser(userToAdd).then(function (results) {
                 vm.userAddMessage  = results;
              
