@@ -42,7 +42,16 @@
 
         }
 
-        vm.getUsers = function () {
+        vm.getUser = function (userEmail) {
+
+            userDal.getUserIdByEmail(userEmail).then(function(results) {
+                console.log("runs this far");
+                vm.idUser = results;
+
+            }, function(error){
+                vm.error = true;
+                vm.errorMessage = error;
+            })
 
         }
 

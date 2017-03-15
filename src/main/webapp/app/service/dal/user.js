@@ -1,7 +1,4 @@
-/*
- * Author: Stefan Matykiewicz
- * Version: 0.2.0
- */
+
 "use strict";
 
 (function() {
@@ -21,6 +18,8 @@
 		this.updateUser = function(id, user) {
 			return dal.http.PUT("rest/user/json/" + id, user);
 		};
-
+		this.getUserIdByEmail = function(email){
+			return dal.http.GET("rest/user/json/email/"+ email);
+		};
 	}
 }());

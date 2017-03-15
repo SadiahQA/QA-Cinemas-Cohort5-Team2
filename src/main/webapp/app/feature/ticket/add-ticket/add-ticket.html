@@ -6,7 +6,14 @@
 
     <form role="form">
 
-        <input id="tickettype" placeholder="tickettype" ng-model="ticket.ticketType">
+
+        <select ng-model="ticket.ticketType">
+            <option value="" disabled selected>Select Ticket Type</option>
+            <option value="Student">Student</option>
+            <option value="Adult">Adult</option>
+            <option value="Child">Child</option>
+            <option value="Concession">Concession</option>
+        </select>
 
 
         <select  ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
@@ -15,20 +22,17 @@
         </select>
 
 
-
         <select  ng-model="ticket.showing.idShowing" ng-disabled="!selectedMovie.idMovie"   >
             <option value="" disabled selected>Select Showing</option>
             <option ng-repeat="showing in ctrl.showings" value="{{showing.idShowing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
         </select>
 
 
-        <input id="user" placeholder="user" ng-model="ticket.user.id">
-
-        <input id="email" placeholder="Enter Email" ng-model="thing.idMovie" ng-init="ctrl.getMovies()"
+        <input id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
 
 
 
-        <button type="submit" ng-click="ctrl.addTicket(ticket)">Book</button>
+        <button type="submit" ng-click="ticket.user.id=ctrl.idUser;ctrl.addTicket(ticket)">Book</button>
 
     </form>
 
