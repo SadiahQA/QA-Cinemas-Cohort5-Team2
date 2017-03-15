@@ -1,5 +1,6 @@
 <div ng-controller="getOneMovieController as ctrl">
 
+
 	<div class="container">
 		<div class="row">
 			<div class="span10 offset2">
@@ -8,71 +9,7 @@
 						<h1>{{ctrl.movie.title}}</h1>
 					</div>
 				</div>
-				<div class="row">
-					<div class="span12">
-						<h3>{{ctrl.movie.releaseDate}}</h3>
-						<h3>{{ctrl.movie.genre}}</h3>
-						<h4>{{ctrl.movie.duration}}</h4>
-						<style>
-							table.showingTable, th, td {
-								border: 1px solid black;
-							}
 
-							th, td {
-								padding: 5px;
-								text-align: left;
-							}
-						</style>
-						<table class="showingTable">
-							<tr>
-								<th>Date</th>
-								<th>Start Time</th>
-								<th>Seats available</th>
-								<th>Showing Type</th>
-							</tr>
-							<tr ng-repeat="showing in ctrl.showings">
-								<td><h4>{{showing.showingDate}}</h4></td>
-								<td><h4>{{showing.startTime}}</h4></td>
-								<td><h4>{{showing.availableSeats}}</h4></td>
-								<td><h4>{{showing.showingType}}</h4></td>
-								<td><h4>
-										<a ui-sref="seeonemovie/2"> Book now </a>
-									</h4></td>
-							</tr>
-						</table>
-						<div>
-							<div ng-if='ctrl.movie.certification === "U"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "PG"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "12A"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "12"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "15"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_15_150px-height.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "18"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
-							</div>
-							<div ng-if='ctrl.movie.certification === "R18"'>
-								<img class="certimg"
-									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
-							</div>
-						</div>
-						<br />
-					</div>
-				</div>
 				<div class="row">
 					<div class="span6">
 						<img class="poster" ng-src="{{ctrl.movie.posterURL}}"
@@ -80,6 +17,65 @@
 					</div>
 					<div class="span6">
 						<h2>{{ctrl.movie.description}}</h2>
+					</div>
+					<div class="row">
+						<div class="span6">
+							<h3>{{ctrl.movie.releaseDate}}</h3>
+							<h3>{{ctrl.movie.genre}}</h3>
+							<h4>{{ctrl.movie.duration}}</h4>
+							<div>
+								<div ng-if='ctrl.movie.certification === "U"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "PG"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "12A"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "12"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "15"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_15_150px-height.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "18"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+								</div>
+								<div ng-if='ctrl.movie.certification === "R18"'>
+									<img class="certimg"
+										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-bordered">
+
+									<tr>
+										<th>Date</th>
+										<th>Start Time</th>
+										<th>Seats available</th>
+										<th>Showing Type</th>
+										<th></th>
+
+									</tr>
+									<tr ng-repeat="showing in ctrl.showings | limitTo:10">
+										<td><h4>{{showing.showingDate}}</h4></td>
+										<td><h4>{{showing.startTime}}</h4></td>
+										<td><h4>{{showing.availableSeats}}</h4></td>
+										<td><h4>{{showing.showingType}}</h4></td>
+										<td><h4><a ui-sref="seeonemovie/2"> Book now </a></h4></td>
+									</tr>
+								</table>
+							</div>
+
+							<br />
+						</div>
 					</div>
 				</div>
 			</div>
