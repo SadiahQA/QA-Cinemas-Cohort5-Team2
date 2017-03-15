@@ -4,7 +4,6 @@
         var vm = this;
 
         vm.addTicket = function(ticketToAdd) {
-            var ticketToJson = JSON.stringify(ticketToAdd);
             ticketDal.createTicket(ticketToAdd).then(function (results) {
                 vm.ticket  = results;
 
