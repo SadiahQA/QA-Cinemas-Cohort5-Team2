@@ -33,7 +33,7 @@ public class DBScreenService implements ScreenService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public String getScreensByCinema(Long idCinema) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema);
+		Query query = em.createQuery("SELECT c.screens FROM Cinema c WHERE c.idCinema =" + idCinema);
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();
 		return util.getJSONForObject(screens);
 	}
@@ -41,8 +41,8 @@ public class DBScreenService implements ScreenService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public String getScreensByType(Long idCinema, String screenType) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"
-				+ "s.screenType = " + screenType );
+		Query query = em.createQuery("SELECT sc FROM Cinema c JOIN c.screens sc WHERE c.idCinema =" + idCinema + "AND "
+				+ "sc.screenType = '" + screenType + "'" );
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();		
 		return util.getJSONForObject(screens);
 	}
@@ -50,8 +50,8 @@ public class DBScreenService implements ScreenService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public String getScreensByDirectorsBox(Long idCinema, boolean isDirectorsBox) {
-		Query query = em.createQuery("SELECT s FROM Screen s WHERE s.Cinema_idCinema =" + idCinema + "AND"
-				+ "s.isDirectorsBox =" + isDirectorsBox);
+		Query query = em.createQuery("SELECT sc FROM Cinema c JOIN c.screens sc WHERE c.idCinema = " + idCinema + " AND "
+				+ "sc.isDirectorsBox = " + isDirectorsBox);
 		Collection<Screen> screens = (Collection<Screen>) query.getResultList();		
 		return util.getJSONForObject(screens);
 	}
