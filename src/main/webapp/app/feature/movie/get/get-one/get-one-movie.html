@@ -13,8 +13,16 @@
 						<h3>{{ctrl.movie.releaseDate}}</h3>
 						<h3>{{ctrl.movie.genre}}</h3>
 						<h4>{{ctrl.movie.duration}}</h4>
+						<style>
+							table.showingTable, th, td {
+								border: 1px solid black;
+							}
 
-
+							th, td {
+								padding: 5px;
+								text-align: left;
+							}
+						</style>
 						<table class="showingTable">
 							<tr>
 								<th>Date</th>
@@ -27,7 +35,9 @@
 								<td><h4>{{showing.startTime}}</h4></td>
 								<td><h4>{{showing.availableSeats}}</h4></td>
 								<td><h4>{{showing.showingType}}</h4></td>
-								<td><h4><a ui-sref="seeonemovie/2"> Book now </a></h4></td>
+								<td><h4>
+										<a ui-sref="seeonemovie/2"> Book now </a>
+									</h4></td>
 							</tr>
 						</table>
 						<div>
