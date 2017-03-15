@@ -3,11 +3,28 @@
 
     <h1>Book a Ticket</h1>
 
+
     <form role="form">
 
         <input id="tickettype" placeholder="tickettype" ng-model="ticket.ticketType">
 
-        <input id="showing" placeholder="showing" ng-model="ticket.showing.idShowing">
+
+        <select  ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
+            <option value="" disabled selected>Select Movie</option>
+            <option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
+        </select>
+
+
+
+        <select  ng-model="ticket.showing.idShowing" ng-disabled="!selectedMovie.idMovie"   >
+            <option value="" disabled selected>Select Showing</option>
+            <option ng-repeat="showing in ctrl.showings" value="{{showing.idShowing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
+        </select>
+
+
+
+
+
 
         <input id="user" placeholder="user" ng-model="ticket.user.id">
 
