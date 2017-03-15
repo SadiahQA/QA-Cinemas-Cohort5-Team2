@@ -5,6 +5,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
 import com.qa.cinema.service.ScreenService;
 
 
@@ -34,10 +36,10 @@ public class ScreenEndPoint {
 		return service.getScreensByType(idCinema, screenType);
 	}
 	
-	@Path("/json/{id}/{DirectorsBox}")
+	@Path("/json/{id}/{directorsBox}")
 	@GET
 	@Produces({ "application/json" })
-	public String getScreensByIsDirectorsBox(@PathParam("id")Long idCinema, @PathParam("directorsBox") boolean isDirectorsBox) {
+	public String getScreensByIsDirectorsBox(@PathParam("id")Long idCinema, @QueryParam("directorsBox") boolean isDirectorsBox) {
 		return service.getScreensByDirectorsBox(idCinema, isDirectorsBox);
 	}
 	

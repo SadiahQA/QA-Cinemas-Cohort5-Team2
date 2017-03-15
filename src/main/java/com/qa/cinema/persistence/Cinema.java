@@ -26,7 +26,7 @@ public class Cinema {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idCinema")
-	private Long id;
+	private Long idCinema;
 	
 	private String name;
 	
@@ -82,7 +82,7 @@ public class Cinema {
 
 
 	public Long getId() {
-		return id;
+		return idCinema;
 	}
 
 	public List<Screen> getScreens() {
