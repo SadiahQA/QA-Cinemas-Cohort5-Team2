@@ -10,12 +10,14 @@
 
 
         <select  ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
+            <option value="" disabled selected>Select Movie</option>
             <option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
         </select>
 
 
 
         <select  ng-model="ticket.showing.idShowing" ng-disabled="!selectedMovie.idMovie"   >
+            <option value="" disabled selected>Select Showing</option>
             <option ng-repeat="showing in ctrl.showings" value="{{showing.idShowing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
         </select>
 
