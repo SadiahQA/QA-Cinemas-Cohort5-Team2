@@ -2,11 +2,11 @@ package com.qa.cinema.service;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -28,9 +28,6 @@ public class DBMovieServiceTest {
 	private EntityManager em;
 	
 	@Mock
-	private Date date;
-	
-	@Mock
 	private Query query = Mockito.mock(Query.class);
 	
 	@Mock
@@ -39,7 +36,7 @@ public class DBMovieServiceTest {
 	@InjectMocks 
 	private DBMovieService movieService;
 	
-	private  ArrayList movies = new ArrayList<Object>();
+	private  ArrayList<Movie> movies = new ArrayList<>();
 
 	@Test
 	public void listCurrentMoviesTest() {
@@ -47,34 +44,31 @@ public class DBMovieServiceTest {
 		movies.add(movie1);
 		
 		Mockito.when(query.getResultList()).thenReturn(movies);
-		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
+		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);	
+		//this assumes that the query has been written correctly. There is no way to test this step using mockito.
 		Mockito.when(util.getJSONForObject(movies)).thenReturn("Movie String info");
 
 		assertEquals( "Movie String info",  movieService.listCurrentMovies());
 	}
-	
-	@Test
-	public void listFutureMoviesTest() {
-		
+	@Before
+	public void testSetup(){
+		movies.clear();
 		movies.add(movie1);
-		
 		Mockito.when(query.getResultList()).thenReturn(movies);
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
 		Mockito.when(util.getJSONForObject(movies)).thenReturn("Movie String info");
-
+	}
+	
+	
+	@Test
+	public void listFutureMoviesTest() {
 		assertEquals( "Movie String info",  movieService.listFutureMovies());
 	}
 	
 	
 	@Test
 	public void getMovieByIdTest() {
-		
-		movies.add(movie1);
-		
-		Mockito.when(query.getResultList()).thenReturn(movies);
-		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
-		Mockito.when(util.getJSONForObject(movies.iterator().next())).thenReturn("Movie String info");
-
-		assertEquals( "Movie String info",  movieService.getMovieById(1l));
+		Mockito.when(util.getJSONForObject(movies.iterator().next())).thenReturn("Single Movie String info");
+		assertEquals( "Single Movie String info",  movieService.getMovieById(1l));
 	}
 }
