@@ -10,6 +10,7 @@
             console.log(userToJson);
             userDal.createNewUser(userToAdd).then(function (results) {
                 vm.userAddMessage  = results;
+                
                 $state.go('getuser');
             }, function (error) {
                 vm.error = true;

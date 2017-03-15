@@ -15,7 +15,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idUser;
 	private String firstName;
 	private String lastName;
 	private String dob;
@@ -37,7 +37,7 @@ public class User {
 	}
 
 	public Long getIdUser() {
-		return id;
+		return idUser;
 	}
 	
 	public String getFirstNameUser() {
