@@ -1,15 +1,27 @@
 (function() {
 
-    var GetCurrentMovieController =  function(movieDal, showingDal) {
+    var GetCurrentMovieController =  function(movieDal, showingDal, $stateParams) {
         var vm = this;
 
         function init() {
-            movieDal.getCurrentMovies().then(function (results) {
-                vm.movies  = results;
+        	if($stateParams.current === "current"){
+                vm.filmTypeTitle = "Currently Showing!"
+                movieDal.getCurrentMovies().then(function (results) {
+                vm.movies = results;
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
-            });
+            	});
+        	}
+        	else{
+                vm.filmTypeTitle = "Coming Soon!"
+                movieDal.getFutureMovies().then(function (results) {
+                    vm.movies = results;
+                }, function (error) {
+                    vm.error = true;
+                    vm.errorMessage = error;
+                });
+            }
         }
         init();
         
@@ -104,5 +116,5 @@
         }
     };
 
-    angular.module('movieApp').controller('getCurrentMovieController', ['movieDal', 'showingDal', GetCurrentMovieController]);
+    angular.module('movieApp').controller('getCurrentMovieController', ['movieDal', 'showingDal', '$stateParams', GetCurrentMovieController]);
 }());
