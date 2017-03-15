@@ -18,10 +18,11 @@
         }
         vm.getShowings = function (theMovieId) {
 
-            vm.showings = [];
+
 
             showingDal.getShowingsForMovie(theMovieId, 1).then(function (results) {
-                vm.showings[theMovieId] = results;
+                vm.showings = results;
+
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;

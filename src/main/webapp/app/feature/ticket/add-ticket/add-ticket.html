@@ -3,20 +3,20 @@
 
     <h1>Book a Ticket</h1>
 
+   {{ ctrl.showings}}
     <form role="form">
 
         <input id="tickettype" placeholder="tickettype" ng-model="ticket.ticketType">
 
-        <select ng-model="ticket.showing.idShowing">
-            <option value="1">Lego Batman 7pm
-            <option value="2">Kong 7pm
-            <option value="3">Logan 7pm
-        </select>
-
 
         <select  ng-model="ticket.showing.idShowing"  ng-init="ctrl.getShowings(1)"  >
-                <option ng-repeat="showing in ctrl.showings[1]" value="{{showing.idShowing}}">{{showing.starttime}}</option>
+            <option ng-repeat="showing in ctrl.showings" value="{{showing.idShowing}}">{{showing.idShowing}}</option>
         </select>
+
+        <select  ng-model="ticket.showing.idShowing"  ng-init="ctrl.getShowings(1)" ng-options="x.idShowing for showing in showings"  >
+
+        </select>
+
 
 
         <input id="user" placeholder="user" ng-model="ticket.user.id">
