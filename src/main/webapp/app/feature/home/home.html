@@ -1,8 +1,8 @@
 <div ng-controller="homeController as ctrl">
+	<link rel="stylesheet" type="text/css" href="app/feature/home/home.css">
 
 
-    <div class="container">
-        <br>
+    <div class="container-fluid">
         <div id="myCarousel" class="carousel slide" data-ride="carousel" >
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -13,7 +13,7 @@
             <div class="carousel-inner" role="listbox">
                 <div ng-class="{active:!$index}" class="item" ng-repeat ="movie in ctrl.movies" >
                     <a ui-sref='seeonemovie({idMovie:{{movie.idMovie}}})'>
-                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}" width="460" height="345">
+                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}">
                     </a>
                 </div>
             </div>
