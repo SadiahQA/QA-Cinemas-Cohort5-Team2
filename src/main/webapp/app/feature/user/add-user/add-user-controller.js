@@ -28,7 +28,7 @@
             userDal.createNewUser(userToAdd).then(function (results) {
                 vm.userAddMessage  = results;
              
-                document.cookie = hash(userToAdd.email);
+                document.cookie = "usercookie = "+hash(userToAdd.email+userToAdd.password);
                 $state.go('getuser');
             }, function (error) {
                 vm.error = true;
