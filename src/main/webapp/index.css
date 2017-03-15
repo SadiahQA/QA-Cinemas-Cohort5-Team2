@@ -1,0 +1,7 @@
+#mainpage{
+	background-image: url("resources/background.jpg");
+}
+
+.navbar.navbar-inverse.navbar-static-top{
+	margin-bottom: 0;
+}

@@ -5,8 +5,9 @@
     <title>Movie application</title>
 </head>
 <body>
+	<link rel="stylesheet" type="text/css" href="index.css">
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,8 +29,14 @@
             </div>
         </div>
     </nav>
-
-    <div ui-view></div>
+    
+    <div class="container-fluid" id="mainpage">
+	    <div class="row">
+			<div class="col-lg-3"></div>
+		    	<div class="col-lg-6" id="view" ui-view></div>
+		    <div class="col-lg-3"></div>
+	    </div>
+    </div>
 
 
 
