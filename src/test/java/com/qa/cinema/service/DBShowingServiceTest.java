@@ -14,13 +14,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.qa.cinema.persistence.Actor;
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DBActorServiceTest {
-
-	
+public class DBShowingServiceTest {
 	@Mock
 	private JSONUtil util;
 	
@@ -31,26 +29,26 @@ public class DBActorServiceTest {
 	private Query query = Mockito.mock(Query.class);
 	
 	@Mock
-	private Actor actor1;
+	private Showing showing1;
 	
 	@InjectMocks 
-	private DBActorService actorService;
+	private DBShowingService showingService;
 	
-	private ArrayList<Actor> actors = new ArrayList<>();
+	private  ArrayList<Showing> showings = new ArrayList<>();
 	
 	@Before
 	public void testSetup(){
-		actors.clear();
-		actors.add(actor1);
-		Mockito.when(query.getResultList()).thenReturn(actors);
+		showings.clear();
+		showings.add(showing1);
+		Mockito.when(query.getResultList()).thenReturn(showings);
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
-		Mockito.when(util.getJSONForObject(actors)).thenReturn("Actor String info");
+		Mockito.when(util.getJSONForObject(showings)).thenReturn("Showing String info");
 	}
-	
 	
 	@Test
-	public void getActorTest(){
-		assertEquals( "Actor String info",  actorService.getActor("1"));
+	public void getAllShowingsforMovieTest(){
+
+		assertEquals( "Showing String info",  showingService.getAllShowingsForMovie("1", "1"));
 	}
-	
+
 }

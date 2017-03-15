@@ -49,6 +49,9 @@ public class DBTicketService implements TicketService{
 	@Override
 	public String getTicket(String id) {
 		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.idTicket=" + id);
+		if(query.getResultList().isEmpty()){
+			return "Ticket could not be found";
+		}
 		Object ticketFound = query.getSingleResult();
 		return util.getJSONForObject(ticketFound);
 	}
