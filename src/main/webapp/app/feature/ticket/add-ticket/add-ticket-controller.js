@@ -1,6 +1,6 @@
 (function() {
 
-    var AddTicketController =  function( ticketDal, showingDal, movieDal) {
+    var AddTicketController =  function( ticketDal, showingDal, movieDal, userDal) {
         var vm = this;
 
         vm.addTicket = function(ticketToAdd) {
@@ -38,8 +38,21 @@
 
         }
 
+        vm.getUser = function (userEmail) {
+
+            userDal.getUserIdByEmail(userEmail).then(function(results) {
+                console.log("runs this far");
+                vm.idUser = results;
+
+            }, function(error){
+                vm.error = true;
+                vm.errorMessage = error;
+            })
+
+        }
+
 
     };
 
-    angular.module('movieApp').controller('addTicketController', [ 'ticketDal','showingDal','movieDal', AddTicketController]);
+    angular.module('movieApp').controller('addTicketController', [ 'ticketDal','showingDal','movieDal','userDal', AddTicketController]);
 }());
