@@ -5,26 +5,69 @@
 	</div>
 	<div class="container-fluid" >
     	<div class="row">
-	        <div class="col-lg-12">
+	        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 	        	<div class="movies" id="wholeMovie" ng-repeat="movie in ctrl.movies" ng-init="ctrl.getShowings(movie.idMovie)">
 		        	<div class="row show-grid">
 						<a ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})">
-							<div class="col-lg-2">
-										<img class="img-responsive" ng-src="{{movie.posterURL}}">
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 vcenter" style="height:100%">
+								<div class="gridcontainer">
+										<img class="img-responsive center-block align-middle" ng-src="{{movie.posterURL}}" style="width:100%">
+								</div>
 							</div>
 						</a>
-						<div class="col-lg-10">
+						<div class="col-xl-7 col-lg-7 col-md-6 col-sm-6">
 						<div class="movieTitle">
 							<a id="clickable" ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})">{{movie.title}}</a>
 						</div>
+							<div>{{movie.releaseDate}}</div>
+							<div>{{movie.duration}}</div>
 							<div>{{movie.genre | lowercase}}</div>
-						            <div>
-						            	<div class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9">
-						            		<div ng-init="newDate=ctrl.convertDate(showing.showingDate)">
-						            			{{newDate}}, {{showing.startTime}}, {{showing.showingType}}
-						            		</div>
-						            	</div>
-						            </div>
+							
+							<div>
+							<div ng-if='movie.certification === "U"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+							</div>
+							<div ng-if='movie.certification === "PG"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_U_150px-height.png">
+							</div>
+							<div ng-if='movie.certification === "12A"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+							</div>
+							<div ng-if='movie.certification === "12"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_12_150px-height_0.png">
+							</div>
+							<div ng-if='movie.certification === "15"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_15_150px-height.png">
+							</div>
+							<div ng-if='movie.certification === "18"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+							</div>
+							<div ng-if='movie.certification === "R18"'>
+								<img class="certimg"
+									ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
+							</div>
+						</div>
+						<br/>
+						<h4>
+						    <div>{{movie.description}}</div>
+						</h4>            
+						</div>
+						<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
+							<h4>
+								Showing Times
+							</h4>
+							<div class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9">
+						          <div ng-init="newDate=ctrl.convertDate(showing.showingDate)">
+						            	{{newDate}}, {{showing.startTime}}, {{showing.showingType}}
+						          </div>
+						    </div>
+						    <br/>
 						</div>
 					</div>
 				</div>
