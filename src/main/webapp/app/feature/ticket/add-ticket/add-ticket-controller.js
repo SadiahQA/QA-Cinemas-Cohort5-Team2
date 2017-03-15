@@ -30,15 +30,18 @@
         }
         vm.getMovies = function () {
 
-            vm.movies = [];
+
 
             movieDal.getCurrentMovies().then(function (results) {
                 vm.movies = results;
+
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
             });
+
         }
+
 
     };
 
