@@ -45,13 +45,14 @@ public class DBTicketServiceTest {
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
 		Mockito.when(util.getJSONForObject(tickets)).thenReturn("Ticket String info");
 		Mockito.when(util.getJSONForObject(ticket1)).thenReturn("Single Ticket String info");
+		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(tickets);
 	}
 	
 
 
 	@Test
 	public void createTicketTest() {
-		assertEquals("{\"message\": \"Ticket sucessfully created\"}", ticketService.createTicket("ticket"));
+		assertEquals("{\"message\": \"Tickets sucessfully created\"}", ticketService.createTickets("ticket"));
 	}
 	
 	@Test

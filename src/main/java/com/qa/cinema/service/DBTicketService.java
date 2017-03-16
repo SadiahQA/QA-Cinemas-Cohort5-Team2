@@ -1,6 +1,8 @@
 package com.qa.cinema.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -33,10 +35,13 @@ public class DBTicketService implements TicketService{
 	private JSONUtil util;
 
 	@Override
-	public String createTicket(String ticket) {
-		Ticket newTicket = util.getObjectForJSON(ticket, Ticket.class);
-		em.persist(newTicket);
-		return "{\"message\": \"Ticket sucessfully created\"}";
+	public String createTickets(String tickets) {
+		List<?> newTickets = util.getObjectForJSON(tickets, ArrayList.class);
+		for(Object o: newTickets){
+			Ticket newTicket = (Ticket) o;
+			em.persist(newTicket);
+		}
+		return "{\"message\": \"Tickets sucessfully created\"}";
 	}
 
 	@Override
