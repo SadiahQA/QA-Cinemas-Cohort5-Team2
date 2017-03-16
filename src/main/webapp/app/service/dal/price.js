@@ -12,7 +12,7 @@
 	
 	function PriceDal(dal) {
 		this.getPriceForTicket = function(showingType,ticketType) {
-			return dal.http.GET("rest/price/json/" + showingType + "/" + screenType);
+			return dal.http.GET("rest/price/json/" + showingType + "/" + ticketType);
 		};
 	}
 }());

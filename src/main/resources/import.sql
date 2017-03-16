@@ -79,3 +79,12 @@ INSERT INTO TICKET(IDTICKET, TICKETTYPE, SHOWING_IDSHOWING, USER_IDUSER) VALUES 
 INSERT INTO ACTOR_HAS_MOVIE(MOVIE_IDMOVIE, ACTOR_IDACTOR) VALUES (1, 1);
 INSERT INTO ACTOR_HAS_MOVIE(MOVIE_IDMOVIE, ACTOR_IDACTOR) VALUES (2, 2);
 INSERT INTO ACTOR_HAS_MOVIE(MOVIE_IDMOVIE, ACTOR_IDACTOR) VALUES (3, 3);
+
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (1, 7.00, '2D', 'Adult');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (2, 5.00, '2D', 'Child');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (3, 6.00, '2D', 'Student');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (4, 6.00, '2D', 'Concession');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (5, 9.00, '3D', 'Adult');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (6, 7.00, '3D', 'Child');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (7, 8.00, '3D', 'Student');
+INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (8, 8.00, '3D', 'Concession');
