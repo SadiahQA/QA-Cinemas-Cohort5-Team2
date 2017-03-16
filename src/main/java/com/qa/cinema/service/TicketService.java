@@ -13,7 +13,7 @@ import com.qa.cinema.persistence.User;
 
 public interface TicketService {
 	
-	String createTicket(String ticket);
+	String createTickets(String ticket);
 	
 	String updateTicket(Long idTicket);
 

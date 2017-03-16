@@ -51,7 +51,7 @@ public class DBTicketServiceTest {
 
 	@Test
 	public void createTicketTest() {
-		assertEquals("{\"message\": \"Ticket sucessfully created\"}", ticketService.createTicket("ticket"));
+		assertEquals("{\"message\": \"Tickets sucessfully created\"}", ticketService.createTickets("ticket"));
 	}
 	
 	@Test
