@@ -52,6 +52,7 @@
         }
         
         vm.saveBooking = function (booking){
+        	
         	bookingFactory.set(booking);
         }
 
