@@ -41,12 +41,7 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String createTickets(String tickets) {
-		Type type = new TypeToken<List<Ticket>>(){}.getType();
-	    List<Ticket> ticketList = new Gson().fromJson(tickets, type);
-		List<Ticket> newTickets = new ArrayList<>();
-	    for (Ticket t: ticketList) {
-	    	newTickets.add(t);
-	    }
+		List<Ticket> newTickets = getTicketListFromJSON(tickets);
 		if(newTickets.isEmpty()){
 			return "{\"message\": \"No tickets found\"}";
 		}
@@ -61,6 +56,16 @@ public class DBTicketService implements TicketService{
 		else{
 			return "{\"message\": \"Not enough available seats\"}";
 		}
+	}
+	
+	private List<Ticket> getTicketListFromJSON(String tickets){
+		Type type = new TypeToken<List<Ticket>>(){}.getType();
+	    List<Ticket> ticketList = new Gson().fromJson(tickets, type);
+		List<Ticket> newTickets = new ArrayList<>();
+	    for (Ticket t: ticketList) {
+	    	newTickets.add(t);
+	    }
+	    return newTickets;
 	}
 
 	@Override
