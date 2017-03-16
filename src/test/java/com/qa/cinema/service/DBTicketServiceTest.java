@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
+import com.qa.cinema.persistence.User;
 import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -56,21 +57,17 @@ public class DBTicketServiceTest {
 	
 
 
-	@Test
-	public void createTicketTest() {
-		assertEquals("{\"message\": \"Tickets successfully created\"}", ticketService.createTickets("ticket"));
-	}
 	
 	@Test
 	public void createTicketTestNoSeats() {
 		Mockito.when(showing.getAvailableSeats()).thenReturn(0);
-		assertEquals("{\"message\": \"Not enough available seats\"}", ticketService.createTickets("ticket"));
+		assertEquals("{\"message\": \"Not enough available seats\"}", ticketService.createTickets("[{\"ticketType\":\"Student\",\"showing\":{\"idShowing\":\"10\"},\"user\":{\"idUser\":\"1\"}}]"));
 	}
 	
 	@Test
 	public void createTicketTestNoTickets() {
 		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(new ArrayList<>());
-		assertEquals("{\"message\": \"No tickets found\"}", ticketService.createTickets("ticket"));
+		assertEquals("{\"message\": \"No tickets found\"}", ticketService.createTickets("[]"));
 	}
 	
 	@Test
