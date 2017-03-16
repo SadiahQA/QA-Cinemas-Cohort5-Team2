@@ -12,7 +12,7 @@
             <div class="carousel-inner" role="listbox" style="position:relative">
                 <div ng-class="{active:!$index}" class="item" ng-repeat ="movie in ctrl.movies" >
                     <a ui-sref='seeonemovie({idMovie:{{movie.idMovie}}})'>
-                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}" style="height: 10%;">
+                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}">
                     </a>
                 </div>
             </div>
