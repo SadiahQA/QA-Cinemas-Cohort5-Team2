@@ -21,7 +21,7 @@ public class PriceEndpoint {
 	@Inject
 	private PriceService service;
 	
-	@Path("/json/{showingType}/{screenType}")
+	@Path("/json/{showingType}/{ticketType}")
 	@GET
 	@Produces({"application/json"})
 	public String getPriceForTicket(@PathParam("showingType") String showingType, @PathParam("ticketType") String ticketType) {
