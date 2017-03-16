@@ -1,4 +1,5 @@
 <div ng-controller="addUserController as ctrl">
+{{ctrl.loggedIn}}{{4+4}
 	<div class="container">
 		<h1>Add a new user</h1>
 		<div class="col-sm-6">
@@ -37,11 +38,11 @@
 					</div>
 					<div class="form group">
 						<label class="control-label" for="loginpassword">Password:</label> <input class="form-control" type="password" id="loginpassword" placeholder="Password" required="required"
-							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ng-model="user.loginpassword"
+							 ng-model="user.loginpassword"
 						></input>
 					</div>
+			      <button class="btn btn-primary btn-block" type="submit" ng-click="ctrl.login(user.loginemail, user.loginpassword)">Submit</button>
 				</form>
-				<button class="btn btn-primary btn-block">Submit</button>
 			</div>
 		</div>
 	</div>
