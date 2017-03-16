@@ -12,6 +12,9 @@ import javax.ws.rs.core.Response;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.google.gson.Gson;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 import com.qa.cinema.persistence.Actor;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
@@ -38,11 +41,18 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String createTickets(String tickets) {
-		List<?> newTickets = util.getObjectForJSON(tickets, ArrayList.class);
+		Type type = new TypeToken<List<Ticket>>(){}.getType();
+		System.out.println(type);
+	    List<Ticket> ticketList = new Gson().fromJson(tickets, type);
+		List<Ticket> newTickets = new ArrayList<>();
+	    for (Ticket t: ticketList) {
+	    	newTickets.add(t);
+	    }
 		if(newTickets.isEmpty()){
 			return "{\"message\": \"No tickets found\"}";
 		}
-		Showing showing = ((Ticket) newTickets.get(0)).getShowing();
+		System.out.println(newTickets.get(0));
+		Showing showing = ((Ticket)newTickets.get(0)).getShowing();
 		if(showing.getAvailableSeats() >= newTickets.size()){
 			for(Object o: newTickets){
 				Ticket newTicket = (Ticket) o;
