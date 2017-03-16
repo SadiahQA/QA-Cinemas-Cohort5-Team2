@@ -45,6 +45,7 @@ public class DBTicketServiceTest {
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(query);
 		Mockito.when(util.getJSONForObject(tickets)).thenReturn("Ticket String info");
 		Mockito.when(util.getJSONForObject(ticket1)).thenReturn("Single Ticket String info");
+		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(tickets);
 	}
 	
 
