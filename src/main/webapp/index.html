@@ -21,6 +21,7 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
+                    <li><a ui-sref="bookticket">Book a Ticket</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ui-sref="adduser">Sign Up</a></li>
@@ -62,6 +63,10 @@
     <script src="app/service/dal/user.js"></script>
     <script src="app/service/dal/showing.js"></script>
     <script src="app/service/dal/ticket.js"></script>
+    
+    <!-- Factorys -->
+    <script src="app/service/factory/bookingFactory.js"></script>
+    <script src="app/service/factory/ticketFactory.js"></script>
 
     <!-- Features-->
     <!--<script src="app/feature/dashboard/dashboard-controller.js"></script>-->
@@ -77,6 +82,7 @@
     <script src="app/feature/ticket/get/get-specific-ticket/get-specific-ticket-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-user/get-ticket-by-user-controller.js"></script>
+    <script src="app/feature/ticket/create-booking/create-booking-controller.js"></script>
 
 
 </body>

@@ -26,7 +26,7 @@ public class TicketEndpoint {
 	@POST
 	
 	public String createTicket(String ticket) {
-		return service.createTicket(ticket);
+		return service.createTickets(ticket);
 	}
 	
 	@Path("/json/{idTicket}")
