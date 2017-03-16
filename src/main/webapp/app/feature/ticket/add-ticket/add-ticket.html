@@ -31,8 +31,9 @@
         <input id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
 
 
-
-        <button type="submit" ng-click="ticket.user.id=ctrl.idUser;ctrl.addTicket(ticket)">Book</button>
+		<!-- <button type="submit" ng-click="ticket.user.idUser=ctrl.idUser;ctrl.addTicket(ticket)">Book</button> -->
+		<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)"><a ui-sref="createbooking">Book</a></button>
+        
 
     </form>
 
