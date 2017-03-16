@@ -1,6 +1,5 @@
 package com.qa.cinema.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -8,17 +7,11 @@ import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.Query;
-import javax.ws.rs.core.Response;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.google.gson.Gson;
-import java.lang.reflect.Type;
-import com.google.gson.reflect.TypeToken;
-import com.qa.cinema.persistence.Actor;
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
-import com.qa.cinema.persistence.User;
 import com.qa.cinema.util.JSONUtil;
 
 /**
@@ -41,11 +34,11 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String createTickets(String tickets) {
-		List<Ticket> newTickets = getTicketListFromJSON(tickets);
+		List<Ticket> newTickets = util.getListFromJSON(tickets, Ticket.class);
 		if(newTickets.isEmpty()){
 			return "{\"message\": \"No tickets found\"}";
 		}
-		Showing showing = ((Ticket)newTickets.get(0)).getShowing();
+		Showing showing = newTickets.get(0).getShowing();
 		if(showing.getAvailableSeats() >= newTickets.size()){
 			for(Object o: newTickets){
 				Ticket newTicket = (Ticket) o;
@@ -58,15 +51,6 @@ public class DBTicketService implements TicketService{
 		}
 	}
 	
-	private List<Ticket> getTicketListFromJSON(String tickets){
-		Type type = new TypeToken<List<Ticket>>(){}.getType();
-	    List<Ticket> ticketList = new Gson().fromJson(tickets, type);
-		List<Ticket> newTickets = new ArrayList<>();
-	    for (Ticket t: ticketList) {
-	    	newTickets.add(t);
-	    }
-	    return newTickets;
-	}
 
 	@Override
 	public String updateTicket(Long idTicket) {
