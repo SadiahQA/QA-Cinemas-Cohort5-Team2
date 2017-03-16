@@ -25,10 +25,13 @@
           
             userDal.createNewUser(userToAdd).then(function (results) {
                 vm.userAddMessage  = results;
-             
+                if(JSON.stringify(results) === '{"message":"User Successfully Added"}'){
                 document.cookie = "usercookie = "+hash(userToAdd.email+userToAdd.password);
-                $state.go('getuser');
-            }, function (error) {
+                
+                $state.go('homepage');
+                window.alert("New User Created");}
+            else{window.alert("User Creation Failed");}}
+                , function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
             });
