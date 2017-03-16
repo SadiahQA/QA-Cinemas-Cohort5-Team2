@@ -1,6 +1,6 @@
 (function(){
 	
-	var CreateBookingController = function(bookingFactory, ticketFactory){
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal){
 		
 		var vm = this;
 		
@@ -31,10 +31,11 @@
 		vm.saveBooking = function(ticket){
 			ticketFactory.set(ticket);
 			vm.ticketArray = ticketFactory.get();
+			ticketDal.createTicket(vm.ticketArray);
 		}
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', CreateBookingController]);
 	
 }());

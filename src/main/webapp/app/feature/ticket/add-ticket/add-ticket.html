@@ -6,16 +6,6 @@
 
     <form role="form">
 
-
-        <select ng-model="ticket.ticketType">
-            <option value="" disabled selected>Select Ticket Type</option>
-            <option value="Student">Student</option>
-            <option value="Adult">Adult</option>
-            <option value="Child">Child</option>
-            <option value="Concession">Concession</option>
-        </select>
-
-
         <select  ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
             <option value="" disabled selected>Select Movie</option>
             <option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
