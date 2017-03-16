@@ -44,11 +44,11 @@ public class UserEndpoint {
 		return service.updateUser(id, user);
 	}
 	
-	@Path("/json/email/{email}")
+	@Path("/json/email/{email}/{password}")
 	@GET
 	@Produces({"application/json"})
-	public String findUserIdByEmail(@PathParam("email") String email){
-		return service.findUserIdByEmail(email);
+	public String getUserByEmailAndPassword(@PathParam("email") String email, @PathParam("password")String password){
+		return service.getUserByEmailAndPassword(email, password);
 		
 	}
 

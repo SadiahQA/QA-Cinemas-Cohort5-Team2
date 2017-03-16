@@ -29,9 +29,11 @@ public class DBUserService implements UserService {
 	
 	
 	@Override
-	public String findUserIdByEmail(String email){
-		Query query = em.createQuery("SELECT u.id FROM User u WHERE u.email= '" + email+"' ");
+	public String getUserByEmailAndPassword(String email, String password){
+		Query query = em.createQuery("SELECT u FROM User u WHERE u.email= '" + email+"' and u.password= '"+password+"'");
 		Object userFound = query.getSingleResult();
+		if(query.getResultList().isEmpty()){
+			return "Invalid Login";}
 		return util.getJSONForObject(userFound);
 		}
 	
