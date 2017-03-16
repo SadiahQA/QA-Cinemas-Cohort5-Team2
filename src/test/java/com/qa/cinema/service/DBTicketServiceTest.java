@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
 import com.qa.cinema.util.JSONUtil;
 
@@ -30,6 +31,9 @@ public class DBTicketServiceTest {
 	
 	@Mock
 	private Ticket ticket1;
+
+	@Mock
+	private Showing showing;
 	
 	@InjectMocks 
 	private DBTicketService ticketService;
@@ -46,13 +50,27 @@ public class DBTicketServiceTest {
 		Mockito.when(util.getJSONForObject(tickets)).thenReturn("Ticket String info");
 		Mockito.when(util.getJSONForObject(ticket1)).thenReturn("Single Ticket String info");
 		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(tickets);
+		Mockito.when(tickets.get(0).getShowing()).thenReturn(showing);
+		Mockito.when(showing.getAvailableSeats()).thenReturn(2);
 	}
 	
 
 
 	@Test
 	public void createTicketTest() {
-		assertEquals("{\"message\": \"Tickets sucessfully created\"}", ticketService.createTickets("ticket"));
+		assertEquals("{\"message\": \"Tickets successfully created\"}", ticketService.createTickets("ticket"));
+	}
+	
+	@Test
+	public void createTicketTestNoSeats() {
+		Mockito.when(showing.getAvailableSeats()).thenReturn(0);
+		assertEquals("{\"message\": \"Not enough available seats\"}", ticketService.createTickets("ticket"));
+	}
+	
+	@Test
+	public void createTicketTestNoTickets() {
+		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(new ArrayList<>());
+		assertEquals("{\"message\": \"No tickets found\"}", ticketService.createTickets("ticket"));
 	}
 	
 	@Test

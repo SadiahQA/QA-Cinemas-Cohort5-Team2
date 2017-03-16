@@ -41,7 +41,7 @@ public class TicketEndpointTest {
 	public void testSetup(){
 		tickets.clear();
 		tickets.add(ticket1);
-		Mockito.when(ticketService.createTicket("1")).thenReturn("New ticket string");
+		Mockito.when(ticketService.createTickets("1")).thenReturn("New tickets string");
 		Mockito.when(ticketService.updateTicket(2L)).thenReturn("Ticket update string");	
 		Mockito.when(ticketService.getTicket("3")).thenReturn("Get ticket string for specific ticket");
 		Mockito.when(ticketService.getListTicket("4")).thenReturn("Ticket list string");
@@ -50,7 +50,7 @@ public class TicketEndpointTest {
 	
 	@Test
 	public void createTicket() {
-		assertEquals("New ticket string", ticketEndpoint.createTicket("1"));
+		assertEquals("New tickets string", ticketEndpoint.createTicket("1"));
 	}
 	
 	@Test
