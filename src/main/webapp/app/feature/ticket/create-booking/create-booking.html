@@ -1,0 +1,91 @@
+<div ng-controller="createBookingController as ctrl">
+
+
+	<div ng-init="ctrl.retriveBookingdetails()">
+		
+	</div>
+	{{ctrl.booking}}
+	
+	<br/>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3">
+				Student
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.studentNum=ctrl.decreaseNumber(ctrl.studentNum)">-</button>
+			</div>
+			<div class="col-lg-3">
+				Quantity : {{ctrl.studentNum}}
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.studentNum=ctrl.incrementNumber(ctrl.studentNum)">+</button>
+			</div>
+		</div>
+	</div>
+	<br/>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3">
+				Child
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.childNum=ctrl.decreaseNumber(ctrl.childNum)">-</button>
+			</div>
+			<div class="col-lg-3">
+				Quantity : {{ctrl.childNum}}
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.childNum=ctrl.incrementNumber(ctrl.childNum)">+</button>
+			</div>
+		</div>
+	</div>
+	<br/>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3">
+				Adult
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.adultNum=ctrl.decreaseNumber(ctrl.adultNum)">-</button>
+			</div>
+			<div class="col-lg-3">
+				Quantity : {{ctrl.adultNum}}
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.adultNum=ctrl.incrementNumber(ctrl.adultNum)">+</button>
+			</div>
+		</div>
+	</div>
+	<br/>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3">
+				Concession
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.concessionNum=ctrl.decreaseNumber(ctrl.concessionNum)">-</button>
+			</div>
+			<div class="col-lg-3">
+				Quantity : {{ctrl.concessionNum}}
+			</div>
+			<div class="col-lg-3">
+				<button type="button" ng-click="ctrl.concessionNum=ctrl.incrementNumber(ctrl.concessionNum)">+</button>
+			</div>
+		</div>
+	</div>
+	<br/>
+	
+	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
+	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
+	 ctrl.saveBooking(ticket)">Book Tickets</button>
+	 {{ctrl.ticketArray}}
+	
+	
+
+
+
+</div>
