@@ -53,21 +53,27 @@ public class DBTicketServiceTest {
 		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(tickets);
 		Mockito.when(tickets.get(0).getShowing()).thenReturn(showing);
 		Mockito.when(showing.getAvailableSeats()).thenReturn(2);
+		Mockito.when(util.getListFromJSON("", Ticket.class)).thenReturn(tickets);
+		Mockito.when(ticket1.getShowing()).thenReturn(showing);
 	}
 	
 
 
+	@Test
+	public void createTicketTest() {
+		assertEquals("{\"message\": \"Tickets successfully created\"}", ticketService.createTickets(""));
+	}
 	
 	@Test
 	public void createTicketTestNoSeats() {
 		Mockito.when(showing.getAvailableSeats()).thenReturn(0);
-		assertEquals("{\"message\": \"Not enough available seats\"}", ticketService.createTickets("[{\"ticketType\":\"Student\",\"showing\":{\"idShowing\":\"10\"},\"user\":{\"idUser\":\"1\"}}]"));
+		assertEquals("{\"message\": \"Not enough available seats\"}", ticketService.createTickets(""));
 	}
 	
 	@Test
 	public void createTicketTestNoTickets() {
-		Mockito.when(util.getObjectForJSON("ticket",ArrayList.class)).thenReturn(new ArrayList<>());
-		assertEquals("{\"message\": \"No tickets found\"}", ticketService.createTickets("[]"));
+		Mockito.when(util.getListFromJSON("", Ticket.class)).thenReturn(new ArrayList<>());
+		assertEquals("{\"message\": \"No tickets found\"}", ticketService.createTickets(""));
 	}
 	
 	@Test
