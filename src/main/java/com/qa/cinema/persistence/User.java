@@ -14,8 +14,8 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idUser;
 	private String firstName;
 	private String lastName;
 	private String dob;
@@ -37,7 +37,7 @@ public class User {
 	}
 
 	public Long getIdUser() {
-		return id;
+		return idUser;
 	}
 	
 	public String getFirstNameUser() {

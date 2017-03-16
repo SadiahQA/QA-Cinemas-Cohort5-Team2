@@ -1,19 +1,18 @@
-<div ng-controller="homeController as ctrl">
+<div ng-controller="homeController as ctrl" style="position:relative">
+	<link rel="stylesheet" type="text/css" href="app/feature/home/home.css">
 
-
-    <div class="container">
-        <br>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+    <div class="container-fluid" style="position:relative; ">
+        <div id="myCarousel" class="carousel slide " data-ride="carousel" style="width: auto; margin: 0 auto;" >
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li ng-class="{active:!$index}" ng-repeat="movie in ctrl.movies" data-target="#myCarousel" data-slide-to="{{movie.idMovie}}"></li>
             </ol>
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox" style="position:relative">
                 <div ng-class="{active:!$index}" class="item" ng-repeat ="movie in ctrl.movies" >
                     <a ui-sref='seeonemovie({idMovie:{{movie.idMovie}}})'>
-                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}" width="460" height="345">
+                        <img class="img-responsive center-block" ng-src="{{movie.posterURL}}" alt="{{movie.title}}">
                     </a>
                 </div>
             </div>
@@ -29,5 +28,4 @@
             </a>
         </div>
     </div>
-
 </div>

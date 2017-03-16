@@ -5,8 +5,9 @@
     <title>Movie application</title>
 </head>
 <body>
+	<link rel="stylesheet" type="text/css" href="index.css">
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -18,8 +19,9 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a ui-sref="seecurrentmovies">What's On</a></li>
-                    <li><a ui-sref="seefuturemovies">Coming Soon</a></li>
+                    <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
+                    <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
+                    <li><a ui-sref="bookticket">Book a Ticket</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ui-sref="adduser">Sign Up</a></li>
@@ -28,8 +30,14 @@
             </div>
         </div>
     </nav>
-
-    <div ui-view></div>
+    
+    <div class="container-fluid" id="mainpage">
+	    <div class="row">
+			<div class="col-lg-3"></div>
+		    	<div class="col-lg-6" id="view" ui-view></div>
+		    <div class="col-lg-3"></div>
+	    </div>
+    </div>
 
 
 
@@ -55,6 +63,10 @@
     <script src="app/service/dal/user.js"></script>
     <script src="app/service/dal/showing.js"></script>
     <script src="app/service/dal/ticket.js"></script>
+    
+    <!-- Factorys -->
+    <script src="app/service/factory/bookingFactory.js"></script>
+    <script src="app/service/factory/ticketFactory.js"></script>
 
     <!-- Features-->
     <!--<script src="app/feature/dashboard/dashboard-controller.js"></script>-->
@@ -70,6 +82,7 @@
     <script src="app/feature/ticket/get/get-specific-ticket/get-specific-ticket-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-user/get-ticket-by-user-controller.js"></script>
+    <script src="app/feature/ticket/create-booking/create-booking-controller.js"></script>
 
 
 </body>

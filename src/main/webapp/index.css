@@ -1,0 +1,12 @@
+body{
+	background-image: url("resources/background.jpg");
+    padding-top: 65px; 
+} 
+
+.navbar.navbar-inverse.navbar-static-top{
+	margin-bottom: 0;
+}
+
+#view{
+	color: white;
+}

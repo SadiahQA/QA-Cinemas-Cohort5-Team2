@@ -1,15 +1,19 @@
 package com.qa.cinema.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.ws.rs.core.Response;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.qa.cinema.persistence.Actor;
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
 import com.qa.cinema.persistence.User;
 import com.qa.cinema.util.JSONUtil;
@@ -33,10 +37,22 @@ public class DBTicketService implements TicketService{
 	private JSONUtil util;
 
 	@Override
-	public String createTicket(String ticket) {
-		Ticket newTicket = util.getObjectForJSON(ticket, Ticket.class);
-		em.persist(newTicket);
-		return "{\"message\": \"Ticket sucessfully created\"}";
+	public String createTickets(String tickets) {
+		List<?> newTickets = util.getObjectForJSON(tickets, ArrayList.class);
+		if(newTickets.isEmpty()){
+			return "{\"message\": \"No tickets found\"}";
+		}
+		Showing showing = ((Ticket) newTickets.get(0)).getShowing();
+		if(showing.getAvailableSeats() >= newTickets.size()){
+			for(Object o: newTickets){
+				Ticket newTicket = (Ticket) o;
+				em.persist(newTicket);
+			}
+			return "{\"message\": \"Tickets successfully created\"}";
+		}
+		else{
+			return "{\"message\": \"Not enough available seats\"}";
+		}
 	}
 
 	@Override
@@ -49,6 +65,9 @@ public class DBTicketService implements TicketService{
 	@Override
 	public String getTicket(String id) {
 		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.idTicket=" + id);
+		if(query.getResultList().isEmpty()){
+			return "Ticket could not be found";
+		}
 		Object ticketFound = query.getSingleResult();
 		return util.getJSONForObject(ticketFound);
 	}

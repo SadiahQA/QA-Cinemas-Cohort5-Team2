@@ -1,4 +1,8 @@
-
+-/*
+ - * Author: Stefan Matykiewicz
+ - * Version: 0.2.0
+ - */
+	
 "use strict";
 
 (function() {

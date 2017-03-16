@@ -10,8 +10,11 @@
             url: "/home",
             templateUrl: "app/feature/home/home.html"
         }).state("seecurrentmovies", {
-            url: "/seecurrentmovies",
-            templateUrl: "app/feature/movie/get/get-current-movies/get-current-movies.html"
+            url: "/seecurrentmovies/:current",
+            templateUrl: "app/feature/movie/get/get-current-movies/get-current-movies.html",
+            controller: function ($stateParams){
+                $stateParams.current = "default";
+            }
         }).state("seefuturemovies",{
             url:"/seefuturemovies",
             templateUrl: "app/feature/movie/get/get-future-movies/get-future-movies.html"
@@ -64,6 +67,9 @@
             controller: function($stateParams) {
                 $stateParams.idUser
             }
+        }).state("createbooking", {
+        	url: "/createbooking",
+        	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
         })
 
         

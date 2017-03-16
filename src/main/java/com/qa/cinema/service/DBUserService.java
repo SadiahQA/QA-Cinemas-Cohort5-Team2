@@ -38,14 +38,17 @@ public class DBUserService implements UserService {
 	@Override
 	public String findIndividualUser(Long id) {
 		Query query = em.createQuery("SELECT u FROM User u WHERE u.idUser=" + id);
+		if(query.getResultList().isEmpty()){
+			return "User could not be found";
+		}
 		Object userFound = query.getSingleResult();
 		return util.getJSONForObject(userFound);
-			}
+	}
 
 	@Override
 	public String createNewUser(String user) {
 		User newUser = util.getObjectForJSON(user, User.class);
-		Query query = em.createQuery("SELECT * FROM User");
+		Query query = em.createQuery("SELECT u FROM User u");
 		List<User> users = (List<User>) query.getResultList();
 		for (User u : users) {
 			if (u.getEmail().equals(newUser.getEmail())) {
