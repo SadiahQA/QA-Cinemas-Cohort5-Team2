@@ -16,7 +16,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
-import com.qa.cinema.persistence.User;
 import com.qa.cinema.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)

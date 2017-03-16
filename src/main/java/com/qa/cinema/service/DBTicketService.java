@@ -40,6 +40,7 @@ public class DBTicketService implements TicketService{
 		}
 		Showing showing = newTickets.get(0).getShowing();
 		if(showing.getAvailableSeats() >= newTickets.size()){
+			showing.setAvailableSeats(showing.getAvailableSeats()-newTickets.size());
 			for(Object o: newTickets){
 				Ticket newTicket = (Ticket) o;
 				em.persist(newTicket);
