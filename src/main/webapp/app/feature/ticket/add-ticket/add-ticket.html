@@ -2,7 +2,7 @@
 <div ng-controller="addTicketController as ctrl">
 
     <h1>Book a Ticket</h1>
-
+{{ctrl.user}}
 
     <form role="form">
 
@@ -18,7 +18,7 @@
         </select>
 
 
-        <input id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
+        <input id="email" value="ctrl.getMovies()" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
 
 
 		<!-- <button type="submit" ng-click="ticket.user.idUser=ctrl.idUser;ctrl.addTicket(ticket)">Book</button> -->
