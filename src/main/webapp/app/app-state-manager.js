@@ -70,6 +70,9 @@
         }).state("createbooking", {
         	url: "/createbooking",
         	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
+        }).state("confirmation", {
+            url:"/confirmation",
+            templateUrl: "app/feature/confirmation/confirmation.html"
         })
 
         
