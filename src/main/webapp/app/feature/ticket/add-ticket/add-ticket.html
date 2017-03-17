@@ -22,7 +22,9 @@
 
 
 		<!-- <button type="submit" ng-click="ticket.user.idUser=ctrl.idUser;ctrl.addTicket(ticket)">Book</button> -->
-		<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)"><a ui-sref="createbooking">Book</a></button>
+		<a ui-sref="createbooking">
+		<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)">Book</button>
+		</a>
         
 
     </form>
