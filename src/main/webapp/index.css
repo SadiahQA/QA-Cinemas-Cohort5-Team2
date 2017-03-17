@@ -1,5 +1,6 @@
 body{
 	background-image: url("resources/background.jpg");
+	background-repeat: repeat-y;
     padding-top: 65px; 
 } 
 
@@ -10,3 +11,15 @@ body{
 #view{
 	color: white;
 }
+
+
+
+form{
+	color : black
+}
+
+
+#movieArea{
+	color : black
+}
+
