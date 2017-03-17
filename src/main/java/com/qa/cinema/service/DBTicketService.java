@@ -49,8 +49,7 @@ public class DBTicketService implements TicketService{
 		if(showing.getAvailableSeats() >= ticketList.size()){
 			showing.setAvailableSeats(showing.getAvailableSeats()-ticketList.size());
 			for(Ticket t: ticketList){
-				Ticket newTicket = t;
-				em.persist(newTicket);
+				em.persist(t);
 			}
 			return "{\"message\": \"Tickets successfully created\"}";
 		}
