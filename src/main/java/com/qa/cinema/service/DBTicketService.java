@@ -1,5 +1,6 @@
 package com.qa.cinema.service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,9 +12,10 @@ import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.qa.cinema.persistence.Actor;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.qa.cinema.persistence.Showing;
 import com.qa.cinema.persistence.Ticket;
-import com.qa.cinema.persistence.User;
 import com.qa.cinema.util.JSONUtil;
 
 /**
@@ -36,13 +38,26 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String createTickets(String tickets) {
-		List<?> newTickets = util.getObjectForJSON(tickets, ArrayList.class);
-		for(Object o: newTickets){
-			Ticket newTicket = (Ticket) o;
-			em.persist(newTicket);
+
+
+		Type type = new TypeToken<List<Ticket>>(){}.getType();
+		List<Ticket> ticketList = new Gson().fromJson(tickets, type);
+		if(ticketList.isEmpty()){
+			return "{\"message\": \"No tickets found\"}";
 		}
-		return "{\"message\": \"Tickets sucessfully created\"}";
+		Showing showing = em.find(Showing.class, ticketList.get(0).getShowing().getIdShowing());
+		if(showing.getAvailableSeats() >= ticketList.size()){
+			showing.setAvailableSeats(showing.getAvailableSeats()-ticketList.size());
+			for(Ticket t: ticketList){
+				em.persist(t);
+			}
+			return "{\"message\": \"Tickets successfully created\"}";
+		}
+		else{
+			return "{\"message\": \"Not enough available seats\"}";
+		}
 	}
+	
 
 	@Override
 	public String updateTicket(Long idTicket) {

@@ -6,6 +6,8 @@
 </head>
 <body>
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<div ng-controller="indexController as ctrl"></div>
+	
 
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -63,9 +65,16 @@
     <script src="app/service/dal/user.js"></script>
     <script src="app/service/dal/showing.js"></script>
     <script src="app/service/dal/ticket.js"></script>
+    <script src="app/service/dal/price.js"></script>
+    
+    <!-- Factorys -->
+    <script src="app/service/factory/bookingFactory.js"></script>
+    <script src="app/service/factory/ticketFactory.js"></script>
+     <script src="app/service/factory/userFactory.js"></script>
 
     <!-- Features-->
     <!--<script src="app/feature/dashboard/dashboard-controller.js"></script>-->
+    <script src="index-controller.js"></script>
     <script src="app/feature/movie/get/get-current-movies/get-current-movies-controller.js"></script>
     <script src="app/feature/movie/get/get-future-movies/get-future-movies-controller.js"></script>
     <script src="app/feature/movie/get/get-one/get-one-movie-controller.js"></script>
@@ -78,7 +87,8 @@
     <script src="app/feature/ticket/get/get-specific-ticket/get-specific-ticket-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-user/get-ticket-by-user-controller.js"></script>
-
+    <script src="app/feature/ticket/create-booking/create-booking-controller.js"></script>
+   
 
 </body>
 

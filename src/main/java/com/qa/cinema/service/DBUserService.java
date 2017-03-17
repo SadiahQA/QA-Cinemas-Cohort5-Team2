@@ -27,11 +27,19 @@ public class DBUserService implements UserService {
 	@Inject
 	private JSONUtil util;
 	
-	
 	@Override
 	public String findUserIdByEmail(String email){
-		Query query = em.createQuery("SELECT u.id FROM User u WHERE u.email= '" + email+"' ");
+		Query query = em.createQuery("SELECT u.id FROM User u WHERE u.email ='" + email+"'");
 		Object userFound = query.getSingleResult();
+		return util.getJSONForObject(userFound);
+	}
+	
+	@Override
+	public String getUserByEmailAndPassword(String email, String password){
+		Query query = em.createQuery("SELECT u FROM User u WHERE u.email= '" + email+"' and u.password= '"+password+"'");
+		Object userFound = query.getSingleResult();
+		if(query.getResultList().isEmpty()){
+			return "Invalid Login";}
 		return util.getJSONForObject(userFound);
 		}
 	

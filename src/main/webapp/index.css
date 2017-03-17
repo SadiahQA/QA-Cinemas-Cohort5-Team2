@@ -1,5 +1,6 @@
 body{
 	background-image: url("resources/background.jpg");
+	background-repeat: repeat-y;
     padding-top: 65px; 
 } 
 
@@ -37,4 +38,16 @@ span {
 
 p {
 	font-size:13px
+
+
+#movieArea{
+	color:black	
+}
+
+#showingArea{
+	color:black
+}
+
+#email{
+	color:black
 }

@@ -22,8 +22,11 @@
 		this.updateUser = function(id, user) {
 			return dal.http.PUT("rest/user/json/" + id, user);
 		};
+		this.getUserByEmailAndPassword = function(email, password){
+			return dal.http.GET("rest/user/json/email/"+ email+"/"+password);
+		};
 		this.getUserIdByEmail = function(email){
-			return dal.http.GET("rest/user/json/email/"+ email);
+			return dal.http.GET("rest/user/json/email/"+email);
 		};
 	}
 }());

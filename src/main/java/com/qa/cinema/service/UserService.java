@@ -13,6 +13,8 @@ public interface UserService {
 	
 	String updateUser (Long id, String user);
 	
+	String getUserByEmailAndPassword(String email, String password);
+	
 	String findUserIdByEmail(String email);
 	
 }
