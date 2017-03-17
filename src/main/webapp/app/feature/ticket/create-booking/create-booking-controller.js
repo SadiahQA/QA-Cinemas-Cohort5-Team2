@@ -15,14 +15,14 @@
 		
 		vm.incrementNumber = function(number){
 			number = number + 1;
-			vm.updatePrice();
+			
 			return number;
 		}
 		
 		vm.decreaseNumber = function(number){
 			if (number > 0){
 				number = number - 1;
-				vm.updatePrice();
+				
 				return number;
 			}
 			else{
