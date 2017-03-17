@@ -15,4 +15,6 @@ public interface UserService {
 	
 	String getUserByEmailAndPassword(String email, String password);
 	
+	String findUserIdByEmail(String email);
+	
 }

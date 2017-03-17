@@ -51,5 +51,11 @@ public class UserEndpoint {
 		return service.getUserByEmailAndPassword(email, password);
 		
 	}
+	@Path("/json/email/{email}")
+	@GET
+	@Produces({"application/json"})
+	public String findUserIdByEmail(@PathParam("email") String email){
+		return service.findUserIdByEmail(email);
+	}
 
 }
