@@ -18,6 +18,7 @@
 		}
 
 		vm.addUser = function(userToAdd) {
+			userToAdd.password = hash(userToAdd.password);
 
 			userDal.createNewUser(userToAdd).then(function(results) {
 								vm.userAddMessage = results;
@@ -41,23 +42,25 @@
 		}
 		
 	vm.login = function(useremail, userpassword){
-			userDal.getUserByEmailAndPassword(useremail, userpassword).then(function(results){
+		if(JSON.stringify(userDal.getUserByEmailandPassword) === '{"message": "login failed"}'){
+			{window.alert("Login failed: please check details and try again.");}
+		}
+		else{
+			userDal.getUserByEmailAndPassword(useremail, hash(userpassword)).then(function(results){
 				vm.userLoginMessage = results;
-				if(JSON.stringify(results)) {
+				if(JSON.stringify(results) === JSON.stringify(util.getJSONForObject(userFound))) {
 					document.cookie = "usercookie = "
 						+ hash(useremail+ userpassword);
 					userFactory.set(results);
 					$state.go('homepage');
 					window.alert("Welcome back "+results.firstName)
 				}
-				else {window.alert("Login failed: please check details and try again.")}
-			});
-			};
+			})
+			}
 			vm.loggedIn = userFactory.get();
 			vm.compare = (JSON.stringify(vm.loggedIn));
+	};
 	}
-
-
 	angular.module('movieApp').controller('addUserController',
 			[ '$state', 'userDal', 'userFactory', AddUserController ]);
 }());
