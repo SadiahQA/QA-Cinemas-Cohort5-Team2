@@ -1,12 +1,68 @@
 body{
 	background-image: url("resources/background.jpg");
-    padding-top: 65px; 
-} 
+	background-repeat: repeat-y;
+    padding-top: 65px;
+    padding-bottom: 80px;
+}
 
 .navbar.navbar-inverse.navbar-static-top{
 	margin-bottom: 0;
 }
 
+
+
 #view{
 	color: white;
 }
+
+#ticketEmail{
+	color:black
+}
+
+#showingArea{
+	color:black
+}
+
+#movieArea{
+	color:black
+}
+
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #333;
+  text-align: center;
+  color: #fff 
+}
+
+div span:not(:first-child){
+    border-left:1px solid #000;
+}
+
+
+span {
+    padding:0 20px;
+}
+
+p {
+    font-size: 13px
+}
+
+
+#movieArea{
+	color:black	
+}
+

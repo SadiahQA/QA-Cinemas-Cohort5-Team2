@@ -22,5 +22,13 @@ h1 {
 }
 
 img{
+	
 	vertical-align:middle;	
+	
+}
+
+img.img-responsive{
+	padding-top: 25%;
+	padding-bottom: 25%;
+
 }
