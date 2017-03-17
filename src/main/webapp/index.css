@@ -9,9 +9,25 @@ body{
 	margin-bottom: 0;
 }
 
+
+
 #view{
 	color: white;
 }
+
+#ticketEmail{
+	color:black
+}
+
+#showingArea{
+	color:black
+}
+
+#movieArea{
+	color:black
+}
+
+
 
 html {
     position: relative;
@@ -50,10 +66,3 @@ p {
 	color:black	
 }
 
-#showingArea{
-	color:black
-}
-
-#email{
-	color:black
-}
