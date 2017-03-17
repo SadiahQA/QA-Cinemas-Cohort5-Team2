@@ -43,6 +43,7 @@
             userDal.getUserIdByEmail(userEmail).then(function(results) {
                 console.log("runs this far");
                 vm.idUser = results;
+                console.log(vm.idUser);
 
             }, function(error){
                 vm.error = true;

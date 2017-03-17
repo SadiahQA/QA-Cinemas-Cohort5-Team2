@@ -4,8 +4,7 @@
 	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking)">
 		
 	</div>
-	{{ctrl.booking}}
-	{{ctrl.booking.showing.showingType}}
+
 	
 	<br/>
 	<div class="container-fluid">
@@ -14,13 +13,13 @@
 				Student
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.studentNum=ctrl.decreaseNumber(ctrl.studentNum)">-</button>
+				<button type="button" ng-click="ctrl.studentNum=ctrl.decreaseNumber(ctrl.studentNum);ctrl.updatePrice()">-</button>
 			</div>
 			<div class="col-lg-2">
 				Quantity : {{ctrl.studentNum}}
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.studentNum=ctrl.incrementNumber(ctrl.studentNum)">+</button>
+				<button type="button" ng-click="ctrl.studentNum=ctrl.incrementNumber(ctrl.studentNum);ctrl.updatePrice()">+</button>
 			</div>
 			<div class="col-lg-3">
 			Ticket Price : &pound {{ctrl.studentPrice}}
@@ -38,13 +37,13 @@
 				Child
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.childNum=ctrl.decreaseNumber(ctrl.childNum)">-</button>
+				<button type="button" ng-click="ctrl.childNum=ctrl.decreaseNumber(ctrl.childNum);ctrl.updatePrice()">-</button>
 			</div>
 			<div class="col-lg-2">
 				Quantity : {{ctrl.childNum}}
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.childNum=ctrl.incrementNumber(ctrl.childNum)">+</button>
+				<button type="button" ng-click="ctrl.childNum=ctrl.incrementNumber(ctrl.childNum);ctrl.updatePrice()">+</button>
 			</div>
 			<div class="col-lg-3">
 			Ticket Price : &pound {{ctrl.childPrice}}
@@ -62,13 +61,13 @@
 				Adult
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.adultNum=ctrl.decreaseNumber(ctrl.adultNum)">-</button>
+				<button type="button" ng-click="ctrl.adultNum=ctrl.decreaseNumber(ctrl.adultNum);ctrl.updatePrice()">-</button>
 			</div>
 			<div class="col-lg-2">
 				Quantity : {{ctrl.adultNum}}
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.adultNum=ctrl.incrementNumber(ctrl.adultNum)">+</button>
+				<button type="button" ng-click="ctrl.adultNum=ctrl.incrementNumber(ctrl.adultNum);ctrl.updatePrice()">+</button>
 			</div>
 			<div class="col-lg-3">
 			Ticket Price : &pound {{ctrl.adultPrice}}
@@ -86,13 +85,13 @@
 				Concession
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.concessionNum=ctrl.decreaseNumber(ctrl.concessionNum)">-</button>
+				<button type="button" ng-click="ctrl.concessionNum=ctrl.decreaseNumber(ctrl.concessionNum);ctrl.updatePrice()">-</button>
 			</div>
 			<div class="col-lg-2">
 				Quantity : {{ctrl.concessionNum}}
 			</div>
 			<div class="col-lg-1">
-				<button type="button" ng-click="ctrl.concessionNum=ctrl.incrementNumber(ctrl.concessionNum)">+</button>
+				<button type="button" ng-click="ctrl.concessionNum=ctrl.incrementNumber(ctrl.concessionNum);ctrl.updatePrice()">+</button>
 			</div>
 			<div class="col-lg-3">
 			Ticket Price : &pound {{ctrl.concessionPrice}}
