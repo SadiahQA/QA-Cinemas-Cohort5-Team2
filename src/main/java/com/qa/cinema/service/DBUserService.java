@@ -39,7 +39,7 @@ public class DBUserService implements UserService {
 		Query query = em.createQuery("SELECT u FROM User u WHERE u.email= '" + email+"' and u.password= '"+password+"'");
 		Object userFound = query.getSingleResult();
 		if(query.getResultList().isEmpty()){
-			return "Invalid Login";}
+			return "{\"message\": \"login failed\"}";}
 		return util.getJSONForObject(userFound);
 		}
 	

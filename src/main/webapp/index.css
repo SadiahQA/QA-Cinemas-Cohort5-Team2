@@ -1,8 +1,9 @@
 body{
 	background-image: url("resources/background.jpg");
 	background-repeat: repeat-y;
-    padding-top: 65px; 
-} 
+    padding-top: 65px;
+    padding-bottom: 80px;
+}
 
 .navbar.navbar-inverse.navbar-static-top{
 	margin-bottom: 0;
@@ -28,6 +29,14 @@ body{
 
 
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
 .footer {
   position: absolute;
   right: 0;
@@ -49,7 +58,8 @@ span {
 }
 
 p {
-	font-size:13px
+    font-size: 13px
+}
 
 
 #movieArea{
