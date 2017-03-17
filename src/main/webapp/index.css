@@ -14,12 +14,14 @@ body{
 
 
 
-form{
-	color : black
-}
-
-
 #movieArea{
-	color : black
+	color:black	
 }
 
+#showingArea{
+	color:black
+}
+
+#email{
+	color:black
+}
