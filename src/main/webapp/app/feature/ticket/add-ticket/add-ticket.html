@@ -6,24 +6,25 @@
 
     <form role="form">
 	
-        <select id="movieArea" ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
+        <select id="movieArea" ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)" >
             <option value="" disabled selected>Select Movie</option>
             <option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
         </select>
 
 
-        <select  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
+        <select  id="showingArea" ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie" r  >
             <option value="" disabled selected>Select Showing</option>
             <option ng-repeat="showing in ctrl.showings" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
         </select>
 
 
-        <input id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
+        <input  id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" required >
+
 
 
 		<!-- <button type="submit" ng-click="ticket.user.idUser=ctrl.idUser;ctrl.addTicket(ticket)">Book</button> -->
 		<a ui-sref="createbooking">
-			<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)">Book</button>
+			<button id="submitBooking" type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)" ng-disabled="!ticket.showing">Book</button>
 		</a>
         
 
