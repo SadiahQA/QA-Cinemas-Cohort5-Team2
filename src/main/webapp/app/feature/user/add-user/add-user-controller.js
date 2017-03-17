@@ -42,19 +42,17 @@
 		}
 		
 	vm.login = function(useremail, userpassword){
-		if(JSON.stringify(userDal.getUserByEmailandPassword) === '{"message": "login failed"}'){
+		if(JSON.stringify(userDal.getUserByEmailAndPassword(useremail, hash(userpassword))) === '{"message": "login failed"}'){
 			{window.alert("Login failed: please check details and try again.");}
 		}
 		else{
 			userDal.getUserByEmailAndPassword(useremail, hash(userpassword)).then(function(results){
 				vm.userLoginMessage = results;
-				if(JSON.stringify(results) === JSON.stringify(util.getJSONForObject(userFound))) {
-					document.cookie = "usercookie = "
-						+ hash(useremail+ userpassword);
-					userFactory.set(results);
-					$state.go('homepage');
-					window.alert("Welcome back "+results.firstName)
-				}
+				document.cookie = "usercookie = "
+					+ hash(useremail+ userpassword);
+				userFactory.set(results);
+				$state.go('homepage');
+				window.alert("Welcome back "+results.firstName)
 			})
 			}
 			vm.loggedIn = userFactory.get();
