@@ -27,11 +27,6 @@ public class DBUserService implements UserService {
 	@Inject
 	private JSONUtil util;
 	
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> f01f6ec7d88971022a74b2f1d8879ae93c760977
 	@Override
 	public String findUserIdByEmail(String email){
 		Query query = em.createQuery("SELECT u.id FROM User u WHERE u.email ='" + email+"'");
