@@ -5,6 +5,7 @@
 		
 	</div>
 
+
 	
 	<br/>
 	<div class="container-fluid">
@@ -102,18 +103,13 @@
 		</div>
 	</div>
 	<br/>
-	
+
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}
 	</div>
-	
+  
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
 	 ctrl.saveBooking(ticket); "><a ui-sref="payment">Book Tickets</a></button>
-	
-	
-	
-
-
 
 </div>
