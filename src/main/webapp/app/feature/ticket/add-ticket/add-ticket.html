@@ -7,36 +7,41 @@
     <form role="form">
 
 
-        <select ng-model="ticket.ticketType">
-            <option value="" disabled selected>Select Ticket Type</option>
-            <option value="Student">Student</option>
-            <option value="Adult">Adult</option>
-            <option value="Child">Child</option>
-            <option value="Concession">Concession</option>
-        </select>
+        <select id="movieArea" ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
 
-
+<<<<<<< HEAD
 
 
 
 
         <select  ng-model="selectedMovie.idMovie" ng-init="ctrl.getMovies()" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
+=======
+>>>>>>> f01f6ec7d88971022a74b2f1d8879ae93c760977
             <option value="" disabled selected>Select Movie</option>
             <option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
         </select>
 
 
-        <select  ng-model="ticket.showing.idShowing" ng-disabled="!selectedMovie.idMovie"   >
+
+        <select id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
+
             <option value="" disabled selected>Select Showing</option>
-            <option ng-repeat="showing in ctrl.showings" value="{{showing.idShowing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
+            <option ng-repeat="showing in ctrl.showings" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
         </select>
 
 
-        <input id="email" placeholder="Enter Email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
+
+        <input id="ticketEmail" placeholder="Enter your email" ng-model="selectedUser.email" ng-change="ctrl.getUser(selectedUser.email)" >
+
+
 
 
 		<!-- <button type="submit" ng-click="ticket.user.idUser=ctrl.idUser;ctrl.addTicket(ticket)">Book</button> -->
-		<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)"><a ui-sref="createbooking">Book</a></button>
+		<a ui-sref="createbooking">
+
+		<button type="submit" ng-click="ticket.user.idUser=ctrl.idUser; ctrl.saveBooking(ticket)">Book</button>
+
+		</a>
         
 
     </form>

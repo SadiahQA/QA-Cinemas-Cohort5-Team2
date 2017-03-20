@@ -1,6 +1,6 @@
 (function() {
 
-	var AddUserController = function($state, userDal) {
+	var AddUserController = function($state, userDal, userFactory) {
 		var vm = this;
 
 		var hash = function(str) {
@@ -18,15 +18,14 @@
 		}
 
 		vm.addUser = function(userToAdd) {
+			userToAdd.password = hash(userToAdd.password);
 
-			userDal
-					.createNewUser(userToAdd)
-					.then(
-							function(results) {
+			userDal.createNewUser(userToAdd).then(function(results) {
 								vm.userAddMessage = results;
 								if (JSON.stringify(results) === '{"message":"User Successfully Added"}') {
 									document.cookie = "usercookie = "
 											+ hash(userToAdd.email+ userToAdd.password);
+									userFactory.set(userToAdd);
 									$state.go('homepage');
 									window.alert("New User Created");
 								}
@@ -41,8 +40,25 @@
 								vm.errorMessage = error;
 							});
 		}
+		
+	vm.login = function(useremail, userpassword){
+		if(JSON.stringify(userDal.getUserByEmailAndPassword(useremail, hash(userpassword))) === '{"message": "login failed"}'){
+			{window.alert("Login failed: please check details and try again.");}
+		}
+		else{
+			userDal.getUserByEmailAndPassword(useremail, hash(userpassword)).then(function(results){
+				vm.userLoginMessage = results;
+				document.cookie = "usercookie = "
+					+ hash(useremail+ userpassword);
+				userFactory.set(results);
+				$state.go('homepage');
+				window.alert("Welcome back "+results.firstName)
+			})
+			}
+			vm.loggedIn = userFactory.get();
+			vm.compare = (JSON.stringify(vm.loggedIn));
+	};
 	}
-
 	angular.module('movieApp').controller('addUserController',
-			[ '$state', 'userDal', AddUserController ]);
+			[ '$state', 'userDal', 'userFactory', AddUserController ]);
 }());
