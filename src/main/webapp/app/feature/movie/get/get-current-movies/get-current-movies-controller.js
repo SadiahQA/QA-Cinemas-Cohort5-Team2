@@ -1,6 +1,6 @@
 (function() {
 
-    var GetCurrentMovieController =  function(movieDal, showingDal, $stateParams) {
+    var GetCurrentMovieController =  function(movieDal, showingDal, bookingFactory, $stateParams) {
         var vm = this;
 
         function init() {
@@ -101,6 +101,12 @@
         	return returnDate;        	
         	
         }
+
+
+        vm.saveBooking = function (booking){
+
+            bookingFactory.set(booking);
+        }
        
         
         vm.getShowings = function (theMovieId){
@@ -116,5 +122,5 @@
         }
     };
 
-    angular.module('movieApp').controller('getCurrentMovieController', ['movieDal', 'showingDal', '$stateParams', GetCurrentMovieController]);
+    angular.module('movieApp').controller('getCurrentMovieController', ['movieDal', 'showingDal', 'bookingFactory', '$stateParams', GetCurrentMovieController]);
 }());
