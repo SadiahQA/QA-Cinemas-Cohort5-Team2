@@ -1,8 +1,7 @@
 movieApp.factory('userFactory', function(){
 	
 	var userSession = {}
-	console.log(userSession);
-	console.log(JSON.stringify(userSession));
+
 	
 	
 	function set(data){
@@ -14,6 +13,7 @@ movieApp.factory('userFactory', function(){
 	}
 	
 	function loggedIn(){
+
 	
 		if(JSON.stringify(userSession) !== "{}"){
 			return true;
