@@ -22,11 +22,11 @@
                 vm.errorMessage = error;
             });
         }
-        vm.getShowings = function (theMovieId) {
+        vm.getShowings = function (idMovie) {
 
 
 
-            showingDal.getShowingsForMovie(theMovieId, 1).then(function (results) {
+            showingDal.getShowingsForMovie(idMovie, 1).then(function (results) {
                 vm.showings = results;
 
             }, function (error) {

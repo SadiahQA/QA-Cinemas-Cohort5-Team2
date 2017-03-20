@@ -63,12 +63,11 @@
 		vm.showing;
 		vm.getPrice = function(booking){
             vm.showing = JSON.parse(booking.showing);
-			console.log(vm.showing);
-			console.log(vm.showing.showingType);
+
 			priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
 				vm.studentPrice = Number(response).toFixed(2);
 			});
-			console.log(vm.studentPrice);
+			
 			priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
 				vm.childPrice = Number(response).toFixed(2);
 			});
