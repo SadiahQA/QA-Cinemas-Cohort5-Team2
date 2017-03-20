@@ -14,7 +14,11 @@
 
 			}
 			return hash;
-
+			
+		
+		}	
+		vm.isLoggedIn = function(){
+			return userFactory.loggedIn();
 		}
 
 		vm.addUser = function(userToAdd) {
