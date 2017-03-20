@@ -1,6 +1,6 @@
 (function() {
 
-    var GetOneMovieController =  function(movieDal, $stateParams, showingDal) {
+    var GetOneMovieController =  function(movieDal, $stateParams, bookingFactory, showingDal) {
         var vm = this;
 
         function getOneMovie() {
@@ -12,9 +12,13 @@
             });
         }
         getOneMovie();
-    
 
-   function getShowingsforMovie(){
+        vm.saveBooking = function (booking){
+
+            bookingFactory.set(booking);
+        }
+
+        function getShowingsforMovie(){
 	   showingDal.getShowingsForMovie($stateParams.idMovie,1).then(function (results){
 		   vm.showings = results;
 	   }, function(error){
@@ -24,7 +28,8 @@
 	   }
 	   getShowingsforMovie()
    }
+
     
-    angular.module('movieApp').controller('getOneMovieController', ['movieDal', '$stateParams', 'showingDal', GetOneMovieController])
+    angular.module('movieApp').controller('getOneMovieController', ['movieDal', '$stateParams','bookingFactory', 'showingDal', GetOneMovieController])
 
 }());
