@@ -1,6 +1,6 @@
 (function(){
 	
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal){
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory){
 		
 		var vm = this;
 		
@@ -12,6 +12,12 @@
 		vm.childNum=0;
 		vm.adultNum=0;
 		vm.concessionNum=0;
+		
+		vm.concessionPrice;
+		vm.adultPrice;
+		vm.childPrice;
+		vm.studentPrice
+		vm.totalPrice = (0.00).toFixed(2);
 		
 		vm.incrementNumber = function(number){
 			number = number + 1;
@@ -36,13 +42,8 @@
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				vm.bookingResponse=response;
 			});
+			vm.storePrice(vm.totalPrice);
 		}
-		
-		vm.concessionPrice;
-		vm.adultPrice;
-		vm.childPrice;
-		vm.studentPrice
-		vm.totalPrice = (0.00).toFixed(2);
 
 		vm.getPrice = function(booking){			
 			vm.showing = JSON.parse(booking.showing);
@@ -71,9 +72,13 @@
 			vm.totalPrice = (vm.totalPrice).toFixed(2);
 		}
 		
+		vm.storePrice = function(price){
+			priceFactory.set(price);
+		}
+		
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', CreateBookingController]);
 	
 }());

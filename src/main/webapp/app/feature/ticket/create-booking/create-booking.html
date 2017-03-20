@@ -106,12 +106,11 @@
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}
 	</div>
-	<a ui-sref="confirmation">
+	
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
-	 ctrl.saveBooking(ticket); ">Book Tickets</button>
-	</a>
-	 {{ctrl.ticketArray}}
+	 ctrl.saveBooking(ticket); "><a ui-sref="payment">Book Tickets</a></button>
+	
 	
 	
 
