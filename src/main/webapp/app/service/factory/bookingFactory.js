@@ -1,12 +1,14 @@
-movieApp.factory('bookingFactory', function(){
+movieApp.factory('bookingFactory', function(localStorageService){
 	var savedData = {}
 	
 	function set(data){
+		localStorageService.cookie.set('bookingStorageKey', data);	
 		savedData = data;
 	}
 	
 	function get(){
-		return savedData;
+
+		return localStorageService.cookie.get('bookingStorageKey');
 	}
 	
 	return{

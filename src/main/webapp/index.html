@@ -5,42 +5,6 @@
     <title>Movie application</title>
 </head>
 <body>
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<div ng-controller="indexController as ctrl"></div>
-	
-
-    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a ui-sref="homepage" class="navbar-left"><img src="resources/QACinema.png"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
-                    <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
-                    <li><a ui-sref="bookticket">Book a Ticket</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a ui-sref="adduser">Sign Up</a></li>
-                    <li><a href="#">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container-fluid" id="mainpage">
-	    <div class="row">
-			<div class="col-lg-3"></div>
-		    	<div class="col-lg-6" id="view" ui-view></div>
-		    <div class="col-lg-3"></div>
-	    </div>
-    </div>
-
 
 
     <!-- Jquery modules-->
@@ -52,7 +16,14 @@
 
     <!-- Bootstrap modules-->
     <script src="scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scripts/bootstrap.min.css">
+    
+    <!-- Paypal -->
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    
+    <!-- Local Storage -->
+    <script src="scripts/angular-local-storage.js"></script>
 
 
     <!-- App and state manager-->
@@ -71,12 +42,12 @@
     <script src="app/service/factory/bookingFactory.js"></script>
     <script src="app/service/factory/ticketFactory.js"></script>
      <script src="app/service/factory/userFactory.js"></script>
+     <script src="app/service/factory/priceFactory.js"></script>
 
     <!-- Features-->
     <!--<script src="app/feature/dashboard/dashboard-controller.js"></script>-->
     <script src="index-controller.js"></script>
     <script src="app/feature/movie/get/get-current-movies/get-current-movies-controller.js"></script>
-    <script src="app/feature/movie/get/get-future-movies/get-future-movies-controller.js"></script>
     <script src="app/feature/movie/get/get-one/get-one-movie-controller.js"></script>
     <script src="app/feature/home/home-controller.js"></script>
     <script src="app/feature/user/add-user/add-user-controller.js"></script>
@@ -88,7 +59,49 @@
     <script src="app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing-controller.js"></script>
     <script src="app/feature/ticket/get/get-ticket-by-user/get-ticket-by-user-controller.js"></script>
     <script src="app/feature/ticket/create-booking/create-booking-controller.js"></script>
+    <script src="app/feature/payment/paymentpage-controller.js"></script>
    
+
+
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<div ng-controller="indexController as ctrl">
+	
+
+
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="homepage" class="navbar-left"><img src="resources/QACinema.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
+                    <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
+                    <li><a ui-sref="bookticket">Book a Ticket</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
+                    <li ng-if=ctrl.isLoggedIn()><a HREF="javascript:history.go(0)">Logout</a></li>
+                  
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid" id="mainpage">
+	    <div class="row">
+			<div class="col-lg-3"></div>
+		    	<div class="col-lg-6" id="view" ui-view></div>
+		    <div class="col-lg-3"></div>
+	    </div>
+    </div>
+
+
 
 </body>
 

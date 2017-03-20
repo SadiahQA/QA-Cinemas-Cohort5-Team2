@@ -1,9 +1,13 @@
 (function(){
 	
 	var IndexController = function(userFactory){
-	var vm = this;
+		var vm = this;
+		
+		vm.user = userFactory.get();
 	
-	vm.loggedIn = userFactory.get();
+	vm.isLoggedIn = function(){
+		return userFactory.loggedIn();
+	};
 	}
 	
 	
