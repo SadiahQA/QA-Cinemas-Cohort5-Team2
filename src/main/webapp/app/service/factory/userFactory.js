@@ -1,9 +1,6 @@
 movieApp.factory('userFactory', function(){
 	
-	var userSession = {}
-	console.log(userSession);
-	console.log(JSON.stringify(userSession));
-	
+	var userSession = {}	
 	
 	function set(data){
 		userSession = data;
