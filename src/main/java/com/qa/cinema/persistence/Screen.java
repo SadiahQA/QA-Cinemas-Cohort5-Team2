@@ -56,7 +56,7 @@ public class Screen {
 		//empty constructor
 	}
 
-	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox) {
+	public Screen(Long screenNum, int noOfSeats, String screenType, boolean isDirectorsBox, List<Showing> showings) {
 		this.screenNum = screenNum;
 		this.noOfSeats = noOfSeats;
 		this.screenType = screenType;
