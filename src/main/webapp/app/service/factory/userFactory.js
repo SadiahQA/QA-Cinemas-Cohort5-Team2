@@ -1,8 +1,7 @@
 movieApp.factory('userFactory', function(){
-	
+
 	var userSession = {}
-	
-	
+
 	function set(data){
 		userSession = data;
 	}
@@ -11,8 +10,20 @@ movieApp.factory('userFactory', function(){
 		return userSession;
 	}
 	
+	function loggedIn(){
+
+	
+		if(JSON.stringify(userSession) !== "{}"){
+			return true;
+		}
+		else {
+			return false;}
+	}
+	
+	
 	return{
 		set: set,
-		get: get
+		get: get,
+		loggedIn: loggedIn
 	}
 });
