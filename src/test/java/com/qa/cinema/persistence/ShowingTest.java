@@ -52,7 +52,7 @@ public class ShowingTest {
 	}
 	
 	@Test
-	public void testGetShowing(){
+	public void testGetShowingDate(){
 		assertTrue(showing1.getShowingDate().equals(new Date(2017, 12, 12)));
 	}
 	
