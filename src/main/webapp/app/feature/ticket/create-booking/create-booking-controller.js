@@ -33,7 +33,9 @@
 		vm.saveBooking = function(ticket){
 			ticketFactory.set(ticket);
 			vm.ticketArray = ticketFactory.get();
-			ticketDal.createTicket(vm.ticketArray);
+			ticketDal.createTicket(vm.ticketArray).then(function(response){
+				vm.bookingResponse=response;
+			});
 		}
 		
 		vm.concessionPrice;
