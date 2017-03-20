@@ -76,7 +76,7 @@
 										<td><h4>{{showing.startTime}}</h4></td>
 										<td ng-if = 'showing.availableSeats > 0'><h4>
 											<a ui-sref="createbooking" ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">
-												>Book Now!
+												Book Now!
 											</a></h4></td>
 										<td ng-if = 'showing.availableSeats <= 0'><h4> Fully Booked </h4></td>
 									</tr>
