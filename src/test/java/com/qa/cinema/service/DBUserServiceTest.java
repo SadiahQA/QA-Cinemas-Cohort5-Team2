@@ -2,7 +2,6 @@ package com.qa.cinema.service;
 
 import static org.junit.Assert.*;
 
-import java.awt.List;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
