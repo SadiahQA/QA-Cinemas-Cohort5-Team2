@@ -28,6 +28,7 @@ public class DBUserService implements UserService {
 	private JSONUtil util;
 	
 	
+	
 	@Override
 	public String findUserIdByEmail(String email){
 		Query query = em.createQuery("SELECT u.id FROM User u WHERE u.email= '" + email+"' ");
