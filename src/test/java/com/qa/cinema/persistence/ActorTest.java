@@ -13,12 +13,7 @@ public class ActorTest {
 	
 	Actor actor1 = new Actor("FirstName","LastName","Gender","DOB");
 
-	@Test
-	public void testGetActorId() {
-		Actor testActor = new Actor();
-		assertNull(testActor.getIdActor());
-	}
-	
+
 	@Test
 	public void testGetFirstNameActor(){
 		assertTrue(actor1.getFirstNameActor().equals("FirstName"));
