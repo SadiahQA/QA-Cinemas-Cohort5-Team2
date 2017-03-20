@@ -53,6 +53,7 @@
 										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
 								</div>
 							</div>
+							<br/>
 							<div class="table-responsive">
 								<table class="table table-bordered">
 
@@ -69,7 +70,8 @@
 										<td><h4>{{showing.startTime}}</h4></td>
 										<td><h4>{{showing.availableSeats}}</h4></td>
 										<td><h4>{{showing.showingType}}</h4></td>
-										<td><h4><a ui-sref="bookticket"> Book now </a></h4></td>
+										<td ng-if = 'showing.availableSeats > 0'><h4><a ui-sref="bookticket"> Book now </a></h4></td>
+										<td ng-if = 'showing.availableSeats <= 0'><h4> Fully Booked </h4></td>
 									</tr>
 								</table>
 							</div>
