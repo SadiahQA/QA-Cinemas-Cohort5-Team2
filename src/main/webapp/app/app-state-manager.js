@@ -73,6 +73,9 @@
         }).state("confirmation", {
             url:"/confirmation",
             templateUrl: "app/feature/confirmation/confirmation.html"
+        }).state("seat", {
+            url:"/seat",
+            templateUrl: "app/feature/seat/update-seat.html"
         })
 
         
