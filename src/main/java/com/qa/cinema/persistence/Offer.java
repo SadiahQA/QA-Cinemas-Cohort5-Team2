@@ -17,19 +17,21 @@ public class Offer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long offerID;
+	private int offerID;
 	
 	private String offerCode;
 	private String offerName;
+	private double discountAmount;
 	
 	public Offer() {}
 	
-	public Offer(String offerCode, String offerName){
+	public Offer(String offerCode, String offerName, double discountAmount){
 		this.offerCode = offerCode;
 		this.offerName = offerName;
+		this.discountAmount = discountAmount;
 	}
 	
-	public Long getOfferID(){
+	public int getOfferID(){
 		return offerID;
 	}
 	
@@ -39,5 +41,9 @@ public class Offer {
 	
 	public String getOfferName(){
 		return offerName;
+	}
+	
+	public double getDiscountAmount(){
+		return discountAmount;
 	}
 }

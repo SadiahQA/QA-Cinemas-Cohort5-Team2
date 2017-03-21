@@ -9,8 +9,6 @@ package com.qa.cinema.service;
 
 public interface OfferService {
 	
-	String getOfferName(int offerID);
-	
-	double getDiscountAmount(int offerID);
+	String getDiscountAmount(String offerCode);
 	
 }

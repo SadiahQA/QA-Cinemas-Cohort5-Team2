@@ -21,10 +21,10 @@ public class OfferEndpoint {
 	@Inject
 	private OfferService service;
 	
-	@Path("/json/{offerID}")
+	@Path("/json/{offerCode}")
 	@GET
 	@Produces({"application/json"})
-	public double getDiscountAmount(@PathParam("offerID") int offerID) {
-		return service.getDiscountAmount(offerID);
+	public String getDiscountAmount(@PathParam("offerCode") String offerCode) {
+		return service.getDiscountAmount(offerCode);
 	}
 }
