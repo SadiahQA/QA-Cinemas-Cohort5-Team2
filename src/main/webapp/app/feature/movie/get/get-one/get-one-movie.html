@@ -18,9 +18,9 @@
 							style="width: 50%; ">
 					</div>
 					<div >
-						<h2>{{ctrl.movie.description}}</h2>
+						<h3>{{ctrl.movie.description}}</h3>
 					</div>
-					<div class="row">
+					<div class="row col-sm-6" >
 						<div >
 							<h3> Release - {{ctrl.movie.releaseDate}}</h3>
 							<h3>{{ctrl.movie.genre}}</h3>
@@ -55,7 +55,15 @@
 										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
 								</div>
 							</div>
-							<br/>
+						</div>
+					</div>
+					<br/>
+					<div class="embed-responsive embed-responsive-16by9 col-sm-12" >
+						<iframe class="embed-responsive-item" ng-src="{{ctrl.trustedURL}}"></iframe>
+					</div>
+					<br/>
+					<div class="col-sm-12">
+						<div>
 							<div >
 								<h2> Showings </h2>
 							</div>
