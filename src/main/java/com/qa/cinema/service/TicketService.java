@@ -16,6 +16,8 @@ public interface TicketService {
 	String createTickets(String ticket);
 	
 	String updateTicket(Long idTicket);
+	
+	String removeTickets(String tickets);
 
 	String getTicket(String idTicket);
 	

@@ -29,20 +29,28 @@
 								if (JSON.stringify(results) === '{"message":"User Successfully Added"}') {
 									document.cookie = "usercookie = "
 											+ hash(userToAdd.email+ userToAdd.password);
-									userFactory.set(userToAdd);
-									$state.go('homepage');
+								
 									window.alert("New User Created");
 								}
 
 								else {
 									window.alert("User Creation Failed");
 								}
-							},
-
+								userDal.getUserByEmailAndPassword(userToAdd.email, userToAdd.password).then(function(returns){
+									userFactory.set(returns);
+									$state.go('homepage');
+								
+							})				
+			},
+						
 							function(error) {
 								vm.error = true;
 								vm.errorMessage = error;
 							});
+			
+		
+		
+			
 		}
 		
 	vm.login = function(useremail, userpassword){

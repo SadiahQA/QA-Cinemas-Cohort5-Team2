@@ -39,7 +39,6 @@ public class DBTicketService implements TicketService{
 	@Override
 	public String createTickets(String tickets) {
 
-
 		Type type = new TypeToken<List<Ticket>>(){}.getType();
 		List<Ticket> ticketList = new Gson().fromJson(tickets, type);
 		if(ticketList.isEmpty()){
@@ -56,6 +55,21 @@ public class DBTicketService implements TicketService{
 		else{
 			return "{\"message\": \"Not enough available seats\"}";
 		}
+	}
+	
+	@Override
+	public String removeTickets(String tickets){
+		Type type = new TypeToken<List<Ticket>>(){}.getType();
+		List<Ticket> ticketList = new Gson().fromJson(tickets, type);
+		if(ticketList.isEmpty()){
+			return "{\"message\": \"No tickets to delete\"}";
+		}
+		Showing showing = em.find(Showing.class, ticketList.get(0).getShowing().getIdShowing());
+		showing.setAvailableSeats(showing.getAvailableSeats()+ticketList.size());
+		for(Ticket t : ticketList){
+			em.remove(em.contains(t) ? t : em.merge(t));
+		}
+		return "{\"message\": \"Tickets successfully removed\"}";
 	}
 	
 

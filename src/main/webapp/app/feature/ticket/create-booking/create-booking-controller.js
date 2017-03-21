@@ -1,6 +1,6 @@
 (function(){
-	
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, offerDal){
+
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, offerDal){
 
 		var vm = this;
 		vm.retriveBookingdetails = function(){
@@ -50,9 +50,12 @@
 
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				vm.bookingResponse=response;
+				manyTicketFactory.set(vm.ticketArray);
+				$state.go('payment');
 				if(JSON.stringify(vm.bookingResponse) === "{\"message\": \"No tickets found\"}"){
 					ticketFactory.set(null);
 				}
+				
 			});
 			vm.storePrice(vm.totalPrice);
 		}
@@ -61,24 +64,28 @@
 		vm.showing;
     
 		vm.getPrice = function(booking){
-			vm.showing = booking.showing;
-			if(!vm.showing.idShowing){
-                vm.showing = JSON.parse(booking.showing);
-			}
+			if (booking){
+				vm.showing = booking.showing;
+				if(!vm.showing.idShowing){
+	                vm.showing = JSON.parse(booking.showing);
+	                booking.showing = JSON.parse(booking.showing);
+				}
 
-			priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
-				vm.studentPrice = Number(response).toFixed(2);
-			});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
+					vm.studentPrice = Number(response).toFixed(2);
+				});
+				
+				priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
+					vm.childPrice = Number(response).toFixed(2);
+				});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Adult').then(function(response){
+					vm.adultPrice = Number(response).toFixed(2);
+				});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Concession').then(function(response){
+					vm.concessionPrice = Number(response).toFixed(2);
+				});
+			}
 			
-			priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
-				vm.childPrice = Number(response).toFixed(2);
-			});
-			priceDal.getPriceForTicket(vm.showing.showingType,'Adult').then(function(response){
-				vm.adultPrice = Number(response).toFixed(2);
-			});
-			priceDal.getPriceForTicket(vm.showing.showingType,'Concession').then(function(response){
-				vm.concessionPrice = Number(response).toFixed(2);
-			});
 		}
 		
 		vm.updatePrice = function(){
@@ -105,9 +112,28 @@
 			priceFactory.set(price);
 		}
 		
+		vm.clearPreviousInfo = function(){
+			localStorageService.cookie.remove('manyTicketStorageKey');
+			localStorageService.cookie.remove('bookingStorageKey');
+			localStorageService.cookie.remove('ticketArrayKey');
+		}
+		
+		vm.checkBookingExists = function(){
+			if (angular.isUndefined(vm.booking)){
+				
+			}
+			else{
+				$state.go('homepage');
+				console.log(manyTicketFactory.get());
+				ticketDal.removeTickets(manyTicketFactory.get());
+			}
+
+		}
+		
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'offerDal', CreateBookingController]);
+
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'offerDal', CreateBookingController]);
 	
 }());

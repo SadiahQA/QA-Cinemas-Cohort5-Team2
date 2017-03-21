@@ -1,8 +1,9 @@
 <div ng-controller="createBookingController as ctrl">
 
-
-	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking)">
-		
+	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
+	</div>
+	
+	<div ng-init="ctrl.clearPreviousInfo()">
 	</div>
 	
 	<br/>
@@ -111,12 +112,9 @@
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}
 	</div>
-  	<a ui-sref="payment">
+	
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
 	 ctrl.saveBooking(ticket); ">Book Tickets</button>
-	</a>
-	
-	
 
 </div>
