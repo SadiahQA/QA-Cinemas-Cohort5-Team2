@@ -1,6 +1,6 @@
 (function(){
 	
-	var PaypalController = function(bookingFactory, priceFactory, $window, localStorageService){
+	var PaypalController = function(bookingFactory, priceFactory, $state, localStorageService, ticketDal, manyTicketFactory){
 		
 		paypal.Button.render({
 		    
@@ -29,19 +29,21 @@
 	        onAuthorize: function(data, actions) {
 	        
 	            return actions.payment.execute().then(function() {
-	            	$window.location = "#/paymentsuccess";
+	            	$state.go('paymentsuccess');
 	            	localStorageService.remove(manyTicketStorageKey, bookingStorageKey);
 	            });
 	        },
 	        
 	        onError : function(err){
-	        	$window.location="#/home";
+	        	$state.go('homepage');
 	        	localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
+	        	ticketDal.removeTickets(manyTicketFactory.get());
 	        },
 	        
 	        onCancel : function(data, actions){
-	        	$window.location="#/home";
+	        	$state.go('homepage');
 	        	localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
+	        	ticketDal.removeTickets(manyTicketFactory.get());
 	        }
 
 	    }, '#paypal-button');
@@ -49,6 +51,6 @@
 		
 	};
 	
-	angular.module('movieApp').controller('paypalController', ['bookingFactory', 'priceFactory', '$window', 'localStorageService', PaypalController]);
+	angular.module('movieApp').controller('paypalController', ['bookingFactory', 'priceFactory', '$state', 'localStorageService', 'ticketDal', 'manyTicketFactory', PaypalController]);
 	
 }())
