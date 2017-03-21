@@ -64,6 +64,7 @@
 			vm.showing = booking.showing;
 			if(!vm.showing.idShowing){
                 vm.showing = JSON.parse(booking.showing);
+                booking.showing = JSON.parse(booking.showing);
 			}
 
 			priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
