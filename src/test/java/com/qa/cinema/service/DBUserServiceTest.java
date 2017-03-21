@@ -50,6 +50,13 @@ public class DBUserServiceTest {
 		Mockito.when(user1.getPassword()).thenReturn("pass");
 	}
 	
+	
+	@Test
+	public void findUserIdByEmailTest(){
+		Mockito.when(query.getSingleResult()).thenReturn(user1);
+		Mockito.when(util.getJSONForObject(user1)).thenReturn("Single User String info By Email");
+		assertEquals("Single User String info By Email", userService.findUserIdByEmail("email@domain.com"));
+	}
 
 	@Test
 	public void findIndividualUserTest() {
