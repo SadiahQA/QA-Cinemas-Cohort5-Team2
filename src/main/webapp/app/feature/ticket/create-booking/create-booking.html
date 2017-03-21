@@ -105,8 +105,8 @@
 	
 	<form>
 		Promo-code:<br>
-		<input type="text" name="offer" ng-model="offer.offerCode">
-		<input type="submit" value="Submit" ng-click="ctrl.discountPrice(offer.offerCode)">
+		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode">
+		<button type="submit" id="codeButton" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
 	</form>
 
 	<div>
