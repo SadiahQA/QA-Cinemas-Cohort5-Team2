@@ -10,6 +10,10 @@ movieApp.factory('userFactory', function(){
 		return userSession;
 	}
 	
+	function logOut(){
+		userSession = {};
+	}
+	
 	function loggedIn(){
 
 	
@@ -24,6 +28,8 @@ movieApp.factory('userFactory', function(){
 	return{
 		set: set,
 		get: get,
+		logOut: logOut,
 		loggedIn: loggedIn
+
 	}
 });
