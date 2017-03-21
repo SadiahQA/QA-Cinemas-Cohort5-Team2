@@ -1,9 +1,32 @@
 <div ng-controller="paymentPageController as ctrl">
+	<div ng-controller="paypalController as paypal">
+		<div ng-init="ctrl.getBooking()">
+
+<h1>Finalize Booking</h1>
+
+<div class="container-fluid">
+	<div ng-repeat="ticket in ctrl.booking">
+		<div class="row">
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{ctrl.booking}}
 
 <div id="paypal-button"></div> 
 
-<script>
-    
-</script>
-
+		</div>
+	</div>
 </div>
