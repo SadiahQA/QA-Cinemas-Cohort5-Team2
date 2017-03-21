@@ -30,6 +30,5 @@ movieApp.factory('userFactory', function(){
 		get: get,
 		logOut: logOut,
 		loggedIn: loggedIn
-
 	}
 });

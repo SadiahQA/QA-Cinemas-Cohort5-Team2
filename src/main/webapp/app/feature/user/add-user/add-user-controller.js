@@ -62,11 +62,6 @@
 			vm.loggedIn = userFactory.get();
 			vm.compare = (JSON.stringify(vm.loggedIn));
 	};
-	
-
-
-	
-	
 	}
 	angular.module('movieApp').controller('addUserController',
 			[ '$state', 'userDal', 'userFactory', AddUserController ]);
