@@ -41,8 +41,8 @@
     <!-- Factorys -->
     <script src="app/service/factory/bookingFactory.js"></script>
     <script src="app/service/factory/ticketFactory.js"></script>
-     <script src="app/service/factory/userFactory.js"></script>
-     <script src="app/service/factory/priceFactory.js"></script>
+    <script src="app/service/factory/userFactory.js"></script>
+    <script src="app/service/factory/priceFactory.js"></script>
 
     <!-- Features-->
     <!--<script src="app/feature/dashboard/dashboard-controller.js"></script>-->
@@ -87,7 +87,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
-                    <li ng-if=ctrl.isLoggedIn()><a HREF="javascript:history.go(0)">Logout</a></li>
+                    <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
                   
                 </ul>
             </div>
