@@ -32,6 +32,7 @@
 
     <!-- Services-->
     <script src="app/service/dal/dal.js"></script>
+    <script src="app/service/dal/cinema.js"></script>
     <script src="app/service/dal/movie.js"></script>
     <script src="app/service/dal/user.js"></script>
     <script src="app/service/dal/showing.js"></script>
@@ -40,6 +41,7 @@
     
     <!-- Factorys -->
     <script src="app/service/factory/bookingFactory.js"></script>
+    <script src="app/service/factory/cinemaFactory.js"></script>
     <script src="app/service/factory/ticketFactory.js"></script>
      <script src="app/service/factory/userFactory.js"></script>
      <script src="app/service/factory/priceFactory.js"></script>
@@ -87,10 +89,19 @@
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
                     <li><a ui-sref="bookticket">Book a Ticket</a></li>
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="form-group">
+                            <select id="cinemaSelect" ng-model="selectedCinema.idCinema" ng-change="ctrl.setCinema(selectedCinema.idCinema)">
+                                <option value="" disabled selected>Select Cinema</option>
+                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema.idCinema}}">{{cinema.city}}</option>
+                            </select>
+                        </div>
+                    </li>
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
                     <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
-                  
+
                 </ul>
             </div>
         </div>

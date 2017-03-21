@@ -1,6 +1,6 @@
 (function() {
 
-    var HomeController =  function(movieDal, ticketDal, showingDal,  userDal, bookingFactory, userFactory) {
+    var HomeController =  function(movieDal, ticketDal, showingDal,  userDal, bookingFactory, userFactory, cinemaFactory) {
         var vm = this;
 
         function init() {
@@ -24,9 +24,7 @@
         }
         vm.getShowings = function (idMovie) {
 
-
-
-            showingDal.getShowingsForMovie(idMovie, 1).then(function (results) {
+            showingDal.getShowingsForMovie(idMovie, cinemaFactory.get()).then(function (results) {
                 vm.showings = results;
 
             }, function (error) {
@@ -61,5 +59,5 @@
 
 
 
-    angular.module('movieApp').controller('homeController', ['movieDal','ticketDal','showingDal','userDal', 'bookingFactory', 'userFactory', HomeController]);
+    angular.module('movieApp').controller('homeController', ['movieDal','ticketDal','showingDal','userDal', 'bookingFactory', 'userFactory', 'cinemaFactory', HomeController]);
 }());

@@ -19,7 +19,7 @@
 		<select id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
 
 			<option value="" disabled selected>Select Showing</option>
-			<option ng-repeat="showing in ctrl.showings" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
+			<option ng-repeat="showing in ctrl.showings" ng-if="showing.availableSeats > 0" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
 		</select>
 
 
