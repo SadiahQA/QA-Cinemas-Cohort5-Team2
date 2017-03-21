@@ -1,26 +1,28 @@
 <div ng-controller="getOneMovieController as ctrl">
 
+	<link rel="stylesheet" type="text/css" href="app/feature/movie/get/get-one/get-one-movie.css">
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="span10 offset2">
+			<div id = "wholePage" class="span10 offset2">
 				<div class="row">
-					<div class="span12">
+					<div class="span10 offset 2">
 						<h1>{{ctrl.movie.title}}</h1>
+						<br/>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="span6">
-						<img class="poster" ng-src="{{ctrl.movie.posterURL}}"
-							style="width: 25%; height: 25%">
+					<div class="col-sm-6" >
+						<img class="poster center-block align-middle" ng-src="{{ctrl.movie.posterURL}}"
+							style="width: 50%; ">
 					</div>
-					<div class="span6">
+					<div >
 						<h2>{{ctrl.movie.description}}</h2>
 					</div>
 					<div class="row">
-						<div class="span6">
-							<h3>{{ctrl.movie.releaseDate}}</h3>
+						<div >
+							<h3> Release - {{ctrl.movie.releaseDate}}</h3>
 							<h3>{{ctrl.movie.genre}}</h3>
 							<h4>{{ctrl.movie.duration}}</h4>
 							<div>
@@ -53,23 +55,30 @@
 										ng-src="http://www.bbfc.co.uk/sites/default/files/styles/40x40/public/certificate/BBFC_18_150px-height.png">
 								</div>
 							</div>
+							<br/>
+							<div >
+								<h2> Showings </h2>
+							</div>
+							<br/>
 							<div class="table-responsive">
-								<table class="table table-bordered">
+								<table class="table table-bordered ">
 
 									<tr>
+										<th>Type</th>
 										<th>Date</th>
 										<th>Start Time</th>
-										<th>Seats available</th>
-										<th>Showing Type</th>
-										<th></th>
+										<th>Book</th>
 
 									</tr>
 									<tr ng-repeat="showing in ctrl.showings | limitTo:10">
+										<td><h4>{{showing.showingType}}</h4></td>
 										<td><h4>{{showing.showingDate}}</h4></td>
 										<td><h4>{{showing.startTime}}</h4></td>
-										<td><h4>{{showing.availableSeats}}</h4></td>
-										<td><h4>{{showing.showingType}}</h4></td>
-										<td><h4><a ui-sref="bookticket"> Book now </a></h4></td>
+										<td ng-if = 'showing.availableSeats > 0'><h4>
+											<a ui-sref="createbooking" ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">
+												Book Now!
+											</a></h4></td>
+										<td id = 'unavailable' ng-if = 'showing.availableSeats <= 0'><h4> Fully Booked </h4></td>
 									</tr>
 								</table>
 							</div>

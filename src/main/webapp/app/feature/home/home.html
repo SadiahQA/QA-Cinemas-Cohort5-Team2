@@ -3,11 +3,43 @@
 	<h1>Welcome to QA Cinema</h1>
 	<div class="row">
 		<div ng-repeat="movie in ctrl.movies">
-			<div class="col-xs-12 col-sm-3">
+			<div class="col-xs-12 col-sm-3 ">
 				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"
-					class="img-responsive center-block" ng-src="{{movie.posterURL}}"
-					alt="{{movie.title}}" />
+					 class="img-responsive center-block" ng-src="{{movie.posterURL}}"
+					 alt="{{movie.title}}" />
 			</div>
 		</div>
 	</div>
+
+	<h1>Book a ticket</h1>
+	<form role="form">
+
+
+		<select id="movieArea" ng-model="selectedMovie.idMovie" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
+
+
+			<option value="" disabled selected>Select Movie</option>
+			<option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
+		</select>
+
+
+
+		<select id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
+
+			<option value="" disabled selected>Select Showing</option>
+			<option ng-repeat="showing in ctrl.showings" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
+		</select>
+
+
+
+		<a ui-sref="createbooking">
+
+			<button type="submit" ng-disabled="!ticket.showing" ng-click="ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">Book</button>
+
+		</a>
+
+
+	</form>
+
+
 </div>

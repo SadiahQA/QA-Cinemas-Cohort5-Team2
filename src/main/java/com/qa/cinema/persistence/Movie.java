@@ -60,8 +60,7 @@ public class Movie {
 
 
 	public Movie(String title, String genre, String posterURL, String duration, Date releaseDate,
-
-		String certification, String description, ArrayList<Actor> actors) {
+		String certification, String description, List<Actor> actors) {
 		this.title = title;
 		this.genre = genre;
 		this.posterURL = posterURL;

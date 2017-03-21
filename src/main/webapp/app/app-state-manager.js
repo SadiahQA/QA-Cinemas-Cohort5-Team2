@@ -67,15 +67,17 @@
             controller: function($stateParams) {
                 $stateParams.idUser
             }
-        }).state("createbooking", {
+        }).state("createbooking",{
         	url: "/createbooking",
         	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
-        }).state("confirmation", {
-            url:"/confirmation",
-            templateUrl: "app/feature/confirmation/confirmation.html"
-        }).state("seat", {
-            url:"/seat",
-            templateUrl: "app/feature/seat/update-seat.html"
+
+        }).state("payment",{
+        	url: "/payment",
+        	templateUrl: "app/feature/payment/paymentpage.html"
+        }).state("paymentsuccess",{
+        	url:"/paymentsuccess",
+        	templateUrl: "app/feature/payment/paymentsuccess/paymentsuccess.html"
+
         })
 
         

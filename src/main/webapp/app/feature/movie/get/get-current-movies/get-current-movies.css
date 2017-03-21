@@ -1,7 +1,7 @@
 #wholeMovie{
 	border-style: solid;
 	padding-top: 0px;
-    padding-right: 0px;
+    padding-right: 30px;
     padding-bottom: 0px;
     padding-left: 30px;
     background-color:rgba(0, 0, 0, 0.5);
@@ -22,13 +22,15 @@ h1 {
 }
 
 img{
-	
-	vertical-align:middle;	
-	
+	vertical-align:middle;
 }
 
 img.img-responsive{
 	padding-top: 25%;
 	padding-bottom: 25%;
 
+}
+
+#showings{
+	color: grey;
 }

@@ -4,7 +4,6 @@
 	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking)">
 		
 	</div>
-
 	
 	<br/>
 	<div class="container-fluid">
@@ -102,19 +101,14 @@
 		</div>
 	</div>
 	<br/>
-	
+
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}
 	</div>
-	<a ui-sref="confirmation">
+  	<a ui-sref="payment">
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
 	 ctrl.saveBooking(ticket); ">Book Tickets</button>
 	</a>
-	 {{ctrl.ticketArray}}
-	
-	
-
-
 
 </div>
