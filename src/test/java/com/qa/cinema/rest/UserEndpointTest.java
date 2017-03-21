@@ -60,11 +60,11 @@ import com.qa.cinema.service.UserService;
 	
 	@Test
 	public void getUserByEmailAndPasswordTest(){
-		assertEquals("Login Successful",userService.getUserByEmailAndPassword("",""));
+		assertEquals("Login Successful",userEndpoint.getUserByEmailAndPassword("",""));
 		}
 	
 	@Test
 	public void findUserIdByEmailTest(){
-		assertEquals("User id found by email", userService.findUserIdByEmail(""));
+		assertEquals("User id found by email", userEndpoint.findUserIdByEmail(""));
 	}
 }
