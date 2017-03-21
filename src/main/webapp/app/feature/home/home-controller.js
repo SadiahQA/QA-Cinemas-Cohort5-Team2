@@ -1,6 +1,6 @@
 (function() {
 
-    var HomeController =  function(movieDal, ticketDal, showingDal,  userDal, bookingFactory, userFactory) {
+    var HomeController =  function( $state, movieDal, ticketDal, showingDal,  userDal, bookingFactory, userFactory) {
         var vm = this;
 
         function init() {
@@ -53,6 +53,14 @@
         vm.saveBooking = function (booking){
 
             bookingFactory.set(booking);
+
+            var loginGate = function(){
+    			if (userFactory.loggedIn() === false){
+    				userFactory.loginGateCheck = 1;
+    				$state.go('adduser');
+    			}
+    		}
+    		loginGate();
         }
 
         vm.user = userFactory.get();
@@ -61,5 +69,5 @@
 
 
 
-    angular.module('movieApp').controller('homeController', ['movieDal','ticketDal','showingDal','userDal', 'bookingFactory', 'userFactory', HomeController]);
+    angular.module('movieApp').controller('homeController', ['$state', 'movieDal','ticketDal','showingDal','userDal', 'bookingFactory', 'userFactory', HomeController]);
 }());

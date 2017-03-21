@@ -1,18 +1,12 @@
 (function(){
 	
 
-	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService){
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal){
 
 
 		var vm = this;
 		
-		var loginGate = function(){
-			if (userFactory.loggedIn() === false){
-				userFactory.loginGateCheck = 1;
-				$state.go('adduser');
-			}
-		}
-		loginGate();
+		
 		
 		
 		vm.retriveBookingdetails = function(){
@@ -76,25 +70,28 @@
 		vm.showing;
     
 		vm.getPrice = function(booking){
-			vm.showing = booking.showing;
-			if(!vm.showing.idShowing){
-                vm.showing = JSON.parse(booking.showing);
-                booking.showing = JSON.parse(booking.showing);
-			}
+			if (booking){
+				vm.showing = booking.showing;
+				if(!vm.showing.idShowing){
+	                vm.showing = JSON.parse(booking.showing);
+	                booking.showing = JSON.parse(booking.showing);
+				}
 
-			priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
-				vm.studentPrice = Number(response).toFixed(2);
-			});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
+					vm.studentPrice = Number(response).toFixed(2);
+				});
+				
+				priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
+					vm.childPrice = Number(response).toFixed(2);
+				});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Adult').then(function(response){
+					vm.adultPrice = Number(response).toFixed(2);
+				});
+				priceDal.getPriceForTicket(vm.showing.showingType,'Concession').then(function(response){
+					vm.concessionPrice = Number(response).toFixed(2);
+				});
+			}
 			
-			priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
-				vm.childPrice = Number(response).toFixed(2);
-			});
-			priceDal.getPriceForTicket(vm.showing.showingType,'Adult').then(function(response){
-				vm.adultPrice = Number(response).toFixed(2);
-			});
-			priceDal.getPriceForTicket(vm.showing.showingType,'Concession').then(function(response){
-				vm.concessionPrice = Number(response).toFixed(2);
-			});
 		}
 		
 		vm.updatePrice = function(){
@@ -117,11 +114,14 @@
 		}
 		
 		vm.checkBookingExists = function(){
+
 			if (angular.isDefined(vm.booking)){
-				
+
 			}
 			else{
 				$state.go('homepage');
+				console.log(manyTicketFactory.get());
+				ticketDal.removeTickets(manyTicketFactory.get());
 			}
 
 		}
@@ -129,7 +129,8 @@
 	
 	};
 
-	angular.module('movieApp').controller('createBookingController', ['userFactory', 'bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', CreateBookingController]);
+	
+	angular.module('movieApp').controller('createBookingController', ['userFactory', 'bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', CreateBookingController]);
 
 	
 }());

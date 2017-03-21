@@ -49,7 +49,7 @@
 													userFactory.set(returns);
 
 													if (userFactory.loginGateCheck === 0) {
-														$state.go('seecurrentmovies');
+														$state.go('homepage');
 													} else {
 														$state.go('createbooking')
 													}
