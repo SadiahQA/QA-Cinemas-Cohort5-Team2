@@ -6,3 +6,6 @@ img.img-responsive{
 img.img-responsive:hover {
 	transform:scale(1.2,1.2);	
 }
+form{
+	padding: 35px
+}
