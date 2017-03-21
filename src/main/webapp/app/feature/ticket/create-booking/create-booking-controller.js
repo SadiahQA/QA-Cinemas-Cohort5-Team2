@@ -1,8 +1,18 @@
 (function(){
 	
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory){
+	var CreateBookingController = function($state, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, userFactory){
 
 		var vm = this;
+		
+		var loginGate = function(){
+			if (userFactory.loggedIn() === false){
+				userFactory.loginGateCheck = 1;
+				$state.go('adduser');
+			}
+		}
+		loginGate();
+		
+		
 		vm.retriveBookingdetails = function(){
 			vm.booking = bookingFactory.get();
 		}
@@ -97,6 +107,6 @@
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['$state', 'bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'userFactory', CreateBookingController]);
 	
 }());

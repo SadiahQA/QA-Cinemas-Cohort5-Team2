@@ -1,6 +1,6 @@
 (function() {
 
-	var AddUserController = function($state, userDal, userFactory) {
+	var AddUserController = function($state, userDal, userFactory, bookingFactory) {
 		var vm = this;
 
 		var hash = function(str) {
@@ -38,8 +38,14 @@
 								}
 								userDal.getUserByEmailAndPassword(userToAdd.email, userToAdd.password).then(function(returns){
 									userFactory.set(returns);
-									$state.go('homepage');
-								
+									
+									if(userFactory.loginGateCheck === 0){
+									$state.go('homepage');}
+									else{
+										var tempUser = bookingFactory.get();
+										tempUser.idUser = userFactory.get().idUser;
+										$state.go('createbooking') }
+													
 							})				
 			},
 						
@@ -72,5 +78,5 @@
 	};
 	}
 	angular.module('movieApp').controller('addUserController',
-			[ '$state', 'userDal', 'userFactory', AddUserController ]);
+			[ '$state', 'userDal', 'userFactory', 'bookingFactory', AddUserController ]);
 }());
