@@ -1,6 +1,6 @@
 (function(){
-	
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal){
+
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, offerDal){
 
 		var vm = this;
 		vm.retriveBookingdetails = function(){
@@ -97,6 +97,17 @@
 			vm.totalTicket = vm.concessionNum + vm.adultNum + vm.childNum + vm.studentNum;
 		}
 		
+		vm.discountPrice = function(offerCode){
+			offerDal.getDiscountAmount(offerCode).then(function (results){
+				vm.offerFound = results;
+				vm.totalPrice = ((vm.totalPrice)*(vm.offerFound)).toFixed(2);
+			}, function(error){
+				vm.error = true;
+				vm.errorMessage = error;
+				window.alert("Invalid Code");
+			});
+		}
+		
 		vm.storePrice = function(price){
 			priceFactory.set(price);
 		}
@@ -122,6 +133,7 @@
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', CreateBookingController]);
+
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'offerDal', CreateBookingController]);
 	
 }());

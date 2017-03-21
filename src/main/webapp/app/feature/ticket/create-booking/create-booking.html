@@ -102,6 +102,12 @@
 		</div>
 	</div>
 	<br/>
+	
+	<form>
+		Promo-code:<br>
+		<input type="text" name="offer" ng-model="offer.offerCode">
+		<input type="submit" value="Submit" ng-click="ctrl.discountPrice(offer.offerCode)">
+	</form>
 
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}
