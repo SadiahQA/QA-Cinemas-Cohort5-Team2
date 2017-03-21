@@ -1,15 +1,7 @@
 <link rel="stylesheet" type="text/css" href="app/feature/home/home.css">
 <div ng-controller="homeController as ctrl" style="position: relative">
 	<h1>Welcome to QA Cinema</h1>
-	<div class="row">
-		<div ng-repeat="movie in ctrl.movies">
-			<div class="col-xs-12 col-sm-3">
-				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"
-					 class="img-responsive center-block" ng-src="{{movie.posterURL}}"
-					 alt="{{movie.title}}" />
-			</div>
-		</div>
-	</div>
+
 
 	<h1>Book a ticket</h1>
 	<form role="form">
@@ -40,6 +32,16 @@
 
 
 	</form>
+	
+		<div class="row">
+		<div ng-repeat="movie in ctrl.movies">
+			<div class="col-xs-12 col-sm-3 ">
+				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"
+					 class="img-responsive center-block" ng-src="{{movie.posterURL}}"
+					 alt="{{movie.title}}" />
+			</div>
+		</div>
+	</div>
 
 
 </div>

@@ -62,9 +62,17 @@
 							<h4>
 								Showing Times
 							</h4>
-							<div class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9">
+							<div id = "showings" class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9">
 						          <div ng-init="newDate=ctrl.convertDate(showing.showingDate)">
-						            	{{newDate}}, {{showing.startTime}}, {{showing.showingType}}
+									  <div ng-if = 'showing.availableSeats > 0'>
+										  <a ui-sref="createbooking" ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">
+											  {{showing.showingType}}, {{newDate}}, {{showing.startTime}}
+										  </a>
+									  </div>
+									  <div ng-if = 'showing.availableSeats <= 0'>
+										  {{showing.showingType}},{{newDate}}, {{showing.startTime}}
+									  </div>
+
 						          </div>
 						    </div>
 						    <br/>

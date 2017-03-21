@@ -25,7 +25,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.student.quantity > 0) {
                 ticket = '{ "ticketType":"Student", "showing":{"idShowing":"' +
-                    JSON.parse(savedData.booking.showing).idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
@@ -35,7 +35,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.adult.quantity > 0) {
                 ticket = '{ "ticketType":"Adult", "showing":{"idShowing":"' +
-                    JSON.parse(savedData.booking.showing).idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
@@ -45,7 +45,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.child.quantity > 0) {
                 ticket = '{ "ticketType":"Child", "showing":{"idShowing":"' +
-                    JSON.parse(savedData.booking.showing).idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
@@ -55,7 +55,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.concession.quantity > 0) {
                 ticket = '{ "ticketType":"Concession", "showing":{"idShowing":"' +
-                    JSON.parse(savedData.booking.showing).idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;

@@ -70,6 +70,7 @@
 	
 
 
+
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -88,7 +89,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
-                    <li ng-if=ctrl.isLoggedIn()><a HREF="javascript:history.go(0)">Logout</a></li>
+                    <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
                   
                 </ul>
             </div>
