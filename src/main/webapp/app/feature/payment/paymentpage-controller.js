@@ -1,12 +1,6 @@
 (function(){
 	
-	var PaymentPageController = function(manyTicketFactory, priceFactory, createBookingController, localStorageService, $window){
-		
-		window.addEventListener('beforeunload', function(){
-			localStorageService.cookie.remove('manyTicketStorageKey');
-			localStorageService.cookie.remove('bookingStorageKey');
-			localStorageService.cookie.remove('ticketArrayKey');
-		});
+	var PaymentPageController = function(manyTicketFactory, priceFactory, createBookingController, localStorageService, $window, ticketDal){
 		
 		var vm = this;
 		
@@ -16,6 +10,6 @@
 		
 	};
 	
-	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', PaymentPageController]);
+	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', 'ticketDal', PaymentPageController]);
 	
 }())

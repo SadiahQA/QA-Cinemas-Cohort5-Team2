@@ -1,9 +1,9 @@
 <div ng-controller="createBookingController as ctrl">
 
-	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking); ctrl.clearPreviousInfo();">
+	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
 	</div>
 	
-	<div ng-init="ctrl.checkBookingExists()">
+	<div ng-init="ctrl.clearPreviousInfo()">
 	</div>
 	
 	<br/>

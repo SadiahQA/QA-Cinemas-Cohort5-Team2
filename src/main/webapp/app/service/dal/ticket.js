@@ -21,6 +21,10 @@
         this.findByUserID = function (idUser){
             return dal.http.GET("rest/ticket/json/user/" + idUser);
         };
+        
+        this.removeTickets = function(tickets){
+        	return dal.http.DELETE("rest/ticket/json", tickets);
+        }
 
 
     }
