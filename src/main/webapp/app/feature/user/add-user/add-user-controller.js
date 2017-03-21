@@ -63,7 +63,6 @@
 				document.cookie = "usercookie = "
 					+ hash(useremail+ userpassword);
 				userFactory.set(results);
-				console.log(results);
 				$state.go('homepage');
 				window.alert("Welcome back "+results.firstName)
 			})
