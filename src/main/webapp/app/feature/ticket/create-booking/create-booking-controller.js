@@ -1,6 +1,6 @@
 (function(){
 	
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory){
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService){
 
 		var vm = this;
 		vm.retriveBookingdetails = function(){
@@ -50,9 +50,12 @@
 
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				vm.bookingResponse=response;
+				manyTicketFactory.set(vm.ticketArray);
+				$state.go('payment');
 				if(JSON.stringify(vm.bookingResponse) === "{\"message\": \"No tickets found\"}"){
 					ticketFactory.set(null);
 				}
+				
 			});
 			vm.storePrice(vm.totalPrice);
 		}
@@ -95,9 +98,25 @@
 			priceFactory.set(price);
 		}
 		
+		vm.clearPreviousInfo = function(){
+			localStorageService.cookie.remove('manyTicketStorageKey');
+			localStorageService.cookie.remove('bookingStorageKey');
+			localStorageService.cookie.remove('ticketArrayKey');
+		}
+		
+		vm.checkBookingExists = function(){
+			if (vm.booking){
+				
+			}
+			else{
+				$state.go('homepage');
+			}
+
+		}
+		
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', CreateBookingController]);
 	
 }());
