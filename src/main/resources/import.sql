@@ -335,3 +335,8 @@ INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (5, 9.00, '3D'
 INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (6, 7.00, '3D', 'Child');
 INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (7, 8.00, '3D', 'Student');
 INSERT INTO PRICE(priceID, price, showingType, ticketType) VALUES (8, 8.00, '3D', 'Concession');
+
+INSERT INTO OFFER(offerID, offerCode, offerName, discountAmount) VALUES (1, 'ABC', 'Family Ticket Offer', 0.80);
+INSERT INTO OFFER(offerID, offerCode, offerName, discountAmount) VALUES (2, 'DEF', 'Concession', 0.75);
+INSERT INTO OFFER(offerID, offerCode, offerName, discountAmount) VALUES (3, 'GHI', 'Birthday Offer', 0.85);
+INSERT INTO OFFER(offerID, offerCode, offerName, discountAmount) VALUES (4, 'JKL', 'Meerkat Movies', 0.50);
