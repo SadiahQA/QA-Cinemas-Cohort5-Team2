@@ -1,16 +1,15 @@
 <link rel="stylesheet" type="text/css" href="app/feature/home/home.css">
 <div ng-controller="homeController as ctrl" style="position: relative">
 
-	<div class="jumbotron" id="innerjumbo">
-		<div class="jumbotron" id="titlejumbo">
-			<h4>Book a ticket</h4>
-		</div>
+	<div class="jumbotron" id="innerjumbo1">
+
 		<form role="form">
 			
 			<div class="container-fluid" id="form">
 				<div class="row"></div>
 					
 					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
+						<label class="control-label" for="movieArea">I want to see</label>
 						<select class="selectpicker" id="movieArea" ng-model="selectedMovie.idMovie" ng-disabled="!ctrl.idCinema" ng-change="ctrl.getShowings(selectedMovie.idMovie); ticket.showing = undefined">
 							<option value="" disabled selected>Select Movie</option>
 							<option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
@@ -18,19 +17,21 @@
 					</div>
 					
 					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
+						<label class="control-label" for="showingArea">On</label>
 						<select class="selectpicker" id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
 							<option value="" disabled selected>Select Showing</option>
 							<option ng-repeat="showing in ctrl.showings" ng-if="showing.availableSeats > 0" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
 						</select>
 					</div>
 				<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 " id="buttonPlace">
+					<h5></h5>
 					<button type="submit" id="bookButton" class="btn btn-info" ng-disabled="!ticket.showing" ng-click=" ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">Book</button>
 				</div>
 			</div>
 		</form>
 	</div>
 	
-		<div class="row jumbotron" id="innerjumbo">
+		<div class="row jumbotron" id="innerjumbo2">
 		<div ng-repeat="movie in ctrl.movies">
 			<div class="col-xs-12 col-sm-3 ">
 				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"

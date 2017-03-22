@@ -15,20 +15,24 @@ form{
 	border-width: 3px;
 	border-color: white;
 	width: 200px;
-	height: 40px;
 	font-size:15px;
 }
 
 .selectpicker {
 	width: 200px;
-	margin-top: 9px;
 }
 
 #form {
 	margin-top: 15px;
 }
 
-#innerjumbo {
+#innerjumbo1 {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top:1px;
+	padding-bottom:20px;
+}
+
+#innerjumbo2 {
 	background-color: rgba(0, 0, 0, 0.5);
 	padding-top:20px;
 	padding-bottom:20px;
