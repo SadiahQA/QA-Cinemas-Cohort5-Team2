@@ -62,7 +62,13 @@
 							<h4>
 								Showing Times
 							</h4>
-							<div id = "showings" class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9">
+							<div ng-if = "!ctrl.idCinema" >
+								<br/>
+								<br/>
+								<br/>
+								<h4>Please select a cinema</h4>
+							</div>
+							<div id = "showings" class="showing" ng-repeat="showing in ctrl.showings[movie.idMovie] | limitTo: 9" ng-if = "ctrl.idCinema">
 						          <div ng-init="newDate=ctrl.convertDate(showing.showingDate)">
 									  <div ng-if = 'showing.availableSeats > 0'>
 										  <a  ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket); ctrl.loginCheck()" href="">

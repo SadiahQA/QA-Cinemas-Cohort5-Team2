@@ -86,7 +86,10 @@
 							</div>
 							<br/>
 							<div class="table-responsive">
-								<table class="table table-bordered ">
+								<div ng-if = "!ctrl.idCinema" >
+									<h4>Please select a cinema</h4>
+								</div>
+								<table ng-if = "ctrl.idCinema" class="table table-bordered ">
 
 									<tr>
 										<th>Type</th>

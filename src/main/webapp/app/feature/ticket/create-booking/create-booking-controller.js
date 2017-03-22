@@ -1,8 +1,6 @@
 (function(){
 
-
-	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, offerDal){
-
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
 
 		var vm = this;
 		
@@ -14,10 +12,11 @@
 			
 		}
 
-    vm.studentNum=0;
+		vm.studentNum=0;
 		vm.childNum=0;
 		vm.adultNum=0;
 		vm.concessionNum=0;
+		vm.totalTicket=0;
 		
 		vm.concessionPrice;
 		vm.adultPrice;
@@ -31,19 +30,14 @@
             }
             else {
                 number = number + 1;
-
                 return number;
             }
 		}
 		
 		vm.decreaseNumber = function(number){
 			if (number > 0){
-
-
                     number = number - 1;
-
                     return number;
-
 			}
 			else{
 				return number;
@@ -56,21 +50,17 @@
 			ticketFactory.set(ticket);
 			userFactory.loginGate = 0;
 			vm.ticketArray = ticketFactory.get();
-
-
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				vm.bookingResponse=response;
-				manyTicketFactory.set(vm.ticketArray);
+				manyTicketFactory.set(vm.bookingResponse);
 				$state.go('payment');
 				if(JSON.stringify(vm.bookingResponse) === "{\"message\": \"No tickets found\"}"){
 					ticketFactory.set(null);
 				}
-				
 			});
 			vm.storePrice(vm.totalPrice);
 		}
-
-		vm.totalTicket;
+		
 		vm.showing;
     
 		vm.getPrice = function(booking){
@@ -80,11 +70,9 @@
 	                vm.showing = JSON.parse(booking.showing);
 	                booking.showing = JSON.parse(booking.showing);
 				}
-
 				priceDal.getPriceForTicket(vm.showing.showingType,'Student').then(function(response){
 					vm.studentPrice = Number(response).toFixed(2);
 				});
-				
 				priceDal.getPriceForTicket(vm.showing.showingType,'Child').then(function(response){
 					vm.childPrice = Number(response).toFixed(2);
 				});
@@ -95,7 +83,6 @@
 					vm.concessionPrice = Number(response).toFixed(2);
 				});
 			}
-			
 		}
 		
 		vm.updatePrice = function(){
@@ -126,29 +113,24 @@
 		vm.clearPreviousInfo = function(){
 			localStorageService.cookie.remove('manyTicketStorageKey');
 			localStorageService.cookie.remove('bookingStorageKey');
-			localStorageService.cookie.remove('ticketArrayKey');
+			localStorageService.cookie.remove('ticketArrayKey');	
 		}
 		
 		vm.checkBookingExists = function(){
 
-			if (angular.isDefined(vm.booking)){
+			if (bookingFactory.get() === null){
+				if (backUpTicketFactory.get() != null){
+					ticketDal.removeTickets(backUpTicketFactory.get());
+				}
+				backUpTicketFactory.set(null);
 
-			}
-			else{
 				$state.go('homepage');
-				console.log(manyTicketFactory.get());
-				ticketDal.removeTickets(manyTicketFactory.get());
 			}
-
-		}
-		
+		}	
 	
 	};
 
-	
-
-
-	angular.module('movieApp').controller('createBookingController', ['userFactory', 'bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'offerDal', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
 
 	
 }());

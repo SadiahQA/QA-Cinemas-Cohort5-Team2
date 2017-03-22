@@ -9,3 +9,16 @@
 #unavailable{
     color: grey;
 }
+
+.panel-default {
+    border-color: #444;
+    margin-top: 30px;
+}
+
+.panel-group .panel-heading {
+    background-color: #111;
+}
+
+.panel-body {
+    background-color: #111;
+}

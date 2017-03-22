@@ -54,8 +54,8 @@ public class TicketEndpoint {
 		return service.getUserTicket(idUser);
 	}
 	
-	@Path("/json")
-	@DELETE
+	@Path("/json/delete")
+	@POST
 	public String removeTickets(String tickets){
 		return service.removeTickets(tickets);
 	}
