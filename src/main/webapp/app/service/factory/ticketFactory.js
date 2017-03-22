@@ -19,7 +19,6 @@ movieApp.factory('ticketFactory', function(localStorageService){
 	function  createTicketObjects() {
 		
         if (savedData === null) {
-        	console.log("this has ran!!");
         }
         else {
 
