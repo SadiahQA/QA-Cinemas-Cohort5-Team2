@@ -1,23 +1,16 @@
 <link rel="stylesheet" type="text/css" href="app/feature/home/home.css">
 <div ng-controller="homeController as ctrl" style="position: relative">
 	<h1>Welcome to QA Cinema</h1>
-	<div class="row">
-		<div ng-repeat="movie in ctrl.movies">
-			<div class="col-xs-12 col-sm-3 ">
-				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"
-					 class="img-responsive center-block" ng-src="{{movie.posterURL}}"
-					 alt="{{movie.title}}" />
-			</div>
-		</div>
-	</div>
+
 
 	<h1>Book a ticket</h1>
 	<form role="form">
 
+		<div ng-if = "!ctrl.idCinema" class="col-sm12">
+			<h4>Please select a cinema</h4>
+		</div>
 
-		<select id="movieArea" ng-model="selectedMovie.idMovie" ng-change="ctrl.getShowings(selectedMovie.idMovie)">
-
-
+		<select id="movieArea" ng-model="selectedMovie.idMovie" ng-disabled="!ctrl.idCinema" ng-change="ctrl.getShowings(selectedMovie.idMovie); ticket.showing = undefined">
 			<option value="" disabled selected>Select Movie</option>
 			<option ng-repeat="movie in ctrl.movies" value="{{movie.idMovie}}">{{movie.title}}</option>
 		</select>
@@ -25,9 +18,8 @@
 
 
 		<select id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
-
 			<option value="" disabled selected>Select Showing</option>
-			<option ng-repeat="showing in ctrl.showings" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
+			<option ng-repeat="showing in ctrl.showings" ng-if="showing.availableSeats > 0" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
 		</select>
 
 
@@ -40,6 +32,16 @@
 
 
 	</form>
+	
+		<div class="row">
+		<div ng-repeat="movie in ctrl.movies">
+			<div class="col-xs-12 col-sm-3 ">
+				<img ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})"
+					 class="img-responsive center-block" ng-src="{{movie.posterURL}}"
+					 alt="{{movie.title}}" />
+			</div>
+		</div>
+	</div>
 
 
 </div>

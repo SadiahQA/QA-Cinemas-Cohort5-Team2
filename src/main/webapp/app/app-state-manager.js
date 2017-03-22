@@ -78,12 +78,18 @@
         	url:"/paymentsuccess",
         	templateUrl: "app/feature/payment/paymentsuccess/paymentsuccess.html"
 
+
         }).state("seatpicker",{
             url:"/seatpicker/:idShowing",
             templateUrl: "app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing.html",
             controller: function($stateParams){
                 $stateParams.idShowing
             }
+
+
+        }).state("paymentfailed", {
+        	url:"/paymentfailed",
+        	templateUrl: "app/feature/payment/paymentfailed/paymentfailed.html"
 
         })
 

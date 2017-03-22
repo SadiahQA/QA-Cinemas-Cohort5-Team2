@@ -13,6 +13,7 @@ body{
 
 #view{
 	color: white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #ticketEmail{
@@ -27,11 +28,25 @@ body{
 	color:black
 }
 
+#cinemaSelect{
+    height: 25px;
+    padding-left: 15px;
+    margin-top: 12px;
+    font-size: 20px;
+}
 
+#codeInput{
+	color: black!important;
+}
+
+#codeButton{
+	color: black!important;
+}
 
 html {
     position: relative;
     min-height: 100%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 body {
     margin: 0 0 100px; /* bottom = footer height */
@@ -60,9 +75,3 @@ span {
 p {
     font-size: 13px
 }
-
-
-#movieArea{
-	color:black	
-}
-

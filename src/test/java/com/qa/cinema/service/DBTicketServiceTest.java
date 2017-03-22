@@ -53,6 +53,7 @@ public class DBTicketServiceTest {
 		Mockito.when(tickets.get(0).getShowing()).thenReturn(showing);
 		Mockito.when(showing.getAvailableSeats()).thenReturn(2);
 		Mockito.when(ticket1.getShowing()).thenReturn(showing);
+		Mockito.when(em.find(Showing.class,tickets.get(0).getShowing().getIdShowing())).thenReturn(showing);
 	}
 	
 
