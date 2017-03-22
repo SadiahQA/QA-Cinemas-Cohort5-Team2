@@ -15,30 +15,36 @@ form{
 	border-width: 3px;
 	border-color: white;
 	width: 200px;
-	height: 40px;
 	font-size:15px;
-}
-
-#buttonPlace {
-	padding-bottom: 20px;
 }
 
 .selectpicker {
 	width: 200px;
 }
 
-#innerjumbo {
+#form {
+	margin-top: 15px;
+}
+
+#innerjumbo1 {
 	background-color: rgba(0, 0, 0, 0.5);
-	padding-top:30px;
-	padding-bottom:30px;
+	padding-top:1px;
+	padding-bottom:20px;
+}
+
+#innerjumbo2 {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
 #titlejumbo {
 	background-color: rgba(7, 72, 146, 0.69);
 	padding-right:10px;
 	padding-left:10px;
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top:1px;
+	padding-bottom:1px;
+	margin-bottom: 5px;
 }
 
 #cinemaSelect{
