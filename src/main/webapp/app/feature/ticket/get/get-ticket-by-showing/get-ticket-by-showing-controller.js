@@ -33,12 +33,12 @@
         };
 
         vm.updateSeatNums = function(){
-            console.log(0);
+
             vm.booking.seatNums  = vm.selected;
 
         };
         vm.saveBooking = function(ticket){
-            console.log(1);
+
             ticketFactory.set(ticket);
 
             vm.ticketArray = ticketFactory.get();

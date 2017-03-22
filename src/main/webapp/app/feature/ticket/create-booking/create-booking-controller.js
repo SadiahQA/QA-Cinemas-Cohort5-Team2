@@ -11,6 +11,7 @@
 		vm.retriveBookingdetails = function(){
 			
 			vm.booking = bookingFactory.get();
+			console.log(vm.booking);
 			
 		}
 
