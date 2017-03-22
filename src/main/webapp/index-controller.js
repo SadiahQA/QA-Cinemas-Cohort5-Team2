@@ -56,12 +56,12 @@
                 var dif = Math.sqrt((difLat*difLat)+(difLong*difLong));
                 if(dif<shortest){
                 	shortest = dif;
-                	console.log(vm.cinemas[i])
+                	
                 	closestCinema = vm.cinemas[i];
 				}
-				console.log(vm.cinemas[i] + "    " + dif)
+				
 			}
-			console.log(closestCinema)
+			
             cinemaFactory.set(closestCinema.idCinema);
             vm.idCinema = closestCinema.idCinema;
             vm.cinema = closestCinema;
