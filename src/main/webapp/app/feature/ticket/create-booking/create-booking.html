@@ -124,15 +124,10 @@
 	
 	<form>
 		Promo-code:<br>
-<<<<<<< HEAD
-		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode">
-		<button class="btn btn-info" type="submit" id="codeButton" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
-=======
 		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode" class="voucher" value="Promo-code"
 			onfocus="if (this.value == 'Promo-code') {this.value = '';}"
 			onblur="if (this.value == '') {this.value = 'Promo-code';}">
-		<button type="submit" id="codeButton" class="codeButton" value="" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
->>>>>>> 27c94738e863ad6998cd2b371d595ae575e8df2e
+		<button type="submit" id="codeButton" class="btn btn-info" value="" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
 	</form>
 
 	<div>
