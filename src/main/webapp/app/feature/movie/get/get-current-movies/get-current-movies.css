@@ -1,15 +1,17 @@
 #wholeMovie{
-	border-style: solid;
 	padding-top: 0px;
     padding-right: 30px;
     padding-bottom: 0px;
     padding-left: 30px;
-    background-color:rgba(0, 0, 0, 0.5);
 }
 
 div.movieTitle{
 	display:block;
 	font-size: 30px
+}
+
+#innerjumbo {
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 
