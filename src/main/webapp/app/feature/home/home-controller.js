@@ -60,6 +60,7 @@
     				userFactory.loginGateCheck = 1;
     				$state.go('adduser');
     			}
+    			else{$state.go('createbooking')}
     		}
     		loginGate();
         }
