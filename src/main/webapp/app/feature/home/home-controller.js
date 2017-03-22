@@ -1,6 +1,6 @@
 (function() {
 
-    var HomeController =  function(movieDal, ticketDal, showingDal,  userDal, bookingFactory, userFactory, cinemaFactory) {
+    var HomeController =  function(movieDal, ticketDal, showingDal,  userDal, cinemaDal, bookingFactory, userFactory, cinemaFactory) {
         var vm = this;
 
         function init() {
@@ -10,6 +10,7 @@
                 vm.error = true;
                 vm.errorMessage = error;
             });
+            vm.idCinema = cinemaFactory.get();
         }
         init();
 
@@ -22,11 +23,12 @@
                 vm.errorMessage = error;
             });
         }
-        vm.getShowings = function (idMovie) {
 
-            showingDal.getShowingsForMovie(idMovie, cinemaFactory.get()).then(function (results) {
-                vm.showings = results;
 
+        vm.getShowings = function (idMovie){
+
+            showingDal.getShowingsForMovie(idMovie, cinemaFactory.get()).then(function (results){
+                vm.showings  = results;
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
@@ -59,5 +61,5 @@
 
 
 
-    angular.module('movieApp').controller('homeController', ['movieDal','ticketDal','showingDal','userDal', 'bookingFactory', 'userFactory', 'cinemaFactory', HomeController]);
+    angular.module('movieApp').controller('homeController', ['movieDal','ticketDal','showingDal','userDal', 'cinemaDal', 'bookingFactory', 'userFactory', 'cinemaFactory', HomeController]);
 }());

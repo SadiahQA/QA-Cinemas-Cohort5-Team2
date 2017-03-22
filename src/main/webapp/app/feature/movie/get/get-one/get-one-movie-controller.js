@@ -11,11 +11,10 @@
                 vm.error = true;
                 vm.errorMessage = error;
             });
+            vm.idCinema = cinemaFactory.get();
         }
         getOneMovie();
 
-        vm.getTrailer = function getTrailer(src, $sce){
-        }
 
 
         vm.saveBooking = function (booking){

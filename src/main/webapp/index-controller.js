@@ -5,6 +5,7 @@
 		
 		vm.user = userFactory.get();
 
+
         function getCinemas() {
             cinemaDal.getAllCinemas().then(function (results) {
                 vm.cinemas = results;
@@ -12,12 +13,13 @@
                 vm.error = true;
                 vm.errorMessage = error;
             });
+            vm.idCinema = cinemaFactory.get();
         }
         getCinemas();
 
         vm.setCinema = function(idCinema){
-        	console.log(idCinema);
         	cinemaFactory.set(idCinema);
+            vm.idCinema = cinemaFactory.get();
         	$state.reload();
 		}
 	

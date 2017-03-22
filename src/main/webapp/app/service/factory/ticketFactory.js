@@ -1,5 +1,5 @@
 movieApp.factory('ticketFactory', function(localStorageService){
-	var savedData = {}
+	var savedData;
 	var ticketArray = [];
 	
 	function set(data){

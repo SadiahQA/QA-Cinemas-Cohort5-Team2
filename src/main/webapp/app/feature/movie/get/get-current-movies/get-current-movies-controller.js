@@ -22,6 +22,7 @@
                     vm.errorMessage = error;
                 });
             }
+            vm.idCinema = cinemaFactory.get();
         }
         init();
         
