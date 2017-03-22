@@ -1,7 +1,7 @@
 movieApp.factory('backUpTicketFactory', function(localStorageService){
 	
 	function set(data){
-		console.log('backup setter')
+		
 		localStorageService.cookie.set('backUpTicketStorageKey', data, 1);	
 	}
 	
