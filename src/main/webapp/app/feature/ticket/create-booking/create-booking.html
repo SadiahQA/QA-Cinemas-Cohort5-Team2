@@ -1,9 +1,9 @@
 <div ng-controller="createBookingController as ctrl">
 
-	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking); ctrl.clearPreviousInfo();">
+	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
 	</div>
 	
-	<div ng-init="ctrl.checkBookingExists()">
+	<div ng-init="ctrl.clearPreviousInfo()">
 	</div>
 	
 	<br/>
@@ -102,6 +102,12 @@
 		</div>
 	</div>
 	<br/>
+	
+	<form>
+		Promo-code:<br>
+		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode">
+		<button type="submit" id="codeButton" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
+	</form>
 
 	<div>
 	Final Price = &pound {{(ctrl.totalPrice)}}

@@ -35,7 +35,13 @@ body{
     font-size: 20px;
 }
 
+#codeInput{
+	color: black!important;
+}
 
+#codeButton{
+	color: black!important;
+}
 
 html {
     position: relative;
