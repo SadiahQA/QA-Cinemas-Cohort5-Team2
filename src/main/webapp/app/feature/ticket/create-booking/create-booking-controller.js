@@ -43,7 +43,7 @@
 			ticketFactory.set(ticket);
 			vm.ticketArray = ticketFactory.get();
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
-				console.log('got into response');
+				
 				vm.bookingResponse=response;
 				manyTicketFactory.set(vm.bookingResponse);
 				$state.go('payment');
