@@ -1,6 +1,7 @@
 (function() {
 
-    var GetOneMovieController =  function(movieDal, $stateParams, $sce, bookingFactory, showingDal, cinemaFactory) {
+    var GetOneMovieController =  function($state, userFactory, movieDal, $stateParams, $sce, bookingFactory, showingDal, cinemaFactory) {
+
         var vm = this;
 
         function getOneMovie() {
@@ -16,6 +17,15 @@
         getOneMovie();
 
 
+vm.loginCheck = function(){
+			
+			if(userFactory.loggedIn() === false){
+				userFactory.loginGateCheck = 1;
+				$state.go("adduser");
+			}
+			else{
+				$state.go("createbooking")}
+		}
 
         vm.saveBooking = function (booking){
 
@@ -33,7 +43,7 @@
 	   getShowingsforMovie()
    }
 
-    
-    angular.module('movieApp').controller('getOneMovieController', ['movieDal', '$stateParams', '$sce', 'bookingFactory', 'showingDal', 'cinemaFactory', GetOneMovieController])
+    angular.module('movieApp').controller('getOneMovieController', ['$state','userFactory', 'movieDal', '$stateParams', '$sce', 'bookingFactory', 'showingDal', 'cinemaFactory', GetOneMovieController])
+
 
 }());

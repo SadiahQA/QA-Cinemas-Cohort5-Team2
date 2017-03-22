@@ -72,8 +72,27 @@
 
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<div ng-controller="indexController as ctrl">
-	
 
+
+
+        <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cookies</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This site uses cookies to enhance your experience.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
@@ -90,20 +109,19 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
-                    <li><a ui-sref="bookticket">Book a Ticket</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <div class="form-group">
-                            <select id="cinemaSelect" ng-model="ctrl.idCinema" ng-change="ctrl.setCinema(ctrl.idCinema)">
+                            <select id="cinemaSelect" ng-model="selectedCinema" ng-change="ctrl.setCinema(selectedCinema)">
                                 <option value="" disabled selected>Select Cinema</option>
-                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema.idCinema}}">{{cinema.city}}</option>
+                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema}}">{{cinema.city}}</option>
                             </select>
                         </div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
+                    <li id="city">{{ctrl.cinema.city}}</li>
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
                     <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
 
@@ -115,21 +133,19 @@
     <div class="container-fluid" id="mainpage">
 	    <div class="row">
 			<div class="col-lg-3"></div>
-		    	<div class="col-lg-6" id="view" ui-view></div>
+		    	<div class="col-lg-6 jumbotron" id="view" ui-view></div>
 		    <div class="col-lg-3"></div>
 	    </div>
     </div>
-
-
 
 </body>
 
 <footer>
 <div class="footer">
-<ul>
-      <span><a ui-sref="about-us">About us </a></span>
-      <span><a ui-sref="contactus">Contact us</a></span>
-      <span><a ui-sref="#">Classifications</a></span>
+	<ul>
+      <a ui-sref="aboutus"><span>About us </span></a>
+      <a ui-sref="contactus"><span>Contact us</span></a>
+      <a ui-sref="#"><span>Classifications</span></a>
     </ul>
     <p>&copy; QA Cinemas. All rights reserved. </p>
 </div>

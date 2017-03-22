@@ -1,13 +1,36 @@
 (function(){
 
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal, seatFactory){
+
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal,seatFactory){
+
 
 		var vm = this;
+		
+		
+		
 		vm.retriveBookingdetails = function(){
+			
 			vm.booking = bookingFactory.get();
+			
 		}
 
+		
+		var initVal = "Promo-code";
+		$(document).ready(function(){
+			$(".codeButton").attr("disabled", "true");
+		});
+		
+		$('.voucher').on("keyup", action);
+		function action(){
+			if ($(this).val() != initVal && $(this).val() != "") {
+				$(".codeButton").removeAttr("disabled");
+			} else {
+				$(".codeButton").attr("disabled", "true");
+			}
+		};
+	
 		vm.studentNum=0;
+
 		vm.childNum=0;
 		vm.adultNum=0;
 		vm.concessionNum=0;
@@ -39,8 +62,10 @@
 			}
 		}
 
+
 		vm.saveBooking=function(ticket){
 			seatFactory.set(ticket);
+
 
 		}
 
@@ -78,9 +103,9 @@
 			vm.totalPrice = (vm.totalPrice).toFixed(2);
 			vm.totalTicket = vm.concessionNum + vm.adultNum + vm.childNum + vm.studentNum;
 		}
-		
+			
 		vm.discountPrice = function(offerCode){
-			offerDal.getDiscountAmount(offerCode).then(function (results){
+		 	offerDal.getDiscountAmount(offerCode).then(function (results){
 				vm.offerFound = results;
 				vm.totalPrice = ((vm.totalPrice)*(vm.offerFound)).toFixed(2);
 				document.getElementById('codeButton').setAttribute("disabled","disabled");
@@ -102,17 +127,21 @@
 		}
 		
 		vm.checkBookingExists = function(){
+
 			if (bookingFactory.get() === null){
 				if (backUpTicketFactory.get() != null){
 					ticketDal.removeTickets(backUpTicketFactory.get());
 				}
 				backUpTicketFactory.set(null);
+
 				$state.go('homepage');
 			}
 		}	
 	
 	};
+
+	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', CreateBookingController]);
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', CreateBookingController]);
-	
+
 }());
+

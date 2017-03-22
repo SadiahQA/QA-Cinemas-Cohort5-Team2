@@ -36,19 +36,12 @@
         }).state("oneCinema",{
         	url:"/oneCinema:cinemaCity",
         	templateURL:"app/feature/cinema/get-cinema/get-all-cinemas/get-cinema-by-city.html",
-        		controller: function ($stateParams){
-                    $stateParams.cinemaCity
-        		}
-
-        }).state("contactus",{
-        	url:"/contactus", 
-        	templateURL: "app/feature/contact/contactus.html"
-       
-
+        	controller: function ($stateParams){
+        		$stateParams.cinemaCity
+        	}
         }).state("bookticket",{
             url: "/bookticket",
             templateUrl: "app/feature/ticket/add-ticket/add-ticket.html"
-
         }).state("getticket",{
             url: "/getticket/:idTicket",
             templateUrl: "app/feature/ticket/get/get-specific-ticket/get-specific-ticket.html",
@@ -90,6 +83,13 @@
         }).state("paymentfailed", {
         	url:"/paymentfailed",
         	templateUrl: "app/feature/payment/paymentfailed/paymentfailed.html"
+
+        }).state("contactus",{
+        	url:"/contactus", 
+        	templateUrl: "app/feature/contact/contactus.html"
+        }).state("aboutus",{
+        	url:"/aboutus", 
+        	templateUrl: "app/feature/aboutus/aboutus.html"
 
         })
 

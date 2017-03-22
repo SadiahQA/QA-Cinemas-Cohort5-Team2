@@ -9,6 +9,10 @@ body{
 	margin-bottom: 0;
 }
 
+.jumbotron {
+	background-color: rgba(72, 74, 82, 0.86);
+}
+
 
 
 #view{
@@ -40,7 +44,17 @@ body{
 }
 
 #codeButton{
-	color: black!important;
+	color: white;
+}
+
+#test{
+    color:white;
+}
+#city{
+    color:lightgrey;
+    font-size:25px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 html {
