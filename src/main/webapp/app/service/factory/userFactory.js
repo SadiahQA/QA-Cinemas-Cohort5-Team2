@@ -2,12 +2,12 @@ movieApp.factory('userFactory', function(localStorageService){
 
 	var userSession = {}
 
-	var loginStatus = false;
+	var loginGateCheck = 0;
 		
 	function set(data){
 		localStorageService.cookie.set("User", data);
 				
-		loginStatus = true;
+		
 	}
 	
 	function get(){
@@ -15,7 +15,6 @@ movieApp.factory('userFactory', function(localStorageService){
 	}
 	
 	function logOut(){
-		loginStatus = false;
 		localStorageService.cookie.remove("User");
 	}
 	
