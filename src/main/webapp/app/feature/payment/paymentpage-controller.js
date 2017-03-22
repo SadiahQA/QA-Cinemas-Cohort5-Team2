@@ -6,6 +6,7 @@
 		
 		vm.getBooking = function(){
 			vm.booking = manyTicketFactory.get();
+			vm.totalPrice = priceFactory.get();
 		}
 		
 	};
