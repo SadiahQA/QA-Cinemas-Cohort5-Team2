@@ -106,7 +106,6 @@
 
 
         vm.saveBooking = function (booking){
-        	console.log(booking);
             bookingFactory.set(booking);
             
         }
