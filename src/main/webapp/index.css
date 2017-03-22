@@ -9,6 +9,10 @@ body{
 	margin-bottom: 0;
 }
 
+.jumbotron {
+	background-color: rgba(72, 74, 82, 0.86);
+}
+
 
 
 #view{
