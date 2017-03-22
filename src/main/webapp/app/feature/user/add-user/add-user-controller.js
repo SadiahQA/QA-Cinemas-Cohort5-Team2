@@ -23,6 +23,7 @@
 
 		vm.addUser = function(userToAdd) {
 			userToAdd.password = hash(userToAdd.password);
+			var loginSuccess = false;
 
 			userDal
 					.createNewUser(userToAdd)
@@ -35,26 +36,29 @@
 													+ userToAdd.password);
 
 									window.alert("New User Created");
+									loginSuccess = true;
 								}
 
 								else {
-									window.alert("User Creation Failed");
+									window.alert("User Creation Failed: email already in use");
 								}
-								userDal
-										.getUserByEmailAndPassword(
+								if(loginSuccess === true){
+									loginSuccess = false;
+								userDal.getUserByEmailAndPassword(
 												userToAdd.email,
 												userToAdd.password)
 										.then(
 												function(returns) {
 													userFactory.set(returns);
-
-													if (userFactory.loginGateCheck === 0) {
+													
+													if (userFactory.loginGateCheck === 0 | typeof userFactory.loginGateCheck === "undefined") {
 														$state.go('homepage');
 													} else {
 														$state.go('createbooking')
 													}
+												
 
-												})
+												})}
 							},
 
 							function(error) {
@@ -80,9 +84,15 @@
 									document.cookie = "usercookie = "
 											+ hash(useremail + userpassword);
 									userFactory.set(results);
-									$state.go('homepage');
-									window.alert("Welcome back "
-											+ results.firstName)
+									
+									if (userFactory.loginGateCheck === 0 | typeof userFactory.loginGateCheck === "undefined") {
+										$state.go('homepage');
+										window.alert("Welcome back "
+												+ results.firstName)
+									} else {
+										$state.go('createbooking')
+									}
+									
 								})
 			}
 			vm.loggedIn = userFactory.get();

@@ -1,6 +1,6 @@
 (function() {
 
-    var GetCurrentMovieController =  function(movieDal, showingDal, bookingFactory, $stateParams) {
+    var GetCurrentMovieController =  function($state, userFactory, movieDal, showingDal, bookingFactory, $stateParams) {
         var vm = this;
 
         function init() {
@@ -24,7 +24,7 @@
             }
         }
         init();
-        
+                
         vm.convertDate = function(givenDate){
         	
         	newDate = new Date(givenDate);
@@ -104,10 +104,22 @@
 
 
         vm.saveBooking = function (booking){
-
+        	console.log(booking);
             bookingFactory.set(booking);
+            
         }
        
+    	
+		vm.loginCheck = function(){
+			
+			console.log(userFactory.loggedIn())
+			if(userFactory.loggedIn() === false){
+				userFactory.loginGateCheck = 1;
+				$state.go("adduser");
+			}
+			else{
+				$state.go("createbooking")}
+		}
         
         vm.getShowings = function (theMovieId){
         	
@@ -122,5 +134,5 @@
         }
     };
 
-    angular.module('movieApp').controller('getCurrentMovieController', ['movieDal', 'showingDal', 'bookingFactory', '$stateParams', GetCurrentMovieController]);
+    angular.module('movieApp').controller('getCurrentMovieController', ['$state','userFactory', 'movieDal', 'showingDal', 'bookingFactory', '$stateParams', GetCurrentMovieController]);
 }());

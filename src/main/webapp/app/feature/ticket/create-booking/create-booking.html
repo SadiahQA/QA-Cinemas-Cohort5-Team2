@@ -3,7 +3,7 @@
 	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking); ctrl.clearPreviousInfo();">
 	</div>
 	
-	<div ng-init="ctrl.checkBookingExists()">
+	<div ng-init="ctrl.checkBookingExists();">
 	</div>
 	
 	<br/>
@@ -115,6 +115,6 @@
 	
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
-	 ctrl.saveBooking(ticket); ">Book Tickets</button>
+	ticket.booking.idUser=ctrl.user.idUser;ctrl.saveBooking(ticket); ">Book Tickets</button>
 
 </div>
