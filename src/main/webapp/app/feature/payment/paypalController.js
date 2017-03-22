@@ -36,15 +36,14 @@
 	        
 	        onError : function(err){
 	        	$state.go('homepage');
-	        	console.log(JSON.stringify(manyTicketFactory.get()));
-	        	ticketDal.removeTickets(manyTicketFactory.get()).then(function(){
+	        	      	ticketDal.removeTickets(manyTicketFactory.get()).then(function(){
 	        		localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
 	        	});       	
 	        },
 	        
 	        onCancel : function(data, actions){ 
 	        	$state.go('homepage');
-	        	console.log(JSON.stringify(manyTicketFactory.get()));
+	        	
 	        	ticketDal.removeTickets(manyTicketFactory.get()).then(function(){
 	        		localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
 	        	});

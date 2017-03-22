@@ -1,11 +1,16 @@
 (function(){
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory){
 =======
 
 	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, offerDal){
 >>>>>>> 01a1500ffb6bbbe2a61ed56e603dd6b292e27aab
+=======
+
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
+>>>>>>> c65d5c60f292b81177c840c255cfd7be990c1e0f
 
 		var vm = this;
 		vm.retriveBookingdetails = function(){
@@ -126,10 +131,14 @@
 	};
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', CreateBookingController]);
 =======
 
 	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'offerDal', CreateBookingController]);
 >>>>>>> 01a1500ffb6bbbe2a61ed56e603dd6b292e27aab
+=======
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
+>>>>>>> c65d5c60f292b81177c840c255cfd7be990c1e0f
 	
 }());
