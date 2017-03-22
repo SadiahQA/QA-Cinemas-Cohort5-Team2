@@ -1,8 +1,11 @@
-<div ng-controller="createBookingController as ctrl" id ="wholepage">
-<link rel="stylesheet" type="text/css" href="app/feature/ticket/create-booking/create-booking.css">
 
-	<div ng-init="ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking)">
-		
+<div ng-controller="createBookingController as ctrl" id="wholepage">
+<link rel="stylesheet" type="text/css" href="app/feature/ticket/create-booking/create-booking.css">
+	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
+	</div>
+	
+	<div ng-init="ctrl.clearPreviousInfo()">
+
 	</div>
 	<div class ="jumbotron">
 	<h1> Select ticket quantity </h1>
@@ -97,11 +100,17 @@
 		</div>
 	</div>
 	<br/>
+	
+	<form>
+		Promo-code:<br>
+		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode">
+		<button type="submit" id="codeButton" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
+	</form>
 
 	<div>
 	<h2>Total : &pound {{(ctrl.totalPrice)}} </h2>
 	</div>
-	<br/>
+
 
 	<div style="text-align:center;">
   	<a ui-sref="payment">
@@ -111,4 +120,5 @@
 	</a>
 	</div>
 	</div>
+
 </div>

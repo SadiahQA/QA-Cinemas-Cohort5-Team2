@@ -8,6 +8,7 @@ package com.qa.cinema.rest;
  */
 
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -51,6 +52,12 @@ public class TicketEndpoint {
 	@Produces({ "application/json" })
 	public String getUserTicket(@PathParam("idUser") String idUser) {
 		return service.getUserTicket(idUser);
+	}
+	
+	@Path("/json/delete")
+	@POST
+	public String removeTickets(String tickets){
+		return service.removeTickets(tickets);
 	}
 	
 	

@@ -76,6 +76,9 @@
         }).state("paymentsuccess",{
         	url:"/paymentsuccess",
         	templateUrl: "app/feature/payment/paymentsuccess/paymentsuccess.html"
+        }).state("paymentfailed", {
+        	url:"/paymentfailed",
+        	templateUrl: "app/feature/payment/paymentfailed/paymentfailed.html"
         })
 
         

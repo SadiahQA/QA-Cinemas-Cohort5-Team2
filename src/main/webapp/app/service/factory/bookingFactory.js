@@ -16,3 +16,4 @@ movieApp.factory('bookingFactory', function(localStorageService){
 		get: get
 	}
 });
+

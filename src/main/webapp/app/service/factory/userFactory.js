@@ -1,19 +1,28 @@
-movieApp.factory('userFactory', function(){
+movieApp.factory('userFactory', function(localStorageService){
 
 	var userSession = {}
 
+	var loginStatus = false;
+		
 	function set(data){
-		userSession = data;
+		localStorageService.cookie.set("User", data);
+				
+		loginStatus = true;
 	}
 	
 	function get(){
-		return userSession;
+		return localStorageService.cookie.get("User");
+	}
+	
+	function logOut(){
+		loginStatus = false;
+		localStorageService.cookie.remove("User");
 	}
 	
 	function loggedIn(){
 
 	
-		if(JSON.stringify(userSession) !== "{}"){
+	if(localStorageService.cookie.get("User")){
 			return true;
 		}
 		else {
@@ -24,6 +33,7 @@ movieApp.factory('userFactory', function(){
 	return{
 		set: set,
 		get: get,
+		logOut: logOut,
 		loggedIn: loggedIn
 	}
 });
