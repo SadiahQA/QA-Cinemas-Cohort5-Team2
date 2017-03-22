@@ -116,6 +116,7 @@
 			if(userFactory.loggedIn() === false){
 				userFactory.loginGateCheck = 1;
 				$state.go("adduser");
+				windows.alert("Please ")
 			}
 			else{
 				$state.go("createbooking")}
