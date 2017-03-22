@@ -19,26 +19,28 @@ form{
 	font-size:15px;
 }
 
-#buttonPlace {
-	padding-bottom: 20px;
-}
-
 .selectpicker {
 	width: 200px;
+	margin-top: 9px;
+}
+
+#form {
+	margin-top: 15px;
 }
 
 #innerjumbo {
 	background-color: rgba(0, 0, 0, 0.5);
-	padding-top:30px;
-	padding-bottom:30px;
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
 #titlejumbo {
 	background-color: rgba(7, 72, 146, 0.69);
 	padding-right:10px;
 	padding-left:10px;
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top:1px;
+	padding-bottom:1px;
+	margin-bottom: 5px;
 }
 
 #cinemaSelect{

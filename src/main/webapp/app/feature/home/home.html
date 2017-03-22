@@ -7,7 +7,7 @@
 		</div>
 		<form role="form">
 			
-			<div class="container-fluid">
+			<div class="container-fluid" id="form">
 				<div class="row"></div>
 					
 					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
@@ -23,7 +23,7 @@
 							<option ng-repeat="showing in ctrl.showings" ng-if="showing.availableSeats > 0" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
 						</select>
 					</div>
-				<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4" id="buttonPlace">
+				<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 " id="buttonPlace">
 					<button type="submit" id="bookButton" class="btn btn-info" ng-disabled="!ticket.showing" ng-click=" ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">Book</button>
 				</div>
 			</div>
