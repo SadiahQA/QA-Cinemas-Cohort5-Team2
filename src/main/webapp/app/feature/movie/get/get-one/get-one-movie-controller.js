@@ -19,7 +19,6 @@
 
 vm.loginCheck = function(){
 			
-			console.log(userFactory.loggedIn())
 			if(userFactory.loggedIn() === false){
 				userFactory.loginGateCheck = 1;
 				$state.go("adduser");
