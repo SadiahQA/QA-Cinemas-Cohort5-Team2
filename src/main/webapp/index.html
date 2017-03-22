@@ -71,8 +71,27 @@
 
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<div ng-controller="indexController as ctrl">
-	
 
+
+
+        <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cookies</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This site uses cookies to enhance your experience.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
@@ -89,19 +108,19 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
-                                    </ul>
+                </ul>
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <div class="form-group">
-                            <select id="cinemaSelect" ng-model="ctrl.idCinema" ng-change="ctrl.setCinema(ctrl.idCinema)">
+                            <select id="cinemaSelect" ng-model="selectedCinema" ng-change="ctrl.setCinema(selectedCinema)">
                                 <option value="" disabled selected>Select Cinema</option>
-                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema.idCinema}}">{{cinema.city}}</option>
+                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema}}">{{cinema.city}}</option>
                             </select>
                         </div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
+                    <li id="city">{{ctrl.cinema.city}}</li>
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
                     <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
 
