@@ -1,10 +1,15 @@
 (function(){
 
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
 
 		var vm = this;
+		
+		
+		
 		vm.retriveBookingdetails = function(){
+			
 			vm.booking = bookingFactory.get();
+			
 		}
 
 		vm.studentNum=0;
@@ -40,7 +45,9 @@
 		}
 
 		vm.saveBooking = function(ticket){
+			ticket.booking.idUser = userFactory.get().idUser;
 			ticketFactory.set(ticket);
+			userFactory.loginGate = 0;
 			vm.ticketArray = ticketFactory.get();
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				
@@ -110,17 +117,19 @@
 		}
 		
 		vm.checkBookingExists = function(){
+
 			if (bookingFactory.get() === null){
 				if (backUpTicketFactory.get() != null){
 					ticketDal.removeTickets(backUpTicketFactory.get());
 				}
 				backUpTicketFactory.set(null);
+
 				$state.go('homepage');
 			}
 		}	
 	
 	};
 
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
 	
 }());

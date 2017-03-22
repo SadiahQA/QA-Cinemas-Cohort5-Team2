@@ -1,4 +1,3 @@
-
 <div ng-controller="createBookingController as ctrl" id="wholepage">
 <link rel="stylesheet" type="text/css" href="app/feature/ticket/create-booking/create-booking.css">
 	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
@@ -116,9 +115,11 @@
   	
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
-	 ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
+
+	ticket.booking.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
 	
 	</div>
 	</div>
+
 
 </div>

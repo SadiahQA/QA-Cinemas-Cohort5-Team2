@@ -3,8 +3,11 @@ movieApp.factory('ticketFactory', function(localStorageService){
 	var ticketArray = [];
 	
 	function set(data){
+		
 		ticketArray=[];
 		savedData = data;
+		
+		savedData.booking.user.idUser = data.booking.idUser;
 		createTicketObjects();
 
 	}
@@ -14,9 +17,8 @@ movieApp.factory('ticketFactory', function(localStorageService){
 	}
 	
 	function  createTicketObjects() {
-
+		
         if (savedData === null) {
-
         }
         else {
 
@@ -67,6 +69,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
     }
 	return{
 		set: set,
-		get: get
+		get: get,
+		createTicketObjects:createTicketObjects
 	}
 });
