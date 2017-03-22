@@ -41,6 +41,7 @@
 
 		vm.saveBooking = function(ticket){
 			ticketFactory.set(ticket);
+			console.log(ticket);
 			vm.ticketArray = ticketFactory.get();
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
 				vm.bookingResponse=response;
