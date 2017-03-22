@@ -1,13 +1,34 @@
 (function(){
 
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
 
 		var vm = this;
+		
+		
+		
 		vm.retriveBookingdetails = function(){
+			
 			vm.booking = bookingFactory.get();
+			
 		}
 
+		
+		var initVal = "Promo-code";
+		$(document).ready(function(){
+			$(".codeButton").attr("disabled", "true");
+		});
+		
+		$('.voucher').on("keyup", action);
+		function action(){
+			if ($(this).val() != initVal && $(this).val() != "") {
+				$(".codeButton").removeAttr("disabled");
+			} else {
+				$(".codeButton").attr("disabled", "true");
+			}
+		};
+	
 		vm.studentNum=0;
+
 		vm.childNum=0;
 		vm.adultNum=0;
 		vm.concessionNum=0;
@@ -40,9 +61,12 @@
 		}
 
 		vm.saveBooking = function(ticket){
+			ticket.booking.idUser = userFactory.get().idUser;
 			ticketFactory.set(ticket);
+			userFactory.loginGate = 0;
 			vm.ticketArray = ticketFactory.get();
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
+				
 				vm.bookingResponse=response;
 				manyTicketFactory.set(vm.bookingResponse);
 				$state.go('payment');
@@ -85,9 +109,9 @@
 			vm.totalPrice = (vm.totalPrice).toFixed(2);
 			vm.totalTicket = vm.concessionNum + vm.adultNum + vm.childNum + vm.studentNum;
 		}
-		
+			
 		vm.discountPrice = function(offerCode){
-			offerDal.getDiscountAmount(offerCode).then(function (results){
+		 	offerDal.getDiscountAmount(offerCode).then(function (results){
 				vm.offerFound = results;
 				vm.totalPrice = ((vm.totalPrice)*(vm.offerFound)).toFixed(2);
 				document.getElementById('codeButton').setAttribute("disabled","disabled");
@@ -109,17 +133,19 @@
 		}
 		
 		vm.checkBookingExists = function(){
+
 			if (bookingFactory.get() === null){
 				if (backUpTicketFactory.get() != null){
 					ticketDal.removeTickets(backUpTicketFactory.get());
 				}
 				backUpTicketFactory.set(null);
+
 				$state.go('homepage');
 			}
 		}	
 	
 	};
-	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
+
+	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
 	
 }());

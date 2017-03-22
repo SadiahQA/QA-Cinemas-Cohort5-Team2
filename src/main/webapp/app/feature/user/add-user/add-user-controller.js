@@ -1,6 +1,7 @@
 (function() {
 
-	var AddUserController = function($state, userDal, userFactory) {
+	var AddUserController = function($state, userDal, userFactory,
+			bookingFactory) {
 		var vm = this;
 
 		var hash = function(str) {
@@ -14,63 +15,92 @@
 
 			}
 			return hash;
-			
-		
-		}	
-		vm.isLoggedIn = function(){
+
+		}
+		vm.isLoggedIn = function() {
 			return userFactory.loggedIn();
 		}
 
 		vm.addUser = function(userToAdd) {
 			userToAdd.password = hash(userToAdd.password);
+			var loginSuccess = false;
 
-			userDal.createNewUser(userToAdd).then(function(results) {
+			userDal
+					.createNewUser(userToAdd)
+					.then(
+							function(results) {
 								vm.userAddMessage = results;
 								if (JSON.stringify(results) === '{"message":"User Successfully Added"}') {
 									document.cookie = "usercookie = "
-											+ hash(userToAdd.email+ userToAdd.password);
-								
+											+ hash(userToAdd.email
+													+ userToAdd.password);
+
 									window.alert("New User Created");
+									loginSuccess = true;
 								}
 
 								else {
-									window.alert("User Creation Failed");
+									window.alert("User Creation Failed: email already in use");
 								}
-								userDal.getUserByEmailAndPassword(userToAdd.email, userToAdd.password).then(function(returns){
-									userFactory.set(returns);
-									$state.go('homepage');
-								
-							})				
-			},
-						
+								if(loginSuccess === true){
+									loginSuccess = false;
+								userDal.getUserByEmailAndPassword(
+												userToAdd.email,
+												userToAdd.password)
+										.then(
+												function(returns) {
+													userFactory.set(returns);
+													
+													if (userFactory.loginGateCheck === 0 | typeof userFactory.loginGateCheck === "undefined") {
+														$state.go('homepage');
+													} else {
+														$state.go('createbooking')
+													}
+												
+
+												})}
+							},
+
 							function(error) {
 								vm.error = true;
 								vm.errorMessage = error;
 							});
-			
-		
-		
-			
+
 		}
-		
-	vm.login = function(useremail, userpassword){
-		if(JSON.stringify(userDal.getUserByEmailAndPassword(useremail, hash(userpassword))) === '{"message": "login failed"}'){
-			{window.alert("Login failed: please check details and try again.");}
-		}
-		else{
-			userDal.getUserByEmailAndPassword(useremail, hash(userpassword)).then(function(results){
-				vm.userLoginMessage = results;
-				document.cookie = "usercookie = "
-					+ hash(useremail+ userpassword);
-				userFactory.set(results);
-				$state.go('homepage');
-				window.alert("Welcome back "+results.firstName)
-			})
+
+		vm.login = function(useremail, userpassword) {
+			if (JSON.stringify(userDal.getUserByEmailAndPassword(useremail,
+					hash(userpassword))) === '{"message": "login failed"}') {
+				{
+					window
+							.alert("Login failed: please check details and try again.");
+				}
+			} else {
+				userDal
+						.getUserByEmailAndPassword(useremail,
+								hash(userpassword)).then(
+								function(results) {
+									vm.userLoginMessage = results;
+									document.cookie = "usercookie = "
+											+ hash(useremail + userpassword);
+									userFactory.set(results);
+									
+									if (userFactory.loginGateCheck === 0 | typeof userFactory.loginGateCheck === "undefined") {
+										$state.go('homepage');
+										window.alert("Welcome back "
+												+ results.firstName)
+									} else {
+										$state.go('createbooking')
+									}
+									
+								})
 			}
 			vm.loggedIn = userFactory.get();
 			vm.compare = (JSON.stringify(vm.loggedIn));
-	};
+		};
 	}
-	angular.module('movieApp').controller('addUserController',
-			[ '$state', 'userDal', 'userFactory', AddUserController ]);
+	angular.module('movieApp').controller(
+			'addUserController',
+			[ '$state', 'userDal', 'userFactory', 'bookingFactory',
+					AddUserController ]);
 }());
