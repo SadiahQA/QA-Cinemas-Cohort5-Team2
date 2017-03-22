@@ -4,18 +4,20 @@
 		var vm = this;
 		
 		vm.user = userFactory.get();
+		vm.cinemas;
 
 
         function getCinemas() {
             cinemaDal.getAllCinemas().then(function (results) {
                 vm.cinemas = results;
                 vm.idCinema = cinemaFactory.get();
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                vm.idCinema = cinemaFactory.get();
                 if(!vm.idCinema){
                 	vm.idCinema = 2;
                 	cinemaFactory.set(vm.idCinema);
-				}
-				if (navigator.geolocation) {
-                	navigator.geolocation.getCurrentPosition(showPosition);
 				}
                 for(var i in vm.cinemas){
                 	if(vm.cinemas[i].idCinema == vm.idCinema){
@@ -43,8 +45,28 @@
             }
 		}
 		function showPosition(position){
-            vm.latitude = position.coords.latitude;
-			vm.longitude = position.coords.longitude;
+            var lat = position.coords.latitude;
+			var long = position.coords.longitude;
+
+			var shortest = Number.MAX_VALUE
+			var closestCinema;
+			for(var i in vm.cinemas){
+				var difLat = vm.cinemas[i].latitude - lat;
+                var difLong = vm.cinemas[i].longitude - long;
+                var dif = Math.sqrt((difLat*difLat)+(difLong*difLong));
+                if(dif<shortest){
+                	shortest = dif;
+                	console.log(vm.cinemas[i])
+                	closestCinema = vm.cinemas[i];
+				}
+				console.log(vm.cinemas[i] + "    " + dif)
+			}
+			console.log(closestCinema)
+            cinemaFactory.set(closestCinema.idCinema);
+            vm.idCinema = closestCinema.idCinema;
+            vm.cinema = closestCinema;
+            $state.reload();
+
 		}
 	
 
