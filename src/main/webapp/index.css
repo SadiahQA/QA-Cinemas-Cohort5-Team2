@@ -43,6 +43,10 @@ body{
 	color: black!important;
 }
 
+#test{
+    color:white;
+}
+
 html {
     position: relative;
     min-height: 100%;

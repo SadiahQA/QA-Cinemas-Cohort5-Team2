@@ -22,6 +22,20 @@
             vm.idCinema = cinemaFactory.get();
         	$state.reload();
 		}
+
+        var x = document.getElementById("demo");
+
+		vm.getLocation = function(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                vm.idCinema = 2;
+            }
+		}
+		function showPosition(position){
+            vm.latitude = position.coords.latitude;
+			vm.longitude = position.coords.longitude;
+		}
 	
 
 	vm.isLoggedIn = function(){
@@ -34,7 +48,8 @@
 		vm.loggedIn = userFactory.get();
 		vm.compare = (JSON.stringify(vm.loggedIn));
 	};
-	window.alert("To enhance your user experience this website uses cookies.")
+
+        $('#myModal').modal(focus)
 
 	}
 	
