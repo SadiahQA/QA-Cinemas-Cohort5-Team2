@@ -46,7 +46,6 @@
 
 		vm.saveBooking = function(ticket){
 			ticket.booking.idUser = userFactory.get().idUser;
-			console.log(ticket.booking.idUser);
 			ticketFactory.set(ticket);
 			userFactory.loginGate = 0;
 			vm.ticketArray = ticketFactory.get();
