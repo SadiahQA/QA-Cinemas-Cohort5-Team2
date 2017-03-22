@@ -33,16 +33,19 @@ public class Ticket {
 	private User user;
 
 	private String ticketType;
+	
+	private int seatNumber;
 
 	public Ticket() {
 		//empty constructor
 	}
 
-	public Ticket(Showing showing, User user, String ticketType) {
+	public Ticket(Showing showing, User user, String ticketType, int seatNumber) {
 
 		this.showing = showing;	
 		this.user = user;
 		this.ticketType = ticketType;
+		this.seatNumber = seatNumber;
 	}
 
 	public Long getIdTicket() {
@@ -71,6 +74,14 @@ public class Ticket {
 
 	public void setTicketType(String ticketType) {
 		this.ticketType = ticketType;
+	}
+
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
 	}
 
 }

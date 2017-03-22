@@ -1,12 +1,13 @@
 
-angular.module('movieApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+(function() {
 
-    .controller('updateSeatController', function($scope) {
+    var items = [1,2,3,4,5,6,7,8,9,10];
+    var selected = [];
 
-        $scope.items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-        $scope.selected = [];
+    var updateSeatController =  function(items,selected) {
+        var vm = this;
 
-        $scope.toggle = function (item, list) {
+        var toggle = function (item, list) {
             var idx = list.indexOf(item);
             if (idx > -1) {
                 list.splice(idx, 1);
@@ -16,8 +17,13 @@ angular.module('movieApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'
             }
         };
 
-        $scope.exists = function (item, list) {
+        var exists = function (item, list) {
             return list.indexOf(item) > -1;
         };
-    });
+
+    };
+
+    angular.module('movieApp').controller('updateSeatController', ['screenDal', GetScreenByCinemaController]);
+}());
+
 
