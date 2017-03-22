@@ -40,6 +40,10 @@ public class Cinema {
 	@JoinColumn(name = "Cinema_idCinema")
 	private List<Screen> screens;
 	
+	private double latitude;
+	
+	private double longitude;
+	
 	public Cinema(){
 		//empty constructor
 	}
@@ -52,6 +56,13 @@ public class Cinema {
 		this.openingTimes = openingTimes;
 
 		this.screens = screens;
+	}
+	
+	public Cinema(String name, String city, String openingTimes, List<Screen> screens, double latitude,
+			double longitude) {
+		this(name, city, openingTimes, screens);
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 
@@ -91,6 +102,26 @@ public class Cinema {
 
 	public void setScreens(List<Screen> screens) {
 		this.screens = screens;
+	}
+
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 	
