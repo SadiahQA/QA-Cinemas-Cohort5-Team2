@@ -1,16 +1,16 @@
 <div ng-controller="paymentPageController as ctrl">
 	<div ng-controller="paypalController as paypal">
-		<div ng-init="ctrl.getBooking()">
+		<div ng-init="ctrl.getBooking(); ctrl.getQuantities()">
 
 <h1>Finalize Booking</h1>
 
 <div class="container-fluid">
-	<div ng-repeat="ticket in ctrl.booking">
 		<div class="row">
 			<div class=col-lg-2>
-			{{ticket.ticketType}}
+			Student
 			</div>
 			<div class=col-lg-2>
+			{{ctrl.studentNum}}
 			</div>
 			<div class=col-lg-2>
 			</div>
@@ -21,10 +21,77 @@
 			<div class=col-lg-2>
 			</div>
 		</div>
-	</div>
+		
+		<div class="row">
+			<div class=col-lg-2>
+			Adult
+			</div>
+			<div class=col-lg-2>
+			{{ctrl.adultNum}}
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class=col-lg-2>
+			Student
+			</div>
+			<div class=col-lg-2>
+			{{ctrl.studentNum}}
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class=col-lg-2>
+			Concession
+			</div>
+			<div class=col-lg-2>
+			{{ctrl.concessionNum}}
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class=col-lg-2>
+			Total Price
+			</div>
+			<div class=col-lg-2>
+			{{ctrl.totalPrice}}
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+			<div class=col-lg-2>
+			</div>
+		</div>
 </div>
 
-{{ctrl.booking}}
+
 
 <div id="paypal-button"></div> 
 
