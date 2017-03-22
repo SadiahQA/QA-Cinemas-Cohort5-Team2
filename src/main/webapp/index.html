@@ -71,11 +71,7 @@
 
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<div ng-controller="indexController as ctrl">
-	
-    <div id = "test" ng-init = "ctrl.getLocation()">
-        {{ctrl.latitude}}
-        {{ctrl.longitude}}
-    </div>
+
 
 
         <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -97,6 +93,7 @@
             </div>
         </div>
 
+
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -111,19 +108,19 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="seecurrentmovies({current:'current'})">What's On</a></li>
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
-                                    </ul>
+                </ul>
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <div class="form-group">
-                            <select id="cinemaSelect" ng-model="ctrl.idCinema" ng-change="ctrl.setCinema(ctrl.idCinema)">
+                            <select id="cinemaSelect" ng-model="selectedCinema" ng-change="ctrl.setCinema(selectedCinema)">
                                 <option value="" disabled selected>Select Cinema</option>
-                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema.idCinema}}">{{cinema.city}}</option>
+                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema}}">{{cinema.city}}</option>
                             </select>
                         </div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
+                    <li id="city">{{ctrl.cinema.city}}</li>
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
                     <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
 

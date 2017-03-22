@@ -9,27 +9,37 @@
         function getCinemas() {
             cinemaDal.getAllCinemas().then(function (results) {
                 vm.cinemas = results;
+                vm.idCinema = cinemaFactory.get();
+                if(!vm.idCinema){
+                	vm.idCinema = 2;
+                	cinemaFactory.set(vm.idCinema);
+				}
+				if (navigator.geolocation) {
+                	navigator.geolocation.getCurrentPosition(showPosition);
+				}
+                for(var i in vm.cinemas){
+                	if(vm.cinemas[i].idCinema == vm.idCinema){
+                		vm.cinema = vm.cinemas[i];
+					}
+				}
             }, function (error) {
                 vm.error = true;
                 vm.errorMessage = error;
             });
-            vm.idCinema = cinemaFactory.get();
         }
         getCinemas();
 
-        vm.setCinema = function(idCinema){
-        	cinemaFactory.set(idCinema);
-            vm.idCinema = cinemaFactory.get();
+        vm.setCinema = function setCinema(cinema){
+        	var cinemaObject = JSON.parse((cinema));
+        	cinemaFactory.set(cinemaObject.idCinema);
+            vm.idCinema = cinemaObject.idCinema;
+            vm.cinema = cinemaObject;
         	$state.reload();
 		}
 
-        var x = document.getElementById("demo");
-
-		vm.getLocation = function(){
+		function getLocation(){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                vm.idCinema = 2;
             }
 		}
 		function showPosition(position){

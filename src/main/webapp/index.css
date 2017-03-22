@@ -50,6 +50,12 @@ body{
 #test{
     color:white;
 }
+#city{
+    color:lightgrey;
+    font-size:25px;
+    margin-top: 10px;
+    text-align: center;
+}
 
 html {
     position: relative;
