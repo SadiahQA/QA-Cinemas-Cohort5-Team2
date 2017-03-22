@@ -36,16 +36,18 @@
 	        
 	        onError : function(err){
 	        	$state.go('homepage');
-	        	localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
-	        	ticketDal.removeTickets(manyTicketFactory.get());
+	        	      	ticketDal.removeTickets(manyTicketFactory.get()).then(function(){
+	        		localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
+	        	});       	
 	        },
 	        
-	        onCancel : function(data, actions){
+	        onCancel : function(data, actions){ 
 	        	$state.go('homepage');
-	        	localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
-	        	ticketDal.removeTickets(manyTicketFactory.get());
+	        	
+	        	ticketDal.removeTickets(manyTicketFactory.get()).then(function(){
+	        		localStorageService.cookie.remove('manyTicketStorageKey', 'bookingStorageKey', 'ticketArrayKey');
+	        	});
 	        }
-
 	    }, '#paypal-button');
 		
 		
