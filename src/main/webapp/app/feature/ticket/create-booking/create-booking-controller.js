@@ -51,6 +51,7 @@
 			userFactory.loginGate = 0;
 			vm.ticketArray = ticketFactory.get();
 			ticketDal.createTicket(vm.ticketArray).then(function(response){
+				
 				vm.bookingResponse=response;
 				manyTicketFactory.set(vm.bookingResponse);
 				$state.go('payment');
@@ -131,6 +132,5 @@
 	};
 
 	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
-
 	
 }());
