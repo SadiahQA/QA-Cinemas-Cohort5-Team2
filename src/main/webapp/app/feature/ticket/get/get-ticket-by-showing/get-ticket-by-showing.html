@@ -4,7 +4,7 @@
     <div flex="100" flex-gt-sm="50" layout="column">
         <div>
     <fieldset class="standard">
-        <legend>Using input type="checkbox"</legend>
+
         <div layout="row" layout-wrap="" flex="">
             <div ng-repeat="ticket in ctrl.tickets track by $index" class="standard" flex="50">
                 <label>
@@ -15,7 +15,7 @@
                         </div>
                         <div ng-switch-default>
                              <input type="checkbox"  ng-checked="ctrl.exists(ticket, ctrl.selected)" ng-click="ctrl.toggle(ticket, ctrl.selected)">
-                              {{ ticket }}
+                            {{ticket}}
                         </div>
                     </div>
                 </label>
