@@ -86,7 +86,10 @@
 							</div>
 							<br/>
 							<div class="table-responsive">
-								<table class="table table-bordered ">
+								<div ng-if = "!ctrl.idCinema" >
+									<h4>Please select a cinema</h4>
+								</div>
+								<table ng-if = "ctrl.idCinema" class="table table-bordered ">
 
 									<tr>
 										<th>Type</th>
@@ -100,7 +103,7 @@
 										<td><h4>{{showing.showingDate}}</h4></td>
 										<td><h4>{{showing.startTime}}</h4></td>
 										<td ng-if = 'showing.availableSeats > 0'><h4>
-											<a ui-sref="createbooking" ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">
+											<a  ng-click="ticket.showing = showing; ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket); ctrl.loginCheck()" href="">
 												Book Now!
 											</a></h4></td>
 										<td id = 'unavailable' ng-if = 'showing.availableSeats <= 0'><h4> Fully Booked </h4></td>

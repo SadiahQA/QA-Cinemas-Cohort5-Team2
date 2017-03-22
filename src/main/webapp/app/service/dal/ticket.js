@@ -23,7 +23,7 @@
         };
         
         this.removeTickets = function(tickets){
-        	return dal.http.DELETE("rest/ticket/json", tickets);
+        	return dal.http.POST("rest/ticket/json/delete", tickets);
         }
 
 
