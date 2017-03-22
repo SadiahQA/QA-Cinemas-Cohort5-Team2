@@ -98,7 +98,9 @@
 		
 		vm.checkBookingExists = function(){
 			if (bookingFactory.get() === null){
-				ticketDal.removeTickets(backUpTicketFactory.get());
+				if (backUpTicketFactory.get() != null){
+					ticketDal.removeTickets(backUpTicketFactory.get());
+				}
 				backUpTicketFactory.set(null);
 				$state.go('homepage');
 			}
