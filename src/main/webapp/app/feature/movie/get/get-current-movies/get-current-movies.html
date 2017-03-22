@@ -19,6 +19,7 @@
 						<div class="movieTitle">
 							<a id="clickable" ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})">{{movie.title}}</a>
 						</div>
+						
 							<div>{{movie.releaseDate}}</div>
 							<div>{{movie.duration}}</div>
 							<div>{{movie.genre | lowercase}}</div>
@@ -56,9 +57,13 @@
 						<br/>
 						<h4>
 						    <div>{{movie.description}}</div>
-						</h4>            
+						    <button button type="button" ui-sref="seeonemovie({idMovie:{{movie.idMovie}}})" class="btn btn-info"> More Info</button>  
+						</h4>       
+			   
 						</div>
+
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+
 							<h4>
 								Showing Times
 							</h4>
