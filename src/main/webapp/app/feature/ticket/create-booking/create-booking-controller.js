@@ -55,7 +55,7 @@
 				manyTicketFactory.set(vm.bookingResponse);
 				$state.go('payment');
 				if(JSON.stringify(vm.bookingResponse) === "{\"message\": \"No tickets found\"}"){
-					ticketFactory.set(null);d
+					ticketFactory.set(null);
 				}
 			});
 			vm.storePrice(vm.totalPrice);
