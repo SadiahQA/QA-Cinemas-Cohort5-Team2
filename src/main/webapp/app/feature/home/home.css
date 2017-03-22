@@ -9,3 +9,7 @@ img.img-responsive:hover {
 form{
 	padding: 35px
 }
+
+#cinemaSelect{
+	color: black;
+}
