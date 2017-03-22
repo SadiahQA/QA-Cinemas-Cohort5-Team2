@@ -1,7 +1,7 @@
 movieApp.factory('ticketFactory', function(localStorageService){
 	var savedData = {};
 	var ticketArray = [];
-	
+
 	function set(data){
 		ticketArray=[];
 		savedData = data;
@@ -22,11 +22,11 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
 
             arrayPosition = 0;
-
             while (savedData.student.quantity > 0) {
+                console.log(savedData.seatNums[arrayPosition]);
                 ticket = '{ "ticketType":"Student", "showing":{"idShowing":"' +
                     savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.user.idUser + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '"}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -36,7 +36,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
             while (savedData.adult.quantity > 0) {
                 ticket = '{ "ticketType":"Adult", "showing":{"idShowing":"' +
                     savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.user.idUser + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '"}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -45,7 +45,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.child.quantity > 0) {
                 ticket = '{ "ticketType":"Child", "showing":{"idShowing":"' +
-                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '", "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
@@ -55,13 +55,14 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.concession.quantity > 0) {
                 ticket = '{ "ticketType":"Concession", "showing":{"idShowing":"' +
-                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
+                    savedData.booking.showing.idShowing + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '", "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
                 savedData.concession.quantity = savedData.concession.quantity - 1;
             }
+            console.log(ticketArray);
             localStorageService.cookie.set('ticketArrayKey', ticketArray);
         }
     }

@@ -1,6 +1,6 @@
 (function(){
 
-	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
+	var CreateBookingController = function(bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal, seatFactory){
 
 		var vm = this;
 		vm.retriveBookingdetails = function(){
@@ -39,20 +39,12 @@
 			}
 		}
 
-		vm.saveBooking = function(ticket){
-			ticketFactory.set(ticket);
-			console.log(ticket);
-			vm.ticketArray = ticketFactory.get();
-			ticketDal.createTicket(vm.ticketArray).then(function(response){
-				vm.bookingResponse=response;
-				manyTicketFactory.set(vm.bookingResponse);
-				$state.go('payment');
-				if(JSON.stringify(vm.bookingResponse) === "{\"message\": \"No tickets found\"}"){
-					ticketFactory.set(null);
-				}
-			});
-			vm.storePrice(vm.totalPrice);
+		vm.saveBooking=function(ticket){
+			seatFactory.set(ticket);
+
 		}
+
+
 		
 		vm.showing;
     
@@ -121,6 +113,6 @@
 	
 	};
 	
-	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', CreateBookingController]);
 	
 }());
