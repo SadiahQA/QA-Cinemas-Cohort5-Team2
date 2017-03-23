@@ -38,7 +38,6 @@ public class DBTicketService implements TicketService{
 
 	@Override
 	public String createTickets(String tickets) {
-		System.out.println(tickets);
 		
 		Type type = new TypeToken<List<Ticket>>(){}.getType();
 		List<Ticket> ticketList = new Gson().fromJson(tickets, type);
