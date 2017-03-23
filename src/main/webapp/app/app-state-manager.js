@@ -54,6 +54,7 @@
                 $stateParams.idUser
             }
         }).state("createbooking",{
+
         	url: "/createbooking",
         	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
 

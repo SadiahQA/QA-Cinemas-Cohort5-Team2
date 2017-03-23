@@ -42,6 +42,7 @@ public class Ticket {
 
 	public Ticket(Showing showing, User user, String ticketType, int seatNumber) {
 
+		
 		this.showing = showing;	
 		this.user = user;
 		this.ticketType = ticketType;

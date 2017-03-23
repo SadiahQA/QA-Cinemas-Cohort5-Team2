@@ -2,6 +2,8 @@
 
     var GetTicketByShowingController = function(ticketDal, $stateParams, ticketFactory, manyTicketFactory, seatFactory, priceFactory, $state, localStorageService, backUpTicketFactory){
 
+
+
         var vm = this;
         vm.seats;
         vm.selected=[];

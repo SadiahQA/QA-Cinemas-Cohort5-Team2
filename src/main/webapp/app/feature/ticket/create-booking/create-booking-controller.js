@@ -28,6 +28,8 @@
 			} else {
 				$(".codeButton").attr("disabled", "true");
 			}
+
+
 		};
 	
 		vm.studentNum=0;

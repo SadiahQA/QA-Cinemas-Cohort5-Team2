@@ -94,6 +94,7 @@ public class DBTicketService implements TicketService{
 		}
 		Object ticketFound = query.getSingleResult();
 		return util.getJSONForObject(ticketFound);
+		
 	}
 
 	@Override

@@ -6,6 +6,7 @@ movieApp.factory('seatFactory', function(localStorageService){
         savedData = data;
     }
 
+
     function get(){
 
         return localStorageService.cookie.get('seatStorageKey');

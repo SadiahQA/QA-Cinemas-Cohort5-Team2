@@ -11,6 +11,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
 		createTicketObjects();
 
 	}
+
 	
 	function get(){
 		return localStorageService.cookie.get('ticketArrayKey');
@@ -21,6 +22,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
         if (savedData === null) {
         }
         else {
+
 
 
             arrayPosition = 0;
