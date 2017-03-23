@@ -24,21 +24,14 @@
             controller: function ($stateParams){
                 $stateParams.idMovie
             }
-            //params:['movieId']
         })
         .state("adduser",{
             url:"/adduser",
             templateUrl: "app/feature/user/add-user/add-user.html"
         })
-        .state("cinemas",{
-        	url:"/cinemas", 
-        	templateURL: "app/feature/cinema/get-cinema/get-all-cinemas/get-all-cinemas.html"
-        }).state("oneCinema",{
-        	url:"/oneCinema:cinemaCity",
-        	templateURL:"app/feature/cinema/get-cinema/get-all-cinemas/get-cinema-by-city.html",
-        	controller: function ($stateParams){
-        		$stateParams.cinemaCity
-        	}
+        .state("classifications",{
+            url:"/classifications",
+            templateUrl: "app/feature/classifications/classifications.html"
         }).state("bookticket",{
             url: "/bookticket",
             templateUrl: "app/feature/ticket/add-ticket/add-ticket.html"
