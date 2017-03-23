@@ -89,14 +89,15 @@ public class DBTicketServiceTest {
 		assertEquals( "Ticket could not be found",  ticketService.getTicket("1"));
 	}
 
-//	@Test
-//	public void getListTicketTest() {
-//		assertEquals( "Ticket String info",  ticketService.getListTicket("1"));
-//		
-//	}
+	@Test
+	public void getListTicketTest() {
+		assertEquals( "Ticket String info",  ticketService.getListTicket("1"));
+		
+	}
 	
 	@Test
 	public void getUserTicketTest() {
+		
 		assertEquals( "Ticket String info",  ticketService.getUserTicket("1"));
 		
 	}
