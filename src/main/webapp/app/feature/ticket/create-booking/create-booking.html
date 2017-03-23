@@ -1,14 +1,14 @@
 <div ng-controller="createBookingController as ctrl" id="wholepage">
-<link rel="stylesheet" type="text/css" href="app/feature/ticket/create-booking/create-booking.css">
+	<link rel="stylesheet" type="text/css" href="app/feature/ticket/create-booking/create-booking.css">
 	<div ng-init="ctrl.checkBookingExists(); ctrl.retriveBookingdetails(); ctrl.getPrice(ctrl.booking);">
 	</div>
-	
+
 	<div ng-init="ctrl.clearPreviousInfo()">
 
 	</div>
 	<div>
-	<div class="container-fluid">
-		<div class="row jumbotron"  id="innerjumbo">
+		<div class="container-fluid">
+			<div class="row jumbotron"  id="innerjumbo">
 				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 					<img class="img-responsive center-block align-middle" ng-src="{{ctrl.showing.movie.posterURL}}" style="width:100%">
 				</div>
@@ -21,130 +21,130 @@
 					</div>
 					<div>
 						Start time : {{ctrl.showing.startTime}}
-					</div>	
+					</div>
 					<div>
 						Duration : {{ctrl.showing.movie.duration}}
 					</div>
 				</div>
-		</div>
-		<div class="row">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-				<h2> Select ticket quantity </h2>
+			</div>
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<h2> Select ticket quantity </h2>
+				</div>
 			</div>
 		</div>
-	</div>
-	<br/>
-	<div class="container-fluid" >
-		<div class="row" >
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-				Student
-				<div id = "money1" >&pound {{ctrl.studentPrice}}</div>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				Quantity : {{ctrl.studentNum}}
-			</div>
-			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" id="toprow">
-				<button type="button" ng-click="ctrl.studentNum=ctrl.decreaseNumber(ctrl.studentNum);ctrl.updatePrice()"  class="btn btn-info" id="but1">-</button>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				<button type="button" ng-click="ctrl.studentNum=ctrl.incrementNumber(ctrl.studentNum);ctrl.updatePrice()" class="btn btn-info" id="but1">+</button>
-			</div>
-			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-			Student Total : &pound {{(ctrl.studentPrice * ctrl.studentNum).toFixed(2);}}
-			</div>
-		</div>
-	</div>
-	<br/>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-				Child
-				<div id = "money1">&pound {{ctrl.childPrice}}</div>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				Quantity : {{ctrl.childNum}}
-			</div>
-			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
-				<button type="button" ng-click="ctrl.childNum=ctrl.decreaseNumber(ctrl.childNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				<button type="button" ng-click="ctrl.childNum=ctrl.incrementNumber(ctrl.childNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">+</button>
-			</div>
-			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-			 Child Total : &pound {{(ctrl.childPrice * ctrl.childNum).toFixed(2);}}
+		<br/>
+		<div class="container-fluid" >
+			<div class="row" >
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+					Student
+					<div id = "money1" >&pound {{ctrl.studentPrice}}</div>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					Quantity : {{ctrl.studentNum}}
+				</div>
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" id="toprow">
+					<button type="button" ng-click="ctrl.studentNum=ctrl.decreaseNumber(ctrl.studentNum);ctrl.updatePrice()"  class="btn btn-info" id="but1">-</button>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					<button type="button" ng-click="ctrl.studentNum=ctrl.incrementNumber(ctrl.studentNum);ctrl.updatePrice()" class="btn btn-info" id="but1">+</button>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+					Student Total : &pound {{(ctrl.studentPrice * ctrl.studentNum).toFixed(2);}}
+				</div>
 			</div>
 		</div>
-	</div>
-	<br/>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-				Adult
-				<div id = "money1">&pound {{ctrl.adultPrice}}</div>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				Quantity : {{ctrl.adultNum}}
-			</div>
-			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
-				<button type="button" ng-click="ctrl.adultNum=ctrl.decreaseNumber(ctrl.adultNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				<button type="button" ng-click="ctrl.adultNum=ctrl.incrementNumber(ctrl.adultNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">+</button>
-			</div>
-			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-			Adult Total : &pound {{(ctrl.adultPrice * ctrl.adultNum).toFixed(2);}}
-			</div>
-		</div>
-	</div>
-	<br/>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-				Concession
-				<div id = "money1">&pound {{ctrl.concessionPrice}}</div>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+		<br/>
 
-
-				Quantity : {{ctrl.concessionNum}}
-			</div>
-			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
-				<button type="button" ng-click="ctrl.concessionNum=ctrl.decreaseNumber(ctrl.concessionNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
-			</div>
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-				<button type="button" ng-click="ctrl.concessionNum=ctrl.incrementNumber(ctrl.concessionNum);ctrl.updatePrice()"   class="btn btn-info btn-lg" id="but1">+</button>
-			</div>
-			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-			Concession Total : &pound {{(ctrl.concessionPrice * ctrl.concessionNum).toFixed(2);}}
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+					Child
+					<div id = "money1">&pound {{ctrl.childPrice}}</div>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					Quantity : {{ctrl.childNum}}
+				</div>
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+					<button type="button" ng-click="ctrl.childNum=ctrl.decreaseNumber(ctrl.childNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					<button type="button" ng-click="ctrl.childNum=ctrl.incrementNumber(ctrl.childNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">+</button>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+					Child Total : &pound {{(ctrl.childPrice * ctrl.childNum).toFixed(2);}}
+				</div>
 			</div>
 		</div>
-	</div>
-	<br/>
-	
-	<form>
-		Promo-code:<br>
-		<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode" class="voucher" value="Promo-code"
-			onfocus="if (this.value == 'Promo-code') {this.value = '';}"
-			onblur="if (this.value == '') {this.value = 'Promo-code';}">
-		<button type="submit" id="codeButton" class="btn btn-info" value="" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
-	</form>
+		<br/>
 
-	<div>
-	<h2>Total : &pound {{(ctrl.totalPrice)}} </h2>
-	</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+					Adult
+					<div id = "money1">&pound {{ctrl.adultPrice}}</div>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					Quantity : {{ctrl.adultNum}}
+				</div>
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+					<button type="button" ng-click="ctrl.adultNum=ctrl.decreaseNumber(ctrl.adultNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					<button type="button" ng-click="ctrl.adultNum=ctrl.incrementNumber(ctrl.adultNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">+</button>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+					Adult Total : &pound {{(ctrl.adultPrice * ctrl.adultNum).toFixed(2);}}
+				</div>
+			</div>
+		</div>
+		<br/>
 
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+					Concession
+					<div id = "money1">&pound {{ctrl.concessionPrice}}</div>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					Quantity : {{ctrl.concessionNum}}
+				</div>
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+					<button type="button" ng-click="ctrl.concessionNum=ctrl.decreaseNumber(ctrl.concessionNum);ctrl.updatePrice()"  class="btn btn-info btn-lg" id="but1">-</button>
+				</div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+					<button type="button" ng-click="ctrl.concessionNum=ctrl.incrementNumber(ctrl.concessionNum);ctrl.updatePrice()"   class="btn btn-info btn-lg" id="but1">+</button>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+					Concession Total : &pound {{(ctrl.concessionPrice * ctrl.concessionNum).toFixed(2);}}
+				</div>
+			</div>
+		</div>
+		<br/>
 
-	<div style="text-align:center;">
-  	
-	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
+		<form>
+			Promo-code:<br>
+			<input type="text" id="codeInput" name="offer" ng-model="offer.offerCode" class="voucher" value="Promo-code"
+				   onfocus="if (this.value == 'Promo-code') {this.value = '';}"
+				   onblur="if (this.value == '') {this.value = 'Promo-code';}">
+			<button type="submit" id="codeButton" class="btn btn-info" value="" ng-click="ctrl.discountPrice(offer.offerCode)">Submit</button>
+		</form>
+
+		<div>
+			<h2>Total : &pound {{(ctrl.totalPrice)}} </h2>
+		</div>
+
+		{{ctrl.user.idUser}}
+		<div style="text-align:center;">
+			<a ui-sref="seatpicker({idShowing:{{ctrl.booking.showing.idShowing}}})">
+				<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
+	ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
+			</a>
 
-	ticket.booking.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
-	
-	</div>
+
+
+		</div>
 	</div>
 
 
