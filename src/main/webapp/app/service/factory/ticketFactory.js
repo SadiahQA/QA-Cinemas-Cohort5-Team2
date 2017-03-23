@@ -29,10 +29,9 @@ movieApp.factory('ticketFactory', function(localStorageService){
                 ticket = '{ "ticketType":"Student", "showing":{"idShowing":"' +
                     savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
                     savedData.booking.user.idUser + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '"}';
-                console.log(savedData.booking.user.idUser);
-                console.log(ticket);
+              
                 var fix = JSON.parse(ticket);
-                console.log(fix);
+                
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
                 savedData.student.quantity = savedData.student.quantity - 1;

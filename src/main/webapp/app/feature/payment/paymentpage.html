@@ -1,92 +1,59 @@
+<link rel="stylesheet" type="text/css" href="app/feature/payment/paymentpage.css">
 <div ng-controller="paymentPageController as ctrl">
 	<div ng-controller="paypalController as paypal">
+
 		<div ng-init="ctrl.getBooking(); ctrl.getQuantities()">
 
-<h1>Finalize Booking</h1>
+<h2>Order summary</h2>
+<br/>
+<br/>
 
 <div class="container-fluid">
-		<div class="row">
-			<div class=col-lg-2>
-			Student
-			</div>
-			<div class=col-lg-2>
-			{{ctrl.studentNum}}
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
+		<div class="row" id="numOfTicketsSection">
+			<table class="table table-striped">
+			    <thead>
+			      <tr class="table-active">
+			        <th>Ticket type</th>
+			        <th>Price</th>
+			        <th>Quantity</th>
+			        <th>Sub-total</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-if="ctrl.studentNum > 0">
+			        <td>Student</td>
+			        <td>&pound{{ctrl.studentPrice}}</td>
+			        <td>{{ctrl.studentNum}}</td>
+			        <td>&pound{{(ctrl.studentNum*ctrl.studentPrice).toFixed(2)}}</td>
+			      </tr>
+			      <tr ng-if="ctrl.adultNum > 0">
+			        <td>Adult</td>
+			        <td>&pound{{ctrl.adultPrice}}</td>
+			        <td>{{ctrl.adultNum}}</td>
+			        <td>&pound{{(ctrl.adultNum*ctrl.adultPrice).toFixed(2)}}</td>
+			      </tr>
+			      <tr ng-if="ctrl.childNum > 0" >
+			        <td>Child</td>
+			        <td>&pound{{ctrl.childPrice}}</td>
+			        <td>{{ctrl.childNum}}</td>
+			        <td>&pound{{(ctrl.childNum*ctrl.childPrice).toFixed(2)}}</td>
+			      </tr>
+			      <tr ng-if="ctrl.concessionNum > 0">
+			      	 <td>Concession</td>
+			         <td>&pound{{ctrl.concessionPrice}}</td>
+			         <td>{{ctrl.concessionNum}}</td>
+			        <td>&pound{{(ctrl.concessionNum*ctrl.concessionPrice).toFixed(2)}}</td>
+			      </tr>
+			    </tbody>
+  			</table>
 		</div>
-		
-		<div class="row">
-			<div class=col-lg-2>
-			Adult
+		<div class="row" id="totalPriceSection">
+			<div class=col-lg-4>
 			</div>
-			<div class=col-lg-2>
-			{{ctrl.adultNum}}
+			<div class=col-lg-4>
 			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class=col-lg-2>
-			Child
-			</div>
-			<div class=col-lg-2>
-			{{ctrl.childNum}}
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class=col-lg-2>
-			Concession
-			</div>
-			<div class=col-lg-2>
-			{{ctrl.concessionNum}}
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class=col-lg-2>
-			Total Price
-			</div>
-			<div class=col-lg-2>
-			{{ctrl.totalPrice}}
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
-			</div>
-			<div class=col-lg-2>
+			<div class=col-lg-4>
+				Total Price : &pound {{ctrl.totalPrice}}
 			</div>
 		</div>
 </div>
