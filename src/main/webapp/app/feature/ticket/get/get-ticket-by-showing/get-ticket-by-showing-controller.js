@@ -27,7 +27,6 @@
             }
             else{
                 list.push(item);
-                console.log(item);
             }
         };
         vm.exists=function(item, list){
@@ -53,7 +52,7 @@
                     ticketFactory.set(null);
                 }
             });
-            vm.storePrice(vm.totalPrice);
+            
         }
         vm.storePrice=function(price){
             priceFactory.set(price);

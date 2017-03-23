@@ -65,7 +65,6 @@ movieApp.factory('ticketFactory', function(localStorageService){
                 arrayPosition = arrayPosition + 1;
                 savedData.concession.quantity = savedData.concession.quantity - 1;
             }
-            console.log(ticketArray);
             localStorageService.cookie.set('ticketArrayKey', ticketArray);
         }
     }
