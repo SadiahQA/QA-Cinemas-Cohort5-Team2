@@ -99,25 +99,8 @@ public class DBTicketService implements TicketService{
 	@Override
 	public String getListTicket(String idShowing) {
 		Query query = em.createQuery("SELECT t FROM Ticket t WHERE t.showing.idShowing=" + idShowing);
-		ArrayList<Ticket> ticketFound = (ArrayList<Ticket>) query.getResultList();
-		int[] seats = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-		int[] availableSeats=new int[seats.length];
-		
-		int count = 0;
-		
-	for (int i = 0; i < seats.length; i++){
-		boolean checked = false;
-		inner: for (Ticket ticket: ticketFound){
-			if (ticket.getSeatNumber() == seats[i]){
-				checked=true;
-				break inner;				
-			}
-		}
-		if (!checked)
-			availableSeats[count]=seats[i];
-		count++;
-	}
-		return util.getJSONForObject(availableSeats);
+		Collection<Ticket> ticketFound = (Collection<Ticket>) query.getResultList();
+		return util.getJSONForObject(ticketFound);
 	}
 
 	@Override
