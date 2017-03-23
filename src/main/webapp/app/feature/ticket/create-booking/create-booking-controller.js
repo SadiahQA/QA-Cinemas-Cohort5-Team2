@@ -45,9 +45,14 @@
 
         vm.incrementNumber = function(number){
             if (vm.totalTicket >= vm.showing.availableSeats) {
+                window.alert("No remaining seats available for this showing.");
                 return number;
             }
             else {
+                if(vm.totalTicket >= 15){
+                    window.alert("Maximum number of tickets for this booking reached.");
+                    return number;
+                }
                 number = number + 1;
                 return number;
             }
