@@ -120,25 +120,24 @@
 		vm.storePrice = function(price){
 			priceFactory.set(price);
 		}
-		
-		vm.clearPreviousInfo = function(){
-			localStorageService.cookie.remove('manyTicketStorageKey');
-			localStorageService.cookie.remove('bookingStorageKey');
-			localStorageService.cookie.remove('ticketArrayKey');	
-		}
-		
-		vm.checkBookingExists = function(){
+        vm.clearPreviousInfo = function(){
+            localStorageService.cookie.remove('manyTicketStorageKey');
+            localStorageService.cookie.remove('bookingStorageKey');
+            localStorageService.cookie.remove('ticketArrayKey');
+        }
 
-			if (bookingFactory.get() === null){
-				if (backUpTicketFactory.get() != null){
-					ticketDal.removeTickets(backUpTicketFactory.get());
-				}
-				backUpTicketFactory.set(null);
+        vm.checkBookingExists = function(){
 
-				$state.go('homepage');
-			}
-		}	
-	
+            if (bookingFactory.get() === null){
+                if (backUpTicketFactory.get() != null){
+                    ticketDal.removeTickets(backUpTicketFactory.get());
+                }
+                backUpTicketFactory.set(null);
+
+                $state.go('homepage');
+            }
+        }
+
 	};
 
 	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', CreateBookingController]);

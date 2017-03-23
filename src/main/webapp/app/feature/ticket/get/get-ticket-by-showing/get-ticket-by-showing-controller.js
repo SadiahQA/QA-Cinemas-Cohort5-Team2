@@ -1,12 +1,14 @@
 (function(){
 
-    var GetTicketByShowingController = function(ticketDal, $stateParams, ticketFactory, manyTicketFactory, seatFactory, priceFactory, $state){
+    var GetTicketByShowingController = function(ticketDal, $stateParams, ticketFactory, manyTicketFactory, seatFactory, priceFactory, $state, localStorageService, backUpTicketFactory){
 
         var vm = this;
         vm.seats;
         vm.selected=[];
         vm.booking=seatFactory.get();
-        vm.length = vm.booking.student.quantity+vm.booking.child.quantity+vm.booking.adult.quantity+vm.booking.concession.quantity;
+        vm.getLength = function() {
+            vm.length = vm.booking.student.quantity + vm.booking.child.quantity + vm.booking.adult.quantity + vm.booking.concession.quantity;
+        }
         function findTicket(){
 
                 ticketDal.findByShowingID($stateParams.idShowing).then(function (results){
@@ -55,7 +57,25 @@
         vm.storePrice=function(price){
             priceFactory.set(price);
         }
+        vm.clearPreviousInfo = function(){
+            localStorageService.cookie.remove('manyTicketStorageKey');
+            localStorageService.cookie.remove('seatStorageKey');
+            localStorageService.cookie.remove('ticketArrayKey');
+        }
+
+        vm.checkBookingExists = function(){
+
+            if (seatFactory.get() === null){
+                if (backUpTicketFactory.get() != null){
+                    ticketDal.removeTickets(backUpTicketFactory.get());
+                }
+                backUpTicketFactory.set(null);
+
+                $state.go('homepage');
+            }
+        }
+
 
     }
-    angular.module('movieApp').controller('getTicketByShowingController',['ticketDal','$stateParams', 'ticketFactory', 'manyTicketFactory','seatFactory','priceFactory', '$state', GetTicketByShowingController]);
+    angular.module('movieApp').controller('getTicketByShowingController',['ticketDal','$stateParams', 'ticketFactory', 'manyTicketFactory','seatFactory','priceFactory', '$state','localStorageService', 'backUpTicketFactory', GetTicketByShowingController]);
 }());

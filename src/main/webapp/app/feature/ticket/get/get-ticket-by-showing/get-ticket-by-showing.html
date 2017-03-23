@@ -1,6 +1,7 @@
 <div ng-controller="getTicketByShowingController as ctrl">
-{{ctrl.seats}}
-
+<div ng-init="ctrl.checkBookingExists()">
+    </div>
+ <div ng-init="ctrl.clearPreviousInfo();ctrl.getLength()">
     <div flex="100" flex-gt-sm="50" layout="column">
         <div>
     <fieldset class="standard">
@@ -11,11 +12,11 @@
                     <div ng-switch on = "seat">
                         <div ng-switch-when="0">
                             <input type="checkbox" ng-checked="ctrl.exists(seat, ctrl.selected)"  disabled>
-                            {{seat}}
+
                         </div>
                         <div ng-switch-default>
                              <input type="checkbox"  ng-checked="ctrl.exists(seat, ctrl.selected)" ng-click="ctrl.toggle(seat, ctrl.selected)" ng-disabled="ctrl.selected.length>=ctrl.length && !ctrl.exists(seat, ctrl.selected)">
-                            {{seat}}
+
                         </div>
                     </div>
                 </label>
@@ -26,14 +27,14 @@
 
 <div flex="100">
     <h3 class="md-title">Selected Seats</h3>
-    <code style="display: block; padding: 8px;">{{ctrl.selected | json}}</code>
+    <code style="display: block; padding: 8px;">{{ctrl.selected }}</code>
 </div>
 
 </div>
 
     <button  ng-click="ctrl.updateSeatNums();ticket=ctrl.booking;ctrl.saveBooking(ticket)" ng-disabled="ctrl.selected.length<ctrl.length">book</button>
 
-    
+
 
 <!--ctrl.saveBooking(ticket)-->
 
