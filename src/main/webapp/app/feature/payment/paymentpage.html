@@ -20,29 +20,29 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
+			      <tr ng-if="ctrl.studentNum > 0">
 			        <td>Student</td>
-			        <td></td>
+			        <td>&pound{{ctrl.studentPrice}}</td>
 			        <td>{{ctrl.studentNum}}</td>
-			        <td></td>
+			        <td>&pound{{(ctrl.studentNum*ctrl.studentPrice).toFixed(2)}}</td>
 			      </tr>
-			      <tr>
+			      <tr ng-if="ctrl.adultNum > 0">
 			        <td>Adult</td>
-			        <td></td>
+			        <td>&pound{{ctrl.adultPrice}}</td>
 			        <td>{{ctrl.adultNum}}</td>
-			        <td></td>
+			        <td>&pound{{(ctrl.adultNum*ctrl.adultPrice).toFixed(2)}}</td>
 			      </tr>
-			      <tr>
+			      <tr ng-if="ctrl.childNum > 0" >
 			        <td>Child</td>
-			        <td></td>
+			        <td>&pound{{ctrl.childPrice}}</td>
 			        <td>{{ctrl.childNum}}</td>
-			        <td></td>
+			        <td>&pound{{(ctrl.childNum*ctrl.childPrice).toFixed(2)}}</td>
 			      </tr>
-			      <tr>
+			      <tr ng-if="ctrl.concessionNum > 0">
 			      	 <td>Concession</td>
-			         <td></td>
+			         <td>&pound{{ctrl.concessionPrice}}</td>
 			         <td>{{ctrl.concessionNum}}</td>
-			        <td></td>
+			        <td>&pound{{(ctrl.concessionNum*ctrl.concessionPrice).toFixed(2)}}</td>
 			      </tr>
 			    </tbody>
   			</table>
