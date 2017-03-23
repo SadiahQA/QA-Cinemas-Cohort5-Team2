@@ -4,6 +4,7 @@ movieApp.factory('bookingFactory', function(localStorageService){
 	function set(data){
 		localStorageService.cookie.set('bookingStorageKey', data);	
 		savedData = data;
+		console.log(savedData.user.idUser);
 	}
 	
 	function get(){

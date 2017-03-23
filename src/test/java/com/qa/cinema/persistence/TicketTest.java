@@ -18,7 +18,7 @@ public class TicketTest {
 	Movie movie1 = new Movie("Title","Genre","URL", "Duration",new Date(2017, 12, 12),"Cert","description", actorlist);
 	Showing showing1 = new Showing(movie1,"StartTime","ShowingType",50,new Date(2017, 12, 12));
 	User user1 = new User("FirstName", "LastName", "DOB", "email@domain.com", "password",true);
-	Ticket ticket1 = new Ticket(showing1, user1, "TicketType");
+	Ticket ticket1 = new Ticket(showing1, user1, "TicketType", 1);
 
 	@Test
 	public void testGetIdTicket() {
