@@ -1,6 +1,6 @@
 (function(){
 
-    var GetTicketByShowingController = function(ticketDal, $stateParams, ticketFactory, manyTicketFactory, seatFactory, priceFactory, $state, localStorageService, backUpTicketFactory){
+    var GetTicketByShowingController = function(ticketDal, $stateParams, ticketFactory, manyTicketFactory, seatFactory, priceFactory, $state, localStorageService, backUpTicketFactory, userFactory){
 
         var vm = this;
         vm.seats;
@@ -40,8 +40,9 @@
 
         };
         vm.saveBooking = function(ticket){
-
+            ticket.booking.idUser=userFactory.get().idUser;
             ticketFactory.set(ticket);
+            userFactory.loginGate=0;
 
             vm.ticketArray = ticketFactory.get();
             ticketDal.createTicket(vm.ticketArray).then(function(response){
@@ -77,5 +78,5 @@
 
 
     }
-    angular.module('movieApp').controller('getTicketByShowingController',['ticketDal','$stateParams', 'ticketFactory', 'manyTicketFactory','seatFactory','priceFactory', '$state','localStorageService', 'backUpTicketFactory', GetTicketByShowingController]);
+    angular.module('movieApp').controller('getTicketByShowingController',['ticketDal','$stateParams', 'ticketFactory', 'manyTicketFactory','seatFactory','priceFactory', '$state','localStorageService', 'backUpTicketFactory','userFactory', GetTicketByShowingController]);
 }());
