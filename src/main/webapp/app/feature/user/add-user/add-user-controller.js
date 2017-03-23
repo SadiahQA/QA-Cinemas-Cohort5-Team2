@@ -253,7 +253,7 @@
 											+ hash(userToAdd.email
 													+ userToAdd.password);
 
-                                    $('#userCreateModal').modal(focus)
+                                    window.alert("User successfully created.");
 									loginSuccess = true;
 								}
 
