@@ -1,9 +1,9 @@
 INSERT INTO ACTOR(IDACTOR, DOB, FIRSTNAME, GENDER, LASTNAME) VALUES (1, '1987-11-10', 'Some', 'Male', 'GUY');
 INSERT INTO ACTOR(IDACTOR, DOB, FIRSTNAME, GENDER, LASTNAME) VALUES (2, '1989-11-10', 'Some', 'Male', 'Other Guy');
 INSERT INTO ACTOR(IDACTOR,DOB, FIRSTNAME, GENDER, LASTNAME) VALUES (3, '1971-11-10', 'Some', 'Male', 'Further Guy');
-INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES) VALUES (1, 'Manchester', 'QAC Manch', 'Times');
-INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES) VALUES (2, 'Liverpool', 'QAC Liver', 'OtherTimes');
-INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES) VALUES (3, 'Dorset', 'QAC Dorset', 'FurtherTimes');
+INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES, LATITUDE, LONGITUDE) VALUES (1, 'Manchester', 'QAC Manch', 'Times', 53.480759, -2.242631);
+INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES, LATITUDE, LONGITUDE) VALUES (2, 'Liverpool', 'QAC Liver', 'OtherTimes',53.408371, -2.991573);
+INSERT INTO CINEMA(IDCINEMA, CITY, NAME, OPENINGTIMES, LATITUDE, LONGITUDE) VALUES (3, 'Dorset', 'QAC Dorset', 'FurtherTimes', 50.748764, -2.344479);
 INSERT INTO MOVIE(IDMOVIE, CERTIFICATION, DESCRIPTION, DURATION, GENRE, POSTERURL, TRAILERURL, RELEASEDATE, TITLE)	VALUES (1, 'U', 'Bruce Wayne must not only deal with the criminals of Gotham City, but also the responsibility of raising a boy he adopted.', '104m', 'Animation, Action, Adventure', 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTcyNTEyOTY0M15BMl5BanBnXkFtZTgwOTAyNzU3MDI@._V1_SY1000_CR0,0,674,1000_AL_.jpg','https://www.youtube.com/embed/rGQUKzSDhrg' ,'2017-02-10', 'The LEGO Batman Movie');
 INSERT INTO MOVIE(IDMOVIE, CERTIFICATION, DESCRIPTION, DURATION, GENRE, POSTERURL, TRAILERURL, RELEASEDATE, TITLE) VALUES (2, '12A', 'A team of scientists, soldiers and adventurers unites to explore an uncharted island in the Pacific. Cut off from everything they know, the team ventures into the domain of the mighty Kong. As their mission becomes one of survival, they must fight to escape a primal Eden.', '118m', 'Action, Adventure, Fantasy', 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwMzI5ODEwNF5BMl5BanBnXkFtZTgwNjAzNjI2MDI@._V1_SY1000_CR0,0,674,1000_AL_.jpg', 'https://www.youtube.com/embed/44LdLqgOpjo' ,'2017-03-09', 'Kong: Skull Island');
 INSERT INTO MOVIE(IDMOVIE, CERTIFICATION, DESCRIPTION, DURATION, GENRE, POSTERURL, TRAILERURL, RELEASEDATE, TITLE) VALUES (3, '15', 'In the near future, a weary Logan cares for an ailing Professor X in a hide out on the Mexican border. But Logans attempts to hide from the world and his legacy are up-ended when a young mutant arrives, being pursued by dark forces.', '137m', 'Action, Drama, Sci-Fi', 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjI1MjkzMjczMV5BMl5BanBnXkFtZTgwNDk4NjYyMTI@._V1_SY1000_CR0,0,674,1000_AL_.jpg','https://www.youtube.com/embed/Div0iP65aZo' ,'2017-03-01', 'Logan');
@@ -317,9 +317,9 @@ INSERT INTO SHOWING(IDSHOWING, AVAILABLESEATS, SHOWINGTYPE, STARTTIME, MOVIE_IDM
 INSERT INTO SHOWING(IDSHOWING, AVAILABLESEATS, SHOWINGTYPE, STARTTIME, MOVIE_IDMOVIE, SCREEN_IDSCREEN, SHOWINGDATE) VALUES (296, '89', '2D', '1pm', 4, 1, '2017-04-30');
 INSERT INTO SHOWING(IDSHOWING, AVAILABLESEATS, SHOWINGTYPE, STARTTIME, MOVIE_IDMOVIE, SCREEN_IDSCREEN, SHOWINGDATE) VALUES (297, '28', '3D', '8pm', 4, 1, '2017-04-30');
 
-INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (1, '2001-11-11', 'anemail@email.com', 'Some', 'Guy', '-1966213678', TRUE);
-INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (2, '1999-11-11', 'anotheremail@email.com', 'Some', 'Other Guy', '-1966213678', TRUE);
-INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (3, '1989-11-11', 'anfurtheremail@email.com', 'Some', 'Other Guy', '-1966213678', FALSE);
+INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (1, '2001-11-11', 'anemail@email.com', 'Some', 'Guy', '13495d2059c8cb0497fc2b50bfc6297115ba83e336dc7c563bfef7aea7e81cdf', TRUE);
+INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (2, '1999-11-11', 'anotheremail@email.com', 'Some', 'Other Guy', '13495d2059c8cb0497fc2b50bfc6297115ba83e336dc7c563bfef7aea7e81cdf', TRUE);
+INSERT INTO USER(IDUSER, DOB, EMAIL, FIRSTNAME, LASTNAME, PASSWORD, ACTIVE) VALUES (3, '1989-11-11', 'anfurtheremail@email.com', 'Some', 'Other Guy', '13495d2059c8cb0497fc2b50bfc6297115ba83e336dc7c563bfef7aea7e81cdf', FALSE);
 INSERT INTO TICKET(IDTICKET, TICKETTYPE, SHOWING_IDSHOWING, USER_IDUSER) VALUES (1, 'Normal', 1, 1);
 INSERT INTO TICKET(IDTICKET, TICKETTYPE, SHOWING_IDSHOWING, USER_IDUSER)VALUES (2, 'Normal', 2, 2);
 INSERT INTO TICKET(IDTICKET, TICKETTYPE, SHOWING_IDSHOWING, USER_IDUSER) VALUES (3, 'Normal', 3, 3);
