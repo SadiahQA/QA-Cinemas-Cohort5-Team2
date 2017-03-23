@@ -57,34 +57,21 @@
 
         	url: "/createbooking",
         	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
-
         }).state("payment",{
         	url: "/payment",
         	templateUrl: "app/feature/payment/paymentpage.html"
         }).state("paymentsuccess",{
         	url:"/paymentsuccess",
         	templateUrl: "app/feature/payment/paymentsuccess/paymentsuccess.html"
-
-
-        }).state("seatpicker",{
-            url:"/seatpicker/:idShowing",
-            templateUrl: "app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing.html",
-            controller: function($stateParams){
-                $stateParams.idShowing
-            }
-
-
         }).state("paymentfailed", {
         	url:"/paymentfailed",
         	templateUrl: "app/feature/payment/paymentfailed/paymentfailed.html"
-
         }).state("contactus",{
         	url:"/contactus", 
         	templateUrl: "app/feature/contact/contactus.html"
         }).state("aboutus",{
         	url:"/aboutus", 
         	templateUrl: "app/feature/aboutus/aboutus.html"
-
         })
 
         

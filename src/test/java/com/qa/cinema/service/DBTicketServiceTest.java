@@ -101,7 +101,6 @@ public class DBTicketServiceTest {
 	
 	@Test
 	public void getUserTicketTest() {
-		
 		assertEquals( "Ticket String info",  ticketService.getUserTicket("1"));
 		
 	}

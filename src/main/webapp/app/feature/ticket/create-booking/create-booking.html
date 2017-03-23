@@ -136,16 +136,14 @@
 	<h2>Total : &pound {{(ctrl.totalPrice)}} </h2>
 	</div>
 
-{{ctrl.user.idUser}}
+
 	<div style="text-align:center;">
-  	<a ui-sref="seatpicker({idShowing:{{ctrl.booking.showing.idShowing}}})">
+  	
 	<button ng-click="ticket.student.quantity=ctrl.studentNum;ticket.adult.quantity=ctrl.adultNum;
 	ticket.child.quantity=ctrl.childNum; ticket.concession.quantity=ctrl.concessionNum; ticket.booking=ctrl.booking;
-	ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
-	</a>
 
-
-
+	ticket.booking.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket);"  class="btn btn-info btn-lg" id="bookButton" >Book Tickets</button>
+	
 	</div>
 	</div>
 
