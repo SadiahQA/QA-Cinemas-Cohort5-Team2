@@ -253,7 +253,7 @@
 											+ hash(userToAdd.email
 													+ userToAdd.password);
 
-									window.alert("New User Created");
+                                    window.alert("User successfully created.");
 									loginSuccess = true;
 								}
 
