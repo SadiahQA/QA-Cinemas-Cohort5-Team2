@@ -2,7 +2,7 @@
 
 
 
-    var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal,seatFactory){
+    var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal,seatFactory, subPriceFactory){
 
 
         var vm = this;
@@ -12,7 +12,6 @@
         vm.retriveBookingdetails = function(){
 
             vm.booking = bookingFactory.get();
-            console.log(vm.booking);
 
         }
 
@@ -76,8 +75,8 @@
 
         vm.saveBooking=function(ticket){
             seatFactory.set(ticket);
-
-
+            subPriceFactory.set([vm.studentPrice,vm.adultPrice,vm.childPrice,vm.concessionPrice]);
+            vm.storePrice(vm.totalPrice);
         }
 
 
@@ -134,6 +133,8 @@
             localStorageService.cookie.remove('manyTicketStorageKey');
             localStorageService.cookie.remove('bookingStorageKey');
             localStorageService.cookie.remove('ticketArrayKey');
+            localStorageService.cookie.remove('priceStorageKey');
+            localStorageService.cookie.remove('subpriceStorageKey');
         }
 
         vm.checkBookingExists = function(){
@@ -150,7 +151,7 @@
 
     };
 
-    angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', CreateBookingController]);
+    angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','seatFactory', 'subPriceFactory', CreateBookingController]);
 
 
 
