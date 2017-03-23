@@ -1,0 +1,15 @@
+.panel-default {
+    border-color: #444;
+    margin-top: 30px;
+    color:white;
+}
+
+.panel-group .panel-heading {
+    background-color: #111;
+    color:white;
+}
+
+.panel-body {
+    background-color: #111;
+    color:white;
+}

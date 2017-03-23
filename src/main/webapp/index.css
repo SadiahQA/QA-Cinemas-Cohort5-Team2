@@ -47,14 +47,12 @@ body{
 	color: white;
 }
 
-#test{
-    color:white;
-}
 #city{
     color:lightgrey;
     font-size:25px;
     margin-top: 10px;
     text-align: center;
+    margin-right: 50px;
 }
 
 html {
