@@ -42,9 +42,14 @@
     
 		vm.incrementNumber = function(number){
             if (vm.totalTicket >= vm.showing.availableSeats) {
+                $('#seatNumberModal').modal(focus)
                 return number;
             }
             else {
+            	if(vm.totalTicket >= 15){
+                    $('#seatNumberModal2').modal(focus)
+                    return number;
+				}
                 number = number + 1;
                 return number;
             }
