@@ -42,12 +42,12 @@
     
 		vm.incrementNumber = function(number){
             if (vm.totalTicket >= vm.showing.availableSeats) {
-                $('#seatNumberModal').modal(focus)
+                window.alert("No remaining seats available for this showing.");
                 return number;
             }
             else {
             	if(vm.totalTicket >= 15){
-                    $('#seatNumberModal2').modal(focus)
+                    window.alert("Maximum number of tickets for this booking reached.");
                     return number;
 				}
                 number = number + 1;
