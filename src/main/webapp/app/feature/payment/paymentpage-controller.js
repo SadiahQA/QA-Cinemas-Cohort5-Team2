@@ -1,6 +1,6 @@
 (function(){
 	
-	var PaymentPageController = function(manyTicketFactory, priceFactory, createBookingController, localStorageService, $window, ticketDal){
+	var PaymentPageController = function(manyTicketFactory, priceFactory, localStorageService, $window, ticketDal){
 		
 		var vm = this;
 		
@@ -13,6 +13,7 @@
 		vm.adultNum=0;
 		vm.childNum=0;
 		vm.concessionNum=0;
+		
 		
 		vm.getQuantities = function(){
 			for (var i in vm.booking){
@@ -33,6 +34,6 @@
 		
 	};
 	
-	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', 'ticketDal', PaymentPageController]);
+	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', '$window', 'ticketDal', PaymentPageController]);
 	
 }())
