@@ -7,9 +7,6 @@ img.img-responsive:hover {
 	transform:scale(1.2,1.2);	
 }
 
-form{
-}
-
 #bookButton {
 	border-style: solid;
 	border-width: 3px;
@@ -22,14 +19,21 @@ form{
 	width: 200px;
 }
 
-#form {
-	margin-top: 15px;
+input, label {
+    display:block;
 }
+
+.vcenter {
+        display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
 
 #innerjumbo1 {
 	background-color: rgba(0, 0, 0, 0.5);
-	padding-top:1px;
-	padding-bottom:20px;
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 #innerjumbo2 {

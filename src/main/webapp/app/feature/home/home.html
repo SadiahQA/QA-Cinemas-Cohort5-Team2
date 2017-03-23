@@ -8,7 +8,7 @@
 			<div class="container-fluid" id="form">
 				<div class="row"></div>
 					
-					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
+					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 centerfy">
 						<label class="control-label" for="movieArea">I want to see</label>
 						<select class="selectpicker" id="movieArea" ng-model="selectedMovie.idMovie" ng-disabled="!ctrl.idCinema" ng-change="ctrl.getShowings(selectedMovie.idMovie); ticket.showing = undefined">
 							<option value="" disabled selected>Select Movie</option>
@@ -16,15 +16,14 @@
 						</select>
 					</div>
 					
-					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
+					<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 centerfy">
 						<label class="control-label" for="showingArea">On</label>
 						<select class="selectpicker" id="showingArea"  ng-model="ticket.showing" ng-disabled="!selectedMovie.idMovie"   >
 							<option value="" disabled selected>Select Showing</option>
 							<option ng-repeat="showing in ctrl.showings" ng-if="showing.availableSeats > 0" value="{{showing}}" >{{showing.showingDate}} {{showing.startTime}}</option>
 						</select>
 					</div>
-				<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 " id="buttonPlace">
-					<h5></h5>
+				<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 vcenter" id="buttonPlace">
 					<button type="submit" id="bookButton" class="btn btn-info" ng-disabled="!ticket.showing" ng-click=" ticket.user.idUser=ctrl.user.idUser; ctrl.saveBooking(ticket)">Book</button>
 				</div>
 			</div>
