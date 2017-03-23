@@ -1,6 +1,6 @@
 (function(){
 
-	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal){
+	var CreateBookingController = function(userFactory, bookingFactory, ticketFactory, ticketDal, priceDal, priceFactory, manyTicketFactory, $state, localStorageService, ticketDal, backUpTicketFactory, offerDal, subPriceFactory){
 
 		var vm = this;
 		
@@ -80,6 +80,7 @@
 				}
 			});
 			vm.storePrice(vm.totalPrice);
+			subPriceFactory.set([vm.studentPrice,vm.adultPrice,vm.childPrice,vm.concessionPrice]);
 		}
 		
 		vm.showing;
@@ -151,6 +152,6 @@
 	
 	};
 
-	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal', CreateBookingController]);
+	angular.module('movieApp').controller('createBookingController', ['userFactory','bookingFactory', 'ticketFactory', 'ticketDal', 'priceDal', 'priceFactory', 'manyTicketFactory', '$state', 'localStorageService', 'ticketDal', 'backUpTicketFactory', 'offerDal','subPriceFactory', CreateBookingController]);
 	
 }());
