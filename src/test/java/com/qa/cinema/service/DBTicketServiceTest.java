@@ -35,6 +35,8 @@ public class DBTicketServiceTest {
 	@Mock
 	private Showing showing;
 	
+
+	
 	@InjectMocks 
 	private DBTicketService ticketService;
 	
@@ -53,6 +55,7 @@ public class DBTicketServiceTest {
 		Mockito.when(tickets.get(0).getShowing()).thenReturn(showing);
 		Mockito.when(showing.getAvailableSeats()).thenReturn(2);
 		Mockito.when(ticket1.getShowing()).thenReturn(showing);
+		Mockito.when(ticket1.getSeatNumber()).thenReturn(1);
 		Mockito.when(em.find(Showing.class,tickets.get(0).getShowing().getIdShowing())).thenReturn(showing);
 	}
 	
@@ -91,6 +94,7 @@ public class DBTicketServiceTest {
 
 	@Test
 	public void getListTicketTest() {
+		Mockito.when(util.getJSONForObject(Mockito.any())).thenReturn("Ticket String info");
 		assertEquals( "Ticket String info",  ticketService.getListTicket("1"));
 		
 	}
