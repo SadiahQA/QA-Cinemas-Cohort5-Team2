@@ -92,12 +92,12 @@ public class DBTicketServiceTest {
 		assertEquals( "Ticket could not be found",  ticketService.getTicket("1"));
 	}
 
-//	@Test
-//	public void getListTicketTest() {
-//		Mockito.when(util.getJSONForObject(Mockito.any())).thenReturn("Ticket String info");
-//		assertEquals( "Ticket String info",  ticketService.getListTicket("1"));
-//		
-//	}
+	@Test
+	public void getListTicketTest() {
+		Mockito.when(util.getJSONForObject(Mockito.any())).thenReturn("Ticket String info");
+		assertEquals( "Ticket String info",  ticketService.getListTicket("1"));
+		
+	}
 	
 	@Test
 	public void getUserTicketTest() {
