@@ -1,34 +1,35 @@
 movieApp.factory('ticketFactory', function(localStorageService){
-	var savedData = {};
-	var ticketArray = [];
-	
-	function set(data){
-		
-		ticketArray=[];
-		savedData = data;
-		
-		savedData.booking.user.idUser = data.booking.idUser;
-		createTicketObjects();
+    var savedData = {};
+    var ticketArray = [];
 
-	}
-	
-	function get(){
-		return localStorageService.cookie.get('ticketArrayKey');
-	}
-	
-	function  createTicketObjects() {
-		
+    function set(data){
+
+        ticketArray=[];
+        savedData = data;
+
+
+        createTicketObjects();
+
+    }
+
+    function get(){
+        return localStorageService.cookie.get('ticketArrayKey');
+    }
+
+    function  createTicketObjects() {
+
         if (savedData === null) {
         }
         else {
 
 
             arrayPosition = 0;
-
             while (savedData.student.quantity > 0) {
+
                 ticket = '{ "ticketType":"Student", "showing":{"idShowing":"' +
                     savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.idUser + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '"}';
+
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -38,7 +39,7 @@ movieApp.factory('ticketFactory', function(localStorageService){
             while (savedData.adult.quantity > 0) {
                 ticket = '{ "ticketType":"Adult", "showing":{"idShowing":"' +
                     savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.idUser + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '"}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -47,8 +48,8 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.child.quantity > 0) {
                 ticket = '{ "ticketType":"Child", "showing":{"idShowing":"' +
-                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.showing.idShowing + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '", "user":{"idUser":"' +
+                    savedData.booking.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -57,8 +58,8 @@ movieApp.factory('ticketFactory', function(localStorageService){
 
             while (savedData.concession.quantity > 0) {
                 ticket = '{ "ticketType":"Concession", "showing":{"idShowing":"' +
-                    savedData.booking.showing.idShowing + '"}, "user":{"idUser":"' +
-                    savedData.booking.user.idUser + '"}}';
+                    savedData.booking.showing.idShowing + '"}, "seatNumber":"'+ savedData.seatNums[arrayPosition] + '", "user":{"idUser":"' +
+                    savedData.booking.idUser + '"}}';
                 var fix = JSON.parse(ticket);
                 ticketArray[arrayPosition] = fix;
                 arrayPosition = arrayPosition + 1;
@@ -67,9 +68,9 @@ movieApp.factory('ticketFactory', function(localStorageService){
             localStorageService.cookie.set('ticketArrayKey', ticketArray);
         }
     }
-	return{
-		set: set,
-		get: get,
-		createTicketObjects:createTicketObjects
-	}
+    return{
+        set: set,
+        get: get,
+        createTicketObjects:createTicketObjects
+    }
 });

@@ -1,18 +1,29 @@
 (function(){
 	
-	var PaymentPageController = function(manyTicketFactory, priceFactory, createBookingController, localStorageService, $window, ticketDal){
+	var PaymentPageController = function(manyTicketFactory, priceFactory, localStorageService, $window, ticketDal, subPriceFactory){
 		
 		var vm = this;
 		
 		vm.getBooking = function(){
 			vm.booking = manyTicketFactory.get();
 			vm.totalPrice = priceFactory.get();
+			vm.getPrices(); 
+		}
+		
+		vm.studentPrice;
+		vm.getPrices = function() {
+			vm.priceArray = subPriceFactory.get();
+			vm.studentPrice = vm.priceArray[0];
+			vm.adultPrice = vm.priceArray[1];
+			vm.childPrice = vm.priceArray[2];
+			vm.concessionPrice = vm.priceArray[3];
 		}
 		
 		vm.studentNum=0;
 		vm.adultNum=0;
 		vm.childNum=0;
 		vm.concessionNum=0;
+		
 		
 		vm.getQuantities = function(){
 			for (var i in vm.booking){
@@ -33,6 +44,6 @@
 		
 	};
 	
-	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', 'ticketDal', PaymentPageController]);
+	angular.module('movieApp').controller('paymentPageController', ['manyTicketFactory', 'priceFactory', 'localStorageService', '$window', 'ticketDal','subPriceFactory', PaymentPageController]);
 	
 }())

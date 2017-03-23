@@ -31,6 +31,7 @@ public class TicketEndpoint {
 	}
 	
 	@Path("/json/{idTicket}")
+	
 	@GET
 	@Produces({ "application/json" })
 	public String getTicket(@PathParam("idTicket") String idTicket) {

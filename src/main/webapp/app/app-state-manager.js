@@ -54,6 +54,7 @@
                 $stateParams.idUser
             }
         }).state("createbooking",{
+
         	url: "/createbooking",
         	templateUrl: "app/feature/ticket/create-booking/create-booking.html"
         }).state("payment",{
@@ -71,6 +72,14 @@
         }).state("aboutus",{
         	url:"/aboutus", 
         	templateUrl: "app/feature/aboutus/aboutus.html"
+        }).state("seatpicker",{
+            url:"/seatpicker/:idShowing",
+            templateUrl: "app/feature/ticket/get/get-ticket-by-showing/get-ticket-by-showing.html",
+            controller: function($stateParams){
+                $stateParams.idShowing
+            }
+
+
         })
 
         
