@@ -110,17 +110,18 @@
                     <li><a ui-sref="seecurrentmovies({current:'future'})">Coming Soon</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <div class="form-group">
-                            <select id="cinemaSelect" ng-model="selectedCinema" ng-change="ctrl.setCinema(selectedCinema)">
-                                <option value="" disabled selected>Select Cinema</option>
-                                <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema}}">{{cinema.city}}</option>
-                            </select>
-                        </div>
-                    </li>
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="city">{{ctrl.cinema.city}}</li>
+                    <li class = "centrify" id="city">{{ctrl.cinema.city}}</li>
+                    <li>
+                    <div class="form-group">
+                        <select id="cinemaSelect" ng-model="selectedCinema" ng-change="ctrl.setCinema(selectedCinema)">
+                            <option value="" disabled selected>Select Cinema</option>
+                            <option ng-repeat="cinema in ctrl.cinemas" value="{{cinema}}">{{cinema.city}}</option>
+                        </select>
+                    </div>
+                </li>
                     <li ng-if=!ctrl.isLoggedIn()><a ui-sref="adduser">Sign Up/Login</a></li>
                     <li ng-if=ctrl.isLoggedIn()><a href ng-click="ctrl.logout()">Logout</a></li>
 
@@ -136,7 +137,7 @@
 		    <div class="col-lg-2"></div>
 	    </div>
     </div>
-
+    </div>
 </body>
 
 <footer>
@@ -144,7 +145,7 @@
 	<ul>
       <a ui-sref="aboutus"><span>About us </span></a>
       <a ui-sref="contactus"><span>Contact us</span></a>
-      <a ui-sref="#"><span>Classifications</span></a>
+      <a ui-sref="classifications"><span>Classifications</span></a>
     </ul>
     <p>&copy; QA Cinemas. All rights reserved. </p>
 </div>
